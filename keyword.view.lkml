@@ -1,5 +1,5 @@
-view: keyword_6747157124 {
-  sql_table_name: adwords_v201609.Keyword_6747157124 ;;
+view: keyword {
+  sql_table_name: (SELECT * FROM bigquery-connectors.adwords_v201609.Keyword_6747157124 WHERE _data_date=_latest_date) ;;
 
   dimension_group: _data {
     type: time
@@ -27,6 +27,13 @@ view: keyword_6747157124 {
     ]
     convert_tz: no
     sql: ${TABLE}._LATEST_DATE ;;
+  }
+
+  dimension: unique_key {
+    type: string
+    primary_key: yes
+#     hidden: yes
+    sql: CONCAT(CAST(${TABLE}.AdGroupId AS STRING),CAST(${TABLE}.CriterionID AS STRING)) ;;
   }
 
   dimension: ad_group_id {

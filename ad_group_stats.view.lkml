@@ -1,8 +1,8 @@
-view: ad_stats {
-  sql_table_name: adwords_v201609.AdStats_6747157124 ;;
+view: ad_group_stats {
+  sql_table_name: adwords_v201609.AdGroupStats_6747157124 ;;
 
   dimension_group: _data {
-    description: "Use this field to filter on a specific time period for ad performance"
+    description: "Filter on this field to limit query to a specified date range"
     type: time
     timeframes: [
       raw,
@@ -17,6 +17,7 @@ view: ad_stats {
   }
 
   dimension_group: _latest {
+    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -150,21 +151,6 @@ view: ad_stats {
     sql: ${TABLE}.CostPerConversion ;;
   }
 
-  dimension: creative_id {
-    type: number
-    sql: ${TABLE}.CreativeId ;;
-  }
-
-  dimension: criterion_id {
-    type: number
-    sql: ${TABLE}.CriterionId ;;
-  }
-
-  dimension: criterion_type {
-    type: string
-    sql: ${TABLE}.CriterionType ;;
-  }
-
   dimension: ctr {
     type: number
     sql: ${TABLE}.Ctr ;;
@@ -232,11 +218,6 @@ view: ad_stats {
   dimension: interactions {
     type: number
     sql: ${TABLE}.Interactions ;;
-  }
-
-  dimension: is_negative {
-    type: yesno
-    sql: ${TABLE}.IsNegative ;;
   }
 
   dimension_group: month {

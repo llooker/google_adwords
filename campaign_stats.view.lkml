@@ -1,9 +1,9 @@
-view: ad_stats {
-  sql_table_name: adwords_v201609.AdStats_6747157124 ;;
+view: campaign_stats{
+  sql_table_name: adwords_v201609.CampaignStats_6747157124 ;;
 
   dimension_group: _data {
-    description: "Use this field to filter on a specific time period for ad performance"
-    type: time
+    description: "Use this date field to filter results to specific time period"
+    type:  time
     timeframes: [
       raw,
       date,
@@ -13,7 +13,7 @@ view: ad_stats {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._DATA_DATE ;;
+    sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
   dimension_group: _latest {
@@ -26,6 +26,7 @@ view: ad_stats {
       quarter,
       year
     ]
+    hidden: yes
     convert_tz: no
     sql: ${TABLE}._LATEST_DATE ;;
   }
@@ -65,11 +66,6 @@ view: ad_stats {
     sql: ${TABLE}.ActiveViewViewability ;;
   }
 
-  dimension: ad_group_id {
-    type: number
-    sql: ${TABLE}.AdGroupId ;;
-  }
-
   dimension: ad_network_type1 {
     type: string
     sql: ${TABLE}.AdNetworkType1 ;;
@@ -98,11 +94,6 @@ view: ad_stats {
   dimension: average_position {
     type: number
     sql: ${TABLE}.AveragePosition ;;
-  }
-
-  dimension: base_ad_group_id {
-    type: number
-    sql: ${TABLE}.BaseAdGroupId ;;
   }
 
   dimension: base_campaign_id {
@@ -142,27 +133,13 @@ view: ad_stats {
 
   dimension: cost {
     type: number
-    sql: ${TABLE}.Cost ;;
+    sql:( ${TABLE}.Cost/1000000) ;;
+    value_format_name: usd
   }
 
-  dimension: cost_per_conversion {
+  dimension: cost_per_conversion_row_level {
     type: number
     sql: ${TABLE}.CostPerConversion ;;
-  }
-
-  dimension: creative_id {
-    type: number
-    sql: ${TABLE}.CreativeId ;;
-  }
-
-  dimension: criterion_id {
-    type: number
-    sql: ${TABLE}.CriterionId ;;
-  }
-
-  dimension: criterion_type {
-    type: string
-    sql: ${TABLE}.CriterionType ;;
   }
 
   dimension: ctr {
@@ -178,7 +155,8 @@ view: ad_stats {
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_week
     ]
     convert_tz: no
     sql: ${TABLE}.Date ;;
@@ -222,6 +200,7 @@ view: ad_stats {
   dimension: interaction_rate {
     type: number
     sql: ${TABLE}.InteractionRate ;;
+    value_format_name: percent_2
   }
 
   dimension: interaction_types {
@@ -232,11 +211,6 @@ view: ad_stats {
   dimension: interactions {
     type: number
     sql: ${TABLE}.Interactions ;;
-  }
-
-  dimension: is_negative {
-    type: yesno
-    sql: ${TABLE}.IsNegative ;;
   }
 
   dimension_group: month {
@@ -347,16 +321,34 @@ view: ad_stats {
     value_format_name: percent_2
   }
 
-  measure: total_value_per_conversion {
+  measure: total_cost {
     type: sum
-    sql: ${value_per_conversion} ;;
+    sql: ${cost} ;;
     value_format_name: usd
   }
 
-  measure: average_value_per_conversion {
-    type: average
-    sql: ${value_per_conversion} ;;
+  measure: total_conversions {
+    type: sum
+    sql: ${conversions} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: average_cost_per_conversion {
+    type: number
+    sql: ${total_cost}*1.0 / NULLIF(${total_conversions},0) ;;
     value_format_name: usd
+  }
+
+  measure: total_clicks {
+    type: sum
+    sql: ${clicks} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: average_conversion_rate {
+    type: number
+    sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
+    value_format_name: percent_2
   }
 
 }

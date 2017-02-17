@@ -1,8 +1,7 @@
-view: ad_stats {
-  sql_table_name: adwords_v201609.AdStats_6747157124 ;;
+view: keyword_stats {
+  sql_table_name: adwords_v201609.KeywordStats_6747157124 ;;
 
   dimension_group: _data {
-    description: "Use this field to filter on a specific time period for ad performance"
     type: time
     timeframes: [
       raw,
@@ -29,6 +28,11 @@ view: ad_stats {
     convert_tz: no
     sql: ${TABLE}._LATEST_DATE ;;
   }
+
+  dimension: unique_key {
+    type:  string
+    sql: CONCAT(CAST(${TABLE}.AdGroupId AS STRING),CAST(${TABLE}.CriterionID AS STRING)) ;;
+   }
 
   dimension: active_view_cpm {
     type: number
@@ -150,19 +154,9 @@ view: ad_stats {
     sql: ${TABLE}.CostPerConversion ;;
   }
 
-  dimension: creative_id {
-    type: number
-    sql: ${TABLE}.CreativeId ;;
-  }
-
   dimension: criterion_id {
     type: number
     sql: ${TABLE}.CriterionId ;;
-  }
-
-  dimension: criterion_type {
-    type: string
-    sql: ${TABLE}.CriterionType ;;
   }
 
   dimension: ctr {
@@ -232,11 +226,6 @@ view: ad_stats {
   dimension: interactions {
     type: number
     sql: ${TABLE}.Interactions ;;
-  }
-
-  dimension: is_negative {
-    type: yesno
-    sql: ${TABLE}.IsNegative ;;
   }
 
   dimension_group: month {
@@ -310,53 +299,4 @@ view: ad_stats {
     type: count
     drill_fields: []
   }
-
-  measure: total_impressions {
-    type:  sum
-    sql:  ${impressions} ;;
-    drill_fields: [campaign_id, total_impressions]
-  }
-
-  measure: total_interactions {
-    type:  sum
-    sql:  ${interactions} ;;
-    drill_fields: [campaign_id, total_impressions]
-  }
-
-  measure: total_gmail_forwards {
-    type: sum
-    sql: ${gmail_forwards} ;;
-  }
-
-  measure: total_gmail_saves {
-    type: sum
-    sql: ${gmail_saves} ;;
-  }
-
-  measure: total_gmail_secondary_clicks {
-    type: sum
-    sql: ${gmail_secondary_clicks} ;;
-  }
-
-## Due the manner in which Looker compiles SQL queries, finding weighted averages in this instance is better accomplished through an aggregated measure
-## rather than creating a new dimension to be aggregated over
-
-  measure: average_interaction_rate{
-    type: number
-    sql: ${total_interactions}*1.0/nullif(${total_impressions},0) ;;
-    value_format_name: percent_2
-  }
-
-  measure: total_value_per_conversion {
-    type: sum
-    sql: ${value_per_conversion} ;;
-    value_format_name: usd
-  }
-
-  measure: average_value_per_conversion {
-    type: average
-    sql: ${value_per_conversion} ;;
-    value_format_name: usd
-  }
-
 }

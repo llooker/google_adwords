@@ -188,7 +188,7 @@ view: campaign {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}.StartDate ;;
+    sql: (TIMESTAMP(${TABLE}.StartDate)) ;;
   }
 
   dimension: tracking_url_template {

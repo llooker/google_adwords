@@ -1,4 +1,4 @@
-view: account_conversion_stats_6747157124 {
+view: account_conversion_stats {
   sql_table_name: adwords_v201609.AccountConversionStats_6747157124 ;;
 
   dimension_group: _data {
