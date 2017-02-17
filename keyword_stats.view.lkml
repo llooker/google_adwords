@@ -360,6 +360,12 @@ view: keyword_stats {
     value_format_name: decimal_0
   }
 
+  measure: average_cost_per_click {
+    type: number
+    sql: ${total_cost}*1.0 / NULLIF(${total_clicks},0) ;;
+    value_format_name: usd
+  }
+
   measure: average_conversion_rate {
     type: number
     sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
