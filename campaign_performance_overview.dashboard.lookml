@@ -427,7 +427,7 @@
       totals_color: "#808080"
       column_spacing_ratio: ''
       show_dropoff: true
-      colors: ['palette: Looker Classic']
+      colors: ['palette: Default']
       series_colors: {}
       height: 3
       width: 6
