@@ -1,5 +1,5 @@
 view: keyword {
-  sql_table_name: (SELECT * FROM bigquery-connectors.adwords_v201609.Keyword_6747157124 WHERE _data_date=_latest_date) ;;
+  sql_table_name: (SELECT * FROM adwords_v201609.Keyword_6747157124 WHERE _data_date=_latest_date) ;;
 
   dimension_group: _data {
     type: time

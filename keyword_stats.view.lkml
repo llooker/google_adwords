@@ -12,7 +12,7 @@ view: keyword_stats {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._DATA_DATE ;;
+    sql: (TIMESTAMP(${TABLE}._DATA_DATE)) ;;
   }
 
   dimension_group: _latest {
@@ -26,7 +26,7 @@ view: keyword_stats {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
+    sql: (TIMESTAMP(${TABLE}._LATEST_DATE)) ;;
   }
 
   dimension: unique_key {
@@ -146,7 +146,7 @@ view: keyword_stats {
 
   dimension: cost {
     type: number
-    sql: ${TABLE}.Cost ;;
+    sql: (${TABLE}.Cost/1000000) ;;
   }
 
   dimension: cost_per_conversion {
@@ -298,5 +298,71 @@ view: keyword_stats {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: total_impressions {
+    type:  sum
+    sql:  ${impressions} ;;
+    drill_fields: [campaign_id, total_impressions]
+  }
+
+  measure: total_interactions {
+    type:  sum
+    sql:  ${interactions} ;;
+    drill_fields: [campaign_id, total_impressions]
+  }
+
+  measure: total_gmail_forwards {
+    type: sum
+    sql: ${gmail_forwards} ;;
+  }
+
+  measure: total_gmail_saves {
+    type: sum
+    sql: ${gmail_saves} ;;
+  }
+
+  measure: total_gmail_secondary_clicks {
+    type: sum
+    sql: ${gmail_secondary_clicks} ;;
+  }
+
+## Due the manner in which Looker compiles SQL queries, finding weighted averages in this instance is better accomplished through an aggregated measure
+## rather than creating a new dimension to be aggregated over
+
+  measure: average_interaction_rate{
+    type: number
+    sql: ${total_interactions}*1.0/nullif(${total_impressions},0) ;;
+    value_format_name: percent_2
+  }
+
+  measure: total_cost {
+    type: sum
+    sql: ${cost} ;;
+    value_format_name: usd
+  }
+
+  measure: total_conversions {
+    type: sum
+    sql: ${conversions} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: average_cost_per_conversion {
+    type: number
+    sql: ${total_cost}*1.0 / NULLIF(${total_conversions},0) ;;
+    value_format_name: usd
+  }
+
+  measure: total_clicks {
+    type: sum
+    sql: ${clicks} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: average_conversion_rate {
+    type: number
+    sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
+    value_format_name: percent_2
   }
 }

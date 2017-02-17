@@ -15,7 +15,7 @@ view: ad {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._DATA_DATE ;;
+    sql: (TIMESTAMP(${TABLE}._DATA_DATE)) ;;
   }
 
   dimension_group: _latest {
@@ -29,7 +29,7 @@ view: ad {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
+    sql: (TIMESTAMP(${TABLE}._LATEST_DATE)) ;;
   }
 
   dimension: ad_group_ad_disapproval_reasons {

@@ -13,7 +13,7 @@ view: ad_stats {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._DATA_DATE ;;
+    sql: (TIMESTAMP(${TABLE}._DATA_DATE)) ;;
   }
 
   dimension_group: _latest {
@@ -27,7 +27,7 @@ view: ad_stats {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
+    sql: (TIMESTAMP(${TABLE}._LATEST_DATE)) ;;
   }
 
   dimension: active_view_cpm {
@@ -90,6 +90,11 @@ view: ad_stats {
     sql: ${TABLE}.AverageCpc ;;
   }
 
+  dimension: cost_per_click {
+    type: number
+    sql: ${cost}/(NULLIF(${clicks},0)) ;;
+  }
+
   dimension: average_cpm {
     type: number
     sql: ${TABLE}.AverageCpm ;;
@@ -142,7 +147,7 @@ view: ad_stats {
 
   dimension: cost {
     type: number
-    sql: ${TABLE}.Cost ;;
+    sql: (${TABLE}.Cost/1000000) ;;
   }
 
   dimension: cost_per_conversion {
@@ -317,6 +322,12 @@ view: ad_stats {
     drill_fields: [campaign_id, total_impressions]
   }
 
+  measure: total_conversions {
+    type:  sum
+    sql:  ${conversions} ;;
+    drill_fields: [campaign_id, total_impressions]
+  }
+
   measure: total_interactions {
     type:  sum
     sql:  ${interactions} ;;
@@ -331,6 +342,11 @@ view: ad_stats {
   measure: total_gmail_saves {
     type: sum
     sql: ${gmail_saves} ;;
+  }
+
+  measure: total_clicks {
+    type: sum
+    sql: ${clicks} ;;
   }
 
   measure: total_gmail_secondary_clicks {
@@ -356,6 +372,35 @@ view: ad_stats {
   measure: average_value_per_conversion {
     type: average
     sql: ${value_per_conversion} ;;
+    value_format_name: usd
+  }
+
+  measure: average_conversion_rate {
+    type: number
+    sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
+    value_format_name: percent_2
+  }
+  measure: total_cost {
+    type:  sum
+    sql:  ${cost} ;;
+    value_format_name: usd_0
+  }
+
+  measure: total_cost_per_click {
+    type:  sum
+    sql: ${cost_per_click} ;;
+    value_format_name: usd
+  }
+
+  measure: average_cost_per_click {
+    type:  average
+    sql: ${cost_per_click} ;;
+    value_format_name: usd
+  }
+
+  measure: average_cost_per_conversion {
+    type:  number
+    sql: ${total_cost}/(NULLIF(${total_conversions},0)) ;;
     value_format_name: usd
   }
 
