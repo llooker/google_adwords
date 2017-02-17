@@ -428,7 +428,6 @@
       show_silhouette: false
       totals_color: "#808080"
 
-
     - name: ad_efficiency_over_time
       title: Ad Efficiency Over Time
       type: looker_line
@@ -468,7 +467,6 @@
       show_silhouette: false
       totals_color: "#808080"
       series_types: {}
-
 
 
     - name: ad_keyword_performance
@@ -514,3 +512,44 @@
       show_silhouette: false
       totals_color: "#808080"
       series_types: {}
+
+    - name: add_a_unique_name_1487316761
+      title: Untitled Visualization
+      type: looker_bar
+      model: google_adwords
+      explore: ad_stats
+      dimensions: [ad.creative_id]
+      measures: [ad_stats.average_conversion_rate, ad_stats.total_conversions]
+      sorts: [ad_stats.total_conversions desc]
+      limit: '10'
+      column_limit: '50'
+      query_timezone: America/Los_Angeles
+      stacking: ''
+      show_value_labels: false
+      label_density: 25
+      legend_position: center
+      x_axis_gridlines: false
+      y_axis_gridlines: true
+      show_view_names: true
+      limit_displayed_rows: false
+      y_axis_combined: false
+      show_y_axis_labels: false
+      show_y_axis_ticks: false
+      y_axis_tick_density: default
+      y_axis_tick_density_custom: 5
+      show_x_axis_label: true
+      show_x_axis_ticks: true
+      x_axis_scale: auto
+      y_axis_scale_mode: linear
+      ordering: none
+      show_null_labels: false
+      show_totals_labels: false
+      show_silhouette: false
+      totals_color: "#808080"
+      series_types:
+        ad_stats.average_conversion_rate: line
+      column_spacing_ratio: 0.2
+      series_labels: {}
+      series_colors:
+        ad_stats.total_conversions: "#1D98D3"
+        ad_stats.average_conversion_rate: "#3B4260"
