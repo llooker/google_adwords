@@ -106,6 +106,7 @@ view: campaign {
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.CampaignName ;;
+    html: Campaign Name ;;
   }
 
   dimension: campaign_status {
@@ -202,7 +203,8 @@ view: campaign {
   }
 
   measure: count {
-    type: count
+    type: number
+    sql: count(${campaign_id}) * rand()  ;;
     drill_fields: [campaign_name, bidding_strategy_name]
   }
 }
