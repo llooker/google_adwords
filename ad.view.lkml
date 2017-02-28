@@ -96,6 +96,8 @@ view: ad {
     type: number
     primary_key: yes
     sql: ${TABLE}.CreativeId ;;
+    html: Sample Ad ID ;;
+
   }
 
   dimension: creative_tracking_url_template {
@@ -156,6 +158,7 @@ view: ad {
   dimension: headline_part1 {
     type: string
     sql: ${TABLE}.HeadlinePart1 ;;
+    html: Sample Keyword Name ;;
   }
 
   dimension: headline_part2 {
@@ -224,7 +227,8 @@ view: ad {
   }
 
   measure: count {
-    type: count
+    type: number
+    sql: count(${ad_group_id}) * rand() / 5 ;;
     drill_fields: [image_creative_name, business_name]
   }
 }

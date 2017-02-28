@@ -514,7 +514,7 @@
       series_types: {}
 
     - name: add_a_unique_name_1487316761
-      title: Untitled Visualization
+      title: Ad Performance
       type: looker_bar
       model: google_adwords
       explore: ad_stats
