@@ -339,6 +339,12 @@ view: campaign_stats{
     value_format_name: usd
   }
 
+  measure: average_cost_per_click {
+    type: number
+    sql: ${total_clicks}*1.0 / NULLIF(${total_conversions},0) ;;
+    value_format_name: usd
+  }
+
   measure: total_clicks {
     type: sum
     sql: ${clicks} ;;
