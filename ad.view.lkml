@@ -96,7 +96,17 @@ view: ad {
     type: number
     primary_key: yes
     sql: ${TABLE}.CreativeId ;;
-    html: Sample Ad ID ;;
+    html: <p> Sample Ad ID </p> ;;
+    action: {
+      label: "Change Bid Price"
+      url: "https://www.looker.com"
+      icon_url: "https://www.google.com/favicon.ico"
+      form_param: {
+        name: "Change Bid Price"
+        type: string
+        required:  yes
+      }
+    }
 
   }
 
