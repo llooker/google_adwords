@@ -107,6 +107,24 @@ view: ad {
         required:  yes
       }
     }
+    action: {
+      label: "Campaign Status"
+      url: "https://www.looker.com"
+      icon_url: "https://www.google.com/favicon.ico"
+      form_param: {
+        name: "Campaign Status"
+        type: select
+        option: {
+          name: "Pause Campaign"
+          label: "Pause Campaign"
+        }
+        option: {
+          name: "Resume Campaign"
+          label: "Resume Campaign"
+        }
+        required:  yes
+      }
+    }
 
   }
 
