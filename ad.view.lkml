@@ -108,11 +108,11 @@ view: ad {
       }
     }
     action: {
-      label: "Campaign Status"
+      label: "Change Status"
       url: "https://www.looker.com"
       icon_url: "https://www.google.com/favicon.ico"
       form_param: {
-        name: "Campaign Status"
+        name: "Change Status"
         type: select
         default: "Pause Campaign"
         option: {
