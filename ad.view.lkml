@@ -114,6 +114,7 @@ view: ad {
       form_param: {
         name: "Campaign Status"
         type: select
+        default: "Pause Campaign"
         option: {
           name: "Pause Campaign"
           label: "Pause Campaign"
