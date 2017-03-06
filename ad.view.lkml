@@ -2,6 +2,15 @@ view: ad {
   sql_table_name: (select * from `bigquery-connectors.adwords_v201609.Ad_6747157124` where _LATEST_DATE = _DATA_DATE)  ;;
 ## must limit the table scope using latest_date = _data_date to ensure we're always using the latest recorded informaiton
 
+  dimension: block_name {
+    type: string
+    sql: "Adwords" ;;
+    link: {
+      url: "https://googlecloud.looker.com/dashboards/55"
+      label: "Adwords Dashboard"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
+  }
 
 
   dimension_group: _data {
