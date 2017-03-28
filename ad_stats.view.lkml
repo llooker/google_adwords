@@ -396,6 +396,7 @@ view: ad_stats {
     type:  average
     sql: ${cost_per_click} ;;
     value_format_name: usd
+    drill_fields: [campaign_id,date_date,clicks]
   }
 
   measure: average_cost_per_conversion {
