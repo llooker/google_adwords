@@ -6,27 +6,13 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
-# explore: ad {
-#   label: "Ads"
-#   view_label: "Ads"
-#
-#   join: ad_group {
-#     view_label: "Ad Groups"
-#     sql_on: ${ad.ad_group_id} = ${ad_group.ad_group_id} ;;
-#     relationship: many_to_one
-#   }
-#   join: campaign {
-#     view_label: "Campaigns"
-#     sql_on: ${ad_group.campaign_id} = ${campaign.campaign_id} ;;
-#     relationship: many_to_one
-#   }
-# }
 
-
+## Stats tables are used as left-most tables. See "README" for explanation of join logic.
 explore: ad_stats {
   label: "Ad Stats"
   view_label: "Ad Stats"
 
+## Entity tables are snapshots of the most recent day of data
   join: ad {
     view_label: "Ads"
     sql_on: ${ad.creative_id} = ${ad_stats.creative_id} ;;
@@ -42,12 +28,6 @@ explore: ad_stats {
     sql_on: ${ad_group.campaign_id} = ${campaign.campaign_id} ;;
     relationship: many_to_one
   }
-#   join: campaign_stats {
-#     view_label: "Campaign Stats"
-#     sql_on: ${campaign_stats.campaign_id} = ${campaign.campaign_id} ;;
-#     relationship: one_to_many
-#   }
-#   WILL NOT WORK WITHOUT A PRIMARY KEY DUE TO SYMMETRIC AGGREGATE REQUIREMENTS
 }
 
 explore:ad_group_stats {
@@ -59,6 +39,8 @@ explore:ad_group_stats {
     sql_on: ${ad_group_stats.ad_group_id} = ${ad_group.ad_group_id} ;;
     relationship: many_to_one
   }
+
+  # Campaign table is filtered on data_date = latest_date
   join: campaign {
     view_label: "Campaigns"
     sql_on: ${ad_group.campaign_id} = ${campaign.campaign_id} ;;

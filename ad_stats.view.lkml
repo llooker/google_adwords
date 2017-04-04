@@ -1,5 +1,6 @@
 view: ad_stats {
   sql_table_name: adwords_v201609.AdStats_6747157124 ;;
+  ### Metrics can be aggregated over time from this table, so we do NOT restrict on _data_date = _latest_date
 
   dimension_group: _data {
     description: "Use this field to filter on a specific time period for ad performance"
@@ -32,37 +33,37 @@ view: ad_stats {
 
   dimension: active_view_cpm {
     type: number
-    sql: ${TABLE}.ActiveViewCpm * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewCpm ;;
   }
 
   dimension: active_view_ctr {
     type: number
-    sql: ${TABLE}.ActiveViewCtr * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewCtr  ;;
   }
 
   dimension: active_view_impressions {
     type: number
-    sql: ${TABLE}.ActiveViewImpressions* rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewImpressions ;;
   }
 
   dimension: active_view_measurability {
     type: number
-    sql: ${TABLE}.ActiveViewMeasurability * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewMeasurability  ;;
   }
 
   dimension: active_view_measurable_cost {
     type: number
-    sql: ${TABLE}.ActiveViewMeasurableCost * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewMeasurableCost  ;;
   }
 
   dimension: active_view_measurable_impressions {
     type: number
-    sql: ${TABLE}.ActiveViewMeasurableImpressions * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewMeasurableImpressions ;;
   }
 
   dimension: active_view_viewability {
     type: number
-    sql: ${TABLE}.ActiveViewViewability * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewViewability  ;;
   }
 
   dimension: ad_group_id {
@@ -82,12 +83,12 @@ view: ad_stats {
 
   dimension: average_cost {
     type: number
-    sql: ${TABLE}.AverageCost * rand() * 10 ;;
+    sql: ${TABLE}.AverageCost ;;
   }
 
   dimension: average_cpc {
     type: number
-    sql: ${TABLE}.AverageCpc * rand() * 10 ;;
+    sql: ${TABLE}.AverageCpc  ;;
   }
 
   dimension: cost_per_click {
@@ -97,12 +98,12 @@ view: ad_stats {
 
   dimension: average_cpm {
     type: number
-    sql: ${TABLE}.AverageCpm * rand() * 10 ;;
+    sql: ${TABLE}.AverageCpm  ;;
   }
 
   dimension: average_position {
     type: number
-    sql: ${TABLE}.AveragePosition * rand() ;;
+    sql: ${TABLE}.AveragePosition  ;;
   }
 
   dimension: base_ad_group_id {
@@ -127,32 +128,32 @@ view: ad_stats {
 
   dimension: clicks {
     type: number
-    sql: ${TABLE}.Clicks * rand() * 10 ;;
+    sql: ${TABLE}.Clicks ;;
   }
 
   dimension: conversion_rate {
     type: number
-    sql: ${TABLE}.ConversionRate  * rand() * 10;;
+    sql: ${TABLE}.ConversionRate ;;
   }
 
   dimension: conversion_value {
     type: number
-    sql: ${TABLE}.ConversionValue * rand() * 10 ;;
+    sql: ${TABLE}.ConversionValue  ;;
   }
 
   dimension: conversions {
     type: number
-    sql: ${TABLE}.Conversions  * rand() * 10;;
+    sql: ${TABLE}.Conversions  ;;
   }
 
   dimension: cost {
     type: number
-    sql: (${TABLE}.Cost/1000000) * rand() * 10 ;;
+    sql: (${TABLE}.Cost/1000000)  ;;
   }
 
   dimension: cost_per_conversion {
     type: number
-    sql: ${TABLE}.CostPerConversion * rand() * 10 ;;
+    sql: ${TABLE}.CostPerConversion  ;;
   }
 
   dimension: creative_id {
@@ -206,27 +207,27 @@ view: ad_stats {
 
   dimension: gmail_forwards {
     type: number
-    sql: ${TABLE}.GmailForwards * rand() * 10 ;;
+    sql: ${TABLE}.GmailForwards  ;;
   }
 
   dimension: gmail_saves {
     type: number
-    sql: ${TABLE}.GmailSaves * rand() * 10 ;;
+    sql: ${TABLE}.GmailSaves  ;;
   }
 
   dimension: gmail_secondary_clicks {
     type: number
-    sql: ${TABLE}.GmailSecondaryClicks * rand() * 10 ;;
+    sql: ${TABLE}.GmailSecondaryClicks  ;;
   }
 
   dimension: impressions {
     type: number
-    sql: ${TABLE}.Impressions * rand() * 10 ;;
+    sql: ${TABLE}.Impressions  ;;
   }
 
   dimension: interaction_rate {
     type: number
-    sql: ${TABLE}.InteractionRate * rand() * 10;;
+    sql: ${TABLE}.InteractionRate ;;
   }
 
   dimension: interaction_types {
@@ -236,7 +237,7 @@ view: ad_stats {
 
   dimension: interactions {
     type: number
-    sql: ${TABLE}.Interactions * rand() * 10;;
+    sql: ${TABLE}.Interactions ;;
   }
 
   dimension: is_negative {
@@ -284,12 +285,12 @@ view: ad_stats {
 
   dimension: value_per_conversion {
     type: number
-    sql: ${TABLE}.ValuePerConversion  * rand() * 10 ;;
+    sql: ${TABLE}.ValuePerConversion   ;;
   }
 
   dimension: view_through_conversions {
     type: number
-    sql: ${TABLE}.ViewThroughConversions  * rand() * 10;;
+    sql: ${TABLE}.ViewThroughConversions  ;;
   }
 
   dimension_group: week {

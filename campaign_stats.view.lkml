@@ -33,37 +33,37 @@ view: campaign_stats{
 
   dimension: active_view_cpm {
     type: number
-    sql: ${TABLE}.ActiveViewCpm * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewCpm  ;;
   }
 
   dimension: active_view_ctr {
     type: number
-    sql: ${TABLE}.ActiveViewCtr * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewCtr  ;;
   }
 
   dimension: active_view_impressions {
     type: number
-    sql: ${TABLE}.ActiveViewImpressions * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewImpressions  ;;
   }
 
   dimension: active_view_measurability {
     type: number
-    sql: ${TABLE}.ActiveViewMeasurability  * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewMeasurability  ;;
   }
 
   dimension: active_view_measurable_cost {
     type: number
-    sql: ${TABLE}.ActiveViewMeasurableCost * * rand() * 10;;
+    sql: ${TABLE}.ActiveViewMeasurableCost ;;
   }
 
   dimension: active_view_measurable_impressions {
     type: number
-    sql: ${TABLE}.ActiveViewMeasurableImpressions  * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewMeasurableImpressions   ;;
   }
 
   dimension: active_view_viewability {
     type: number
-    sql: ${TABLE}.ActiveViewViewability * rand() * 10 ;;
+    sql: ${TABLE}.ActiveViewViewability  ;;
   }
 
   dimension: ad_network_type1 {
@@ -78,22 +78,22 @@ view: campaign_stats{
 
   dimension: average_cost {
     type: number
-    sql: ${TABLE}.AverageCost * rand() * 10 ;;
+    sql: ${TABLE}.AverageCost ;;
   }
 
   dimension: average_cpc {
     type: number
-    sql: ${TABLE}.AverageCpc * rand() * 10 ;;
+    sql: ${TABLE}.AverageCpc  ;;
   }
 
   dimension: average_cpm {
     type: number
-    sql: ${TABLE}.AverageCpm * rand() * 10 ;;
+    sql: ${TABLE}.AverageCpm ;;
   }
 
   dimension: average_position {
     type: number
-    sql: ${TABLE}.AveragePosition * rand() * 10 ;;
+    sql: ${TABLE}.AveragePosition ;;
   }
 
   dimension: base_campaign_id {
@@ -113,38 +113,38 @@ view: campaign_stats{
 
   dimension: clicks {
     type: number
-    sql: ${TABLE}.Clicks * rand() * 10 ;;
+    sql: ${TABLE}.Clicks ;;
   }
 
   dimension: conversion_rate {
     type: number
-    sql: ${TABLE}.ConversionRate * rand() * 10 ;;
+    sql: ${TABLE}.ConversionRate;;
   }
 
   dimension: conversion_value {
     type: number
-    sql: ${TABLE}.ConversionValue * rand() * 10 ;;
+    sql: ${TABLE}.ConversionValue ;;
   }
 
   dimension: conversions {
     type: number
-    sql: ${TABLE}.Conversions * rand() * 10 ;;
+    sql: ${TABLE}.Conversions ;;
   }
 
   dimension: cost {
     type: number
-    sql:( ${TABLE}.Cost/1000000 * rand() * 10) ;;
+    sql:( ${TABLE}.Cost/1000000 ) ;;
     value_format_name: usd_0
   }
 
   dimension: cost_per_conversion_row_level {
     type: number
-    sql: ${TABLE}.CostPerConversion * rand() * 10 ;;
+    sql: ${TABLE}.CostPerConversion  ;;
   }
 
   dimension: ctr {
     type: number
-    sql: ${TABLE}.Ctr * rand() * 10;;
+    sql: ${TABLE}.Ctr ;;
   }
 
   dimension_group: date {
@@ -179,27 +179,27 @@ view: campaign_stats{
 
   dimension: gmail_forwards {
     type: number
-    sql: ${TABLE}.GmailForwards * rand() * 10 ;;
+    sql: ${TABLE}.GmailForwards  ;;
   }
 
   dimension: gmail_saves {
     type: number
-    sql: ${TABLE}.GmailSaves * rand() * 10 ;;
+    sql: ${TABLE}.GmailSaves  ;;
   }
 
   dimension: gmail_secondary_clicks {
     type: number
-    sql: ${TABLE}.GmailSecondaryClicks * rand() * 10;;
+    sql: ${TABLE}.GmailSecondaryClicks ;;
   }
 
   dimension: impressions {
     type: number
-    sql: ${TABLE}.Impressions * rand() * 10;;
+    sql: ${TABLE}.Impressions ;;
   }
 
   dimension: interaction_rate {
     type: number
-    sql: ${TABLE}.InteractionRate * rand() * 10 ;;
+    sql: ${TABLE}.InteractionRate  ;;
     value_format_name: percent_2
   }
 
@@ -210,7 +210,7 @@ view: campaign_stats{
 
   dimension: interactions {
     type: number
-    sql: ${TABLE}.Interactions * rand() * 10;;
+    sql: ${TABLE}.Interactions ;;
   }
 
   dimension_group: month {
@@ -253,12 +253,12 @@ view: campaign_stats{
 
   dimension: value_per_conversion {
     type: number
-    sql: ${TABLE}.ValuePerConversion * rand() * 10;;
+    sql: ${TABLE}.ValuePerConversion ;;
   }
 
   dimension: view_through_conversions {
     type: number
-    sql: ${TABLE}.ViewThroughConversions * rand() * 10;;
+    sql: ${TABLE}.ViewThroughConversions;;
   }
 
   dimension_group: week {

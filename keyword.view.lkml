@@ -224,7 +224,6 @@ view: keyword {
 
   measure: count {
     type: number
-    sql: count(${unique_key}) * rand() / 5;;
     drill_fields: [bidding_strategy_name]
   }
 }
