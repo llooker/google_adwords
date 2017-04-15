@@ -265,8 +265,7 @@ view: ad {
   }
 
   measure: count {
-    type: number
-    sql: count(${ad_group_id}) * rand() / 5 ;;
+    type: count
     drill_fields: [image_creative_name, business_name]
   }
 }
