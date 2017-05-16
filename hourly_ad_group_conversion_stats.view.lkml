@@ -12,7 +12,8 @@ view: hourly_ad_group_conversion_stats {
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_week
     ]
     convert_tz: no
     sql: ${TABLE}._DATA_DATE ;;

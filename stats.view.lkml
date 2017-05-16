@@ -23,16 +23,6 @@ view: stats {
       ;;
   }
 
-  dimension: day_of_week {
-    hidden: yes
-  }
-
-  dimension: day_of_week_clean {
-    label: "Day of Week"
-    type: string
-    sql: REGEXP_EXTRACT(${day_of_week}, r'SHASTA_DAY_OF_WEEK_([\w]{3})') ;;
-  }
-
   dimension: cost_usd {
     type: number
     sql: (${cost} / 1000000) ;;
