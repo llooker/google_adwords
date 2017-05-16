@@ -12,7 +12,6 @@ view: ad {
     }
   }
 
-
   dimension_group: _data {
     type: time
     timeframes: [

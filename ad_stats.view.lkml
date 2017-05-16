@@ -19,7 +19,7 @@ view: ad_stats {
       day_of_week
     ]
     convert_tz: no
-    sql: (TIMESTAMP(${TABLE}._DATA_DATE)) ;;
+    sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
   dimension_group: _latest {

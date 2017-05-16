@@ -12,7 +12,7 @@ view: audience_6747157124 {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._DATA_DATE ;;
+    sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
   dimension_group: _latest {
