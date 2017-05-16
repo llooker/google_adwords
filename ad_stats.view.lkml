@@ -1,4 +1,8 @@
+include: "stats.view.lkml"
+
 view: ad_stats {
+  extends: [stats]
+
   sql_table_name: adwords_v201609.AdStats_6747157124 ;;
   ### Metrics can be aggregated over time from this table, so we do NOT restrict on _data_date = _latest_date
 
@@ -91,11 +95,6 @@ view: ad_stats {
     sql: ${TABLE}.AverageCpc  ;;
   }
 
-  dimension: cost_per_click {
-    type: number
-    sql: ${cost}/(NULLIF(${clicks},0)) ;;
-  }
-
   dimension: average_cpm {
     type: number
     sql: ${TABLE}.AverageCpm  ;;
@@ -148,7 +147,7 @@ view: ad_stats {
 
   dimension: cost {
     type: number
-    sql: (${TABLE}.Cost/1000000)  ;;
+    sql: ${TABLE}.Cost  ;;
   }
 
   dimension: cost_per_conversion {
@@ -312,98 +311,15 @@ view: ad_stats {
     sql: ${TABLE}.Year ;;
   }
 
+  dimension: unique_key {
+    type: string
+    primary_key: yes
+#     hidden: yes
+    sql: CONCAT(CAST(${TABLE}.AdGroupId AS STRING),CAST(${TABLE}.CriterionID AS STRING)) ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
   }
-
-  measure: total_impressions {
-    type:  sum
-    sql:  ${impressions} ;;
-    drill_fields: [campaign_id, total_impressions]
-  }
-
-  measure: total_conversions {
-    type:  sum
-    sql:  ${conversions} ;;
-    drill_fields: [campaign_id, total_impressions]
-  }
-
-  measure: total_interactions {
-    type:  sum
-    sql:  ${interactions} ;;
-    drill_fields: [campaign_id, total_impressions]
-  }
-
-  measure: total_gmail_forwards {
-    type: sum
-    sql: ${gmail_forwards} ;;
-  }
-
-  measure: total_gmail_saves {
-    type: sum
-    sql: ${gmail_saves} ;;
-  }
-
-  measure: total_clicks {
-    type: sum
-    sql: ${clicks} ;;
-  }
-
-  measure: total_gmail_secondary_clicks {
-    type: sum
-    sql: ${gmail_secondary_clicks} ;;
-  }
-
-## Due the manner in which Looker compiles SQL queries, finding weighted averages in this instance is better accomplished through an aggregated measure
-## rather than creating a new dimension to be aggregated over
-
-  measure: average_interaction_rate{
-    type: number
-    sql: ${total_interactions}*1.0/nullif(${total_impressions},0) ;;
-    value_format_name: percent_2
-  }
-
-  measure: total_value_per_conversion {
-    type: sum
-    sql: ${value_per_conversion} ;;
-    value_format_name: usd
-  }
-
-  measure: average_value_per_conversion {
-    type: average
-    sql: ${value_per_conversion} ;;
-    value_format_name: usd
-  }
-
-  measure: average_conversion_rate {
-    type: number
-    sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
-    value_format_name: percent_2
-  }
-  measure: total_cost {
-    type:  sum
-    sql:  ${cost} ;;
-    value_format_name: usd_0
-  }
-
-  measure: total_cost_per_click {
-    type:  sum
-    sql: ${cost_per_click} ;;
-    value_format_name: usd
-  }
-
-  measure: average_cost_per_click {
-    type:  average
-    sql: ${cost_per_click} ;;
-    value_format_name: usd
-    drill_fields: [campaign_id,date_date,clicks]
-  }
-
-  measure: average_cost_per_conversion {
-    type:  number
-    sql: ${total_cost}/(NULLIF(${total_conversions},0)) ;;
-    value_format_name: usd
-  }
-
 }

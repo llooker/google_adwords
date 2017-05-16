@@ -161,6 +161,11 @@ view: ad_group {
 
   measure: count {
     type: count
-    drill_fields: [ad_group_name, bidding_strategy_name]
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [ad_group_id, ad_group_name, ad_group_status, cpc_bid, ad.count, keyword.count]
   }
 }

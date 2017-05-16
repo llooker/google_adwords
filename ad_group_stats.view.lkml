@@ -1,4 +1,8 @@
+include: "stats.view.lkml"
+
 view: ad_group_stats {
+  extends: [stats]
+
   sql_table_name: adwords_v201609.AdGroupStats_6747157124 ;;
 
   dimension_group: _data {
@@ -292,52 +296,31 @@ view: ad_group_stats {
     drill_fields: []
   }
 
+  measure: total_cost {
+    drill_fields: [ad_group.detail*]
+  }
+  measure: total_conversions {
+    drill_fields: [ad_group.detail*]
+  }
   measure: total_impressions {
-    type:  sum
-    sql:  ${impressions} ;;
-    drill_fields: [campaign_id, total_impressions]
+    drill_fields: [ad_group.detail*]
   }
-
   measure: total_interactions {
-    type:  sum
-    sql:  ${interactions} ;;
-    drill_fields: [campaign_id, total_impressions]
+    drill_fields: [ad_group.detail*]
   }
-
-  measure: total_gmail_forwards {
-    type: sum
-    sql: ${gmail_forwards} ;;
+  measure: total_clicks {
+    drill_fields: [ad_group.detail*]
   }
-
-  measure: total_gmail_saves {
-    type: sum
-    sql: ${gmail_saves} ;;
+  measure: average_interaction_rate {
+    drill_fields: [ad_group.detail*]
   }
-
-  measure: total_gmail_secondary_clicks {
-    type: sum
-    sql: ${gmail_secondary_clicks} ;;
+  measure: average_cost_per_conversion {
+    drill_fields: [ad_group.detail*]
   }
-
-## Due the manner in which Looker compiles SQL queries, finding weighted averages in this instance is better accomplished through an aggregated measure
-## rather than creating a new dimension to be aggregated over
-
-  measure: average_interaction_rate{
-    type: number
-    sql: ${total_interactions}*1.0/nullif(${total_impressions},0) ;;
-    value_format_name: percent_2
+  measure: average_cost_per_click {
+    drill_fields: [ad_group.detail*]
   }
-
-  measure: total_value_per_conversion {
-    type: sum
-    sql: ${value_per_conversion} ;;
-    value_format_name: usd
+  measure: average_conversion_rate {
+    drill_fields: [ad_group.detail*]
   }
-
-  measure: average_value_per_conversion {
-    type: average
-    sql: ${value_per_conversion} ;;
-    value_format_name: usd
-  }
-
 }

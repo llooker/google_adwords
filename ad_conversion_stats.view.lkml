@@ -1,4 +1,8 @@
-view: ad_conversion_stats_6747157124 {
+include: "stats.view.lkml"
+
+view: ad_conversion_stats {
+  extends: [stats]
+
   sql_table_name: adwords_v201609.AdConversionStats_6747157124 ;;
 
   dimension_group: _data {

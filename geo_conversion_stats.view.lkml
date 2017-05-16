@@ -1,9 +1,9 @@
 include: "stats.view.lkml"
 
-view: account_stats {
+view: geo_conversion_stats {
   extends: [stats]
 
-  sql_table_name: adwords_v201609.AccountStats_6747157124 ;;
+  sql_table_name: adwords_v201609.GeoConversionStats_6747157124 ;;
 
   dimension_group: _data {
     type: time
@@ -33,39 +33,24 @@ view: account_stats {
     sql: ${TABLE}._LATEST_DATE ;;
   }
 
-  dimension: active_view_cpm {
-    type: number
-    sql: ${TABLE}.ActiveViewCpm ;;
+  dimension: ad_format {
+    type: string
+    sql: ${TABLE}.AdFormat ;;
   }
 
-  dimension: active_view_ctr {
+  dimension: ad_group_id {
     type: number
-    sql: ${TABLE}.ActiveViewCtr ;;
+    sql: ${TABLE}.AdGroupId ;;
   }
 
-  dimension: active_view_impressions {
-    type: number
-    sql: ${TABLE}.ActiveViewImpressions ;;
+  dimension: ad_group_name {
+    type: string
+    sql: ${TABLE}.AdGroupName ;;
   }
 
-  dimension: active_view_measurability {
-    type: number
-    sql: ${TABLE}.ActiveViewMeasurability ;;
-  }
-
-  dimension: active_view_measurable_cost {
-    type: number
-    sql: ${TABLE}.ActiveViewMeasurableCost ;;
-  }
-
-  dimension: active_view_measurable_impressions {
-    type: number
-    sql: ${TABLE}.ActiveViewMeasurableImpressions ;;
-  }
-
-  dimension: active_view_viewability {
-    type: number
-    sql: ${TABLE}.ActiveViewViewability ;;
+  dimension: ad_group_status {
+    type: string
+    sql: ${TABLE}.AdGroupStatus ;;
   }
 
   dimension: ad_network_type1 {
@@ -78,39 +63,49 @@ view: account_stats {
     sql: ${TABLE}.AdNetworkType2 ;;
   }
 
-  dimension: average_cost {
+  dimension: all_conversion_rate {
     type: number
-    sql: ${TABLE}.AverageCost ;;
+    sql: ${TABLE}.AllConversionRate ;;
   }
 
-  dimension: average_cpc {
+  dimension: all_conversion_value {
     type: number
-    sql: ${TABLE}.AverageCpc ;;
+    sql: ${TABLE}.AllConversionValue ;;
   }
 
-  dimension: average_cpm {
+  dimension: all_conversions {
     type: number
-    sql: ${TABLE}.AverageCpm ;;
+    sql: ${TABLE}.AllConversions ;;
   }
 
-  dimension: average_position {
+  dimension: campaign_id {
     type: number
-    sql: ${TABLE}.AveragePosition ;;
+    sql: ${TABLE}.CampaignId ;;
   }
 
-  dimension: click_type {
+  dimension: city_criteria_id {
+    type: number
+    sql: ${TABLE}.CityCriteriaId ;;
+  }
+
+  dimension: conversion_category_name {
     type: string
-    sql: ${TABLE}.ClickType ;;
-  }
-
-  dimension: clicks {
-    type: number
-    sql: ${TABLE}.Clicks ;;
+    sql: ${TABLE}.ConversionCategoryName ;;
   }
 
   dimension: conversion_rate {
     type: number
     sql: ${TABLE}.ConversionRate ;;
+  }
+
+  dimension: conversion_tracker_id {
+    type: number
+    sql: ${TABLE}.ConversionTrackerId ;;
+  }
+
+  dimension: conversion_type_name {
+    type: string
+    sql: ${TABLE}.ConversionTypeName ;;
   }
 
   dimension: conversion_value {
@@ -123,9 +118,9 @@ view: account_stats {
     sql: ${TABLE}.Conversions ;;
   }
 
-  dimension: cost {
+  dimension: cost_per_all_conversion {
     type: number
-    sql: ${TABLE}.Cost ;;
+    sql: ${TABLE}.CostPerAllConversion ;;
   }
 
   dimension: cost_per_conversion {
@@ -133,9 +128,14 @@ view: account_stats {
     sql: ${TABLE}.CostPerConversion ;;
   }
 
-  dimension: ctr {
+  dimension: country_criteria_id {
     type: number
-    sql: ${TABLE}.Ctr ;;
+    sql: ${TABLE}.CountryCriteriaId ;;
+  }
+
+  dimension: cross_device_conversions {
+    type: number
+    sql: ${TABLE}.CrossDeviceConversions ;;
   }
 
   dimension_group: date {
@@ -167,24 +167,19 @@ view: account_stats {
     sql: ${TABLE}.ExternalCustomerId ;;
   }
 
-  dimension: impressions {
-    type: number
-    sql: ${TABLE}.Impressions ;;
+  dimension: is_targeting_location {
+    type: yesno
+    sql: ${TABLE}.IsTargetingLocation ;;
   }
 
-  dimension: interaction_rate {
-    type: number
-    sql: ${TABLE}.InteractionRate ;;
-  }
-
-  dimension: interaction_types {
+  dimension: location_type {
     type: string
-    sql: ${TABLE}.InteractionTypes ;;
+    sql: ${TABLE}.LocationType ;;
   }
 
-  dimension: interactions {
+  dimension: metro_criteria_id {
     type: number
-    sql: ${TABLE}.Interactions ;;
+    sql: ${TABLE}.MetroCriteriaId ;;
   }
 
   dimension_group: month {
@@ -206,6 +201,11 @@ view: account_stats {
     sql: ${TABLE}.MonthOfYear ;;
   }
 
+  dimension: most_specific_criteria_id {
+    type: number
+    sql: ${TABLE}.MostSpecificCriteriaId ;;
+  }
+
   dimension_group: quarter {
     type: time
     timeframes: [
@@ -220,9 +220,14 @@ view: account_stats {
     sql: ${TABLE}.Quarter ;;
   }
 
-  dimension: slot {
-    type: string
-    sql: ${TABLE}.Slot ;;
+  dimension: region_criteria_id {
+    type: number
+    sql: ${TABLE}.RegionCriteriaId ;;
+  }
+
+  dimension: value_per_all_conversion {
+    type: number
+    sql: ${TABLE}.ValuePerAllConversion ;;
   }
 
   dimension: value_per_conversion {
@@ -256,6 +261,6 @@ view: account_stats {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [conversion_type_name, ad_group_name, conversion_category_name]
   }
 }

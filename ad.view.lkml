@@ -105,7 +105,7 @@ view: ad {
     type: number
     primary_key: yes
     sql: ${TABLE}.CreativeId ;;
-    html: <p> Sample Ad ID </p> ;;
+#     html: <p> Sample Ad ID </p> ;;
     action: {
       label: "Change Bid Price"
       url: "https://www.looker.com"
@@ -196,7 +196,6 @@ view: ad {
   dimension: headline_part1 {
     type: string
     sql: ${TABLE}.HeadlinePart1 ;;
-    html: Sample Keyword Name ;;
   }
 
   dimension: headline_part2 {
@@ -264,9 +263,33 @@ view: ad {
     sql: ${TABLE}.Trademarks ;;
   }
 
+  dimension: creative {
+    type: string
+    sql: CONCAT(
+      COALESCE(CONCAT(${headline}, "\n"),"")
+      , COALESCE(CONCAT(${headline_part1}, "\n"),"")
+      , COALESCE(CONCAT(${headline_part2}, "\n"),"")
+      , COALESCE(CONCAT(${description}, "\n"),"")
+      , COALESCE(CONCAT(${description1}, "\n"),"")
+      , COALESCE(CONCAT(${description2}, "\n"),"")
+      ) ;;
+  }
+
+  dimension: display_headline {
+    type: string
+    sql: CONCAT(
+      COALESCE(CONCAT(${headline}, "\n"),"")
+      , COALESCE(CONCAT(${headline_part1}, "\n"),"")) ;;
+  }
+
   measure: count {
     type: number
-    sql: count(${ad_group_id}) * rand() / 5 ;;
-    drill_fields: [image_creative_name, business_name]
+    sql: count(${ad_group_id}) ;;
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [creative_id, status, ad_type, creative]
   }
 }

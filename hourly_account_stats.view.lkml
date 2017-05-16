@@ -1,12 +1,11 @@
 include: "stats.view.lkml"
 
-view: keyword_stats {
+view: hourly_account_stats {
   extends: [stats]
 
-  sql_table_name: adwords_v201609.KeywordStats_6747157124 ;;
+  sql_table_name: adwords_v201609.HourlyAccountStats_6747157124 ;;
 
   dimension_group: _data {
-    description: "Filter on this field to constain the query to a specific time range"
     type: time
     timeframes: [
       raw,
@@ -17,7 +16,7 @@ view: keyword_stats {
       year
     ]
     convert_tz: no
-    sql: (TIMESTAMP(${TABLE}._DATA_DATE)) ;;
+    sql: ${TABLE}._DATA_DATE ;;
   }
 
   dimension_group: _latest {
@@ -31,15 +30,8 @@ view: keyword_stats {
       year
     ]
     convert_tz: no
-    sql: (TIMESTAMP(${TABLE}._LATEST_DATE)) ;;
+    sql: ${TABLE}._LATEST_DATE ;;
   }
-
-  dimension: unique_key {
-    type:  string
-    primary_key: yes
-    hidden: yes
-    sql: CONCAT(CAST(${TABLE}.AdGroupId AS STRING),CAST(${TABLE}.CriterionID AS STRING)) ;;
-   }
 
   dimension: active_view_cpm {
     type: number
@@ -53,17 +45,17 @@ view: keyword_stats {
 
   dimension: active_view_impressions {
     type: number
-    sql: ${TABLE}.ActiveViewImpressions  ;;
+    sql: ${TABLE}.ActiveViewImpressions ;;
   }
 
   dimension: active_view_measurability {
     type: number
-    sql: ${TABLE}.ActiveViewMeasurability  ;;
+    sql: ${TABLE}.ActiveViewMeasurability ;;
   }
 
   dimension: active_view_measurable_cost {
     type: number
-    sql: ${TABLE}.ActiveViewMeasurableCost  ;;
+    sql: ${TABLE}.ActiveViewMeasurableCost ;;
   }
 
   dimension: active_view_measurable_impressions {
@@ -73,12 +65,7 @@ view: keyword_stats {
 
   dimension: active_view_viewability {
     type: number
-    sql: ${TABLE}.ActiveViewViewability  ;;
-  }
-
-  dimension: ad_group_id {
-    type: number
-    sql: ${TABLE}.AdGroupId ;;
+    sql: ${TABLE}.ActiveViewViewability ;;
   }
 
   dimension: ad_network_type1 {
@@ -93,37 +80,22 @@ view: keyword_stats {
 
   dimension: average_cost {
     type: number
-    sql: ${TABLE}.AverageCost  ;;
+    sql: ${TABLE}.AverageCost ;;
   }
 
   dimension: average_cpc {
     type: number
-    sql: ${TABLE}.AverageCpc  ;;
+    sql: ${TABLE}.AverageCpc ;;
   }
 
   dimension: average_cpm {
     type: number
-    sql: ${TABLE}.AverageCpm  ;;
+    sql: ${TABLE}.AverageCpm ;;
   }
 
   dimension: average_position {
     type: number
-    sql: ${TABLE}.AveragePosition  ;;
-  }
-
-  dimension: base_ad_group_id {
-    type: number
-    sql: ${TABLE}.BaseAdGroupId ;;
-  }
-
-  dimension: base_campaign_id {
-    type: number
-    sql: ${TABLE}.BaseCampaignId ;;
-  }
-
-  dimension: campaign_id {
-    type: number
-    sql: ${TABLE}.CampaignId ;;
+    sql: ${TABLE}.AveragePosition ;;
   }
 
   dimension: click_type {
@@ -161,11 +133,6 @@ view: keyword_stats {
     sql: ${TABLE}.CostPerConversion ;;
   }
 
-  dimension: criterion_id {
-    type: number
-    sql: ${TABLE}.CriterionId ;;
-  }
-
   dimension: ctr {
     type: number
     sql: ${TABLE}.Ctr ;;
@@ -200,29 +167,19 @@ view: keyword_stats {
     sql: ${TABLE}.ExternalCustomerId ;;
   }
 
-  dimension: gmail_forwards {
+  dimension: hour_of_day {
     type: number
-    sql: ${TABLE}.GmailForwards  ;;
-  }
-
-  dimension: gmail_saves {
-    type: number
-    sql: ${TABLE}.GmailSaves  ;;
-  }
-
-  dimension: gmail_secondary_clicks {
-    type: number
-    sql: ${TABLE}.GmailSecondaryClicks  ;;
+    sql: ${TABLE}.HourOfDay ;;
   }
 
   dimension: impressions {
     type: number
-    sql: ${TABLE}.Impressions  ;;
+    sql: ${TABLE}.Impressions ;;
   }
 
   dimension: interaction_rate {
     type: number
-    sql: ${TABLE}.InteractionRate  ;;
+    sql: ${TABLE}.InteractionRate ;;
   }
 
   dimension: interaction_types {
@@ -232,7 +189,7 @@ view: keyword_stats {
 
   dimension: interactions {
     type: number
-    sql: ${TABLE}.Interactions  ;;
+    sql: ${TABLE}.Interactions ;;
   }
 
   dimension_group: month {
@@ -268,14 +225,9 @@ view: keyword_stats {
     sql: ${TABLE}.Quarter ;;
   }
 
-  dimension: slot {
-    type: string
-    sql: ${TABLE}.Slot ;;
-  }
-
   dimension: value_per_conversion {
     type: number
-    sql: ${TABLE}.ValuePerConversion  ;;
+    sql: ${TABLE}.ValuePerConversion ;;
   }
 
   dimension: view_through_conversions {
@@ -305,33 +257,5 @@ view: keyword_stats {
   measure: count {
     type: count
     drill_fields: []
-  }
-
-  measure: total_cost {
-    drill_fields: [keyword.detail*]
-  }
-  measure: total_conversions {
-    drill_fields: [keyword.detail*]
-  }
-  measure: total_impressions {
-    drill_fields: [keyword.detail*]
-  }
-  measure: total_interactions {
-    drill_fields: [keyword.detail*]
-  }
-  measure: total_clicks {
-    drill_fields: [keyword.detail*]
-  }
-  measure: average_interaction_rate {
-    drill_fields: [keyword.detail*]
-  }
-  measure: average_cost_per_conversion {
-    drill_fields: [keyword.detail*]
-  }
-  measure: average_cost_per_click {
-    drill_fields: [keyword.detail*]
-  }
-  measure: average_conversion_rate {
-    drill_fields: [keyword.detail*]
   }
 }

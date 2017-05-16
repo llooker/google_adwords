@@ -224,6 +224,11 @@ view: keyword {
 
   measure: count {
     type: number
-    drill_fields: [bidding_strategy_name]
+    drill_fields: [detail*, ad_group.detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [criterion_id, criteria, status, quality_score, post_click_quality_score, cpc_bid]
   }
 }

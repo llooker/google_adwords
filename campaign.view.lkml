@@ -1,4 +1,3 @@
-explore: campaign  {}
 view: campaign {
   sql_table_name: (select * from `bigquery-connectors.adwords_v201609.Campaign_6747157124` where _LATEST_DATE = _DATA_DATE) ;;
 ## must limit the table scope using latest_date = _data_date to ensure we're always using the latest recorded informaiton
@@ -189,6 +188,11 @@ view: campaign {
 
   measure: count {
     type: count
-    drill_fields: [campaign_name, bidding_strategy_name]
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [campaign_id, campaign_name, campaign_status, ad_group.count, ad.count, keyword.count]
   }
 }
