@@ -8,7 +8,7 @@
   elements:
 
     - name: total_ads
-      title: Total Keywords
+      title: Total Keywords (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -50,7 +50,7 @@
       width: 4
 
     - name: total_cost
-      title: Total Cost
+      title: Total Cost (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -93,7 +93,7 @@
       width: 4
 
     - name: average_cost_per_conversion
-      title: Average Cost per Conversion
+      title: Average Cost per Conversion (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -135,7 +135,7 @@
       width: 4
 
     - name: total_impressions
-      title: Total Impressions
+      title: Total Impressions (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -178,7 +178,7 @@
       width: 4
 
     - name: total_interactions
-      title: Total Interactions
+      title: Total Interactions (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -221,7 +221,7 @@
       width: 4
 
     - name: average_interaction_rate
-      title: Average Interaction Rate
+      title: Average Interaction Rate (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -263,7 +263,7 @@
       width: 4
 
     - name: total_clicks
-      title: Total Clicks
+      title: Total Clicks (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -306,7 +306,7 @@
       width: 4
 
     - name: total_conversions
-      title: Total Conversions
+      title: Total Conversions (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -350,7 +350,7 @@
 
 
     - name: average_conversion_rate
-      title: Average Conversion Rate
+      title: Average Conversion Rate (Ads)
       type: single_value
       model: google_adwords
       explore: ad_stats
@@ -394,7 +394,7 @@
 
 
     - name: ad_performance_over_time
-      title: Ad Performance over Time
+      title: Ad Performance over Time (Ads)
       type: looker_column
       model: google_adwords
       explore: ad_stats
@@ -429,7 +429,7 @@
       totals_color: "#808080"
 
     - name: ad_efficiency_over_time
-      title: Ad Efficiency Over Time
+      title: Ad Efficiency Over Time (Ads)
       type: looker_line
       model: google_adwords
       explore: ad_stats
@@ -470,7 +470,7 @@
 
 
     - name: ad_keyword_performance
-      title: Ad Keyword Performance
+      title: Ad Keyword Performance (Ads)
       type: table
       model: google_adwords
       explore: ad_stats
@@ -514,7 +514,7 @@
       series_types: {}
 
     - name: add_a_unique_name_1487316761
-      title: Ad Performance
+      title: Ad Performance (Ads)
       type: looker_bar
       model: google_adwords
       explore: ad_stats

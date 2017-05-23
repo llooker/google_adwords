@@ -8,7 +8,7 @@
   elements:
 
     - name: total_campaigns
-      title: Total Campaigns
+      title: Total Campaigns (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
@@ -50,7 +50,7 @@
       width: 4
 
     - name: total_cost
-      title: Total Cost
+      title: Total Cost (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
@@ -93,7 +93,7 @@
       width: 4
 
     - name: average_cost_per_conversion
-      title: Average Cost per Conversion
+      title: Average Cost per Conversion (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
@@ -135,7 +135,7 @@
       width: 4
 
     - name: total_impressions
-      title: Total Impressions
+      title: Total Impressions (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
@@ -178,7 +178,7 @@
       width: 4
 
     - name: total_interactions
-      title: Total Interactions
+      title: Total Interactions (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
@@ -221,7 +221,7 @@
       width: 4
 
     - name: average_interaction_rate
-      title: Average Interaction Rate
+      title: Average Interaction Rate (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
@@ -263,7 +263,7 @@
       width: 4
 
     - name: total_clicks
-      title: Total Clicks
+      title: Total Clicks (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
@@ -306,7 +306,7 @@
       width: 4
 
     - name: total_conversions
-      title: Total Conversions
+      title: Total Conversions (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
@@ -394,7 +394,7 @@
 
 
     - name: campaign_funnel
-      title: Campaign Funnel
+      title: Campaign Funnel (Campaigns)
       type: looker_column
       model: google_adwords
       explore: campaign_stats
@@ -434,7 +434,7 @@
 
 
     - name: performance_by_device
-      title: Campaign Performance by Device
+      title: Campaign Performance by Device (Campaigns)
       type: looker_column
       model: google_adwords
       explore: campaign_stats
@@ -472,7 +472,7 @@
       width: 6
 
     - name: impression_to_interaction
-      title: Impression to Click Conversion Efficiency
+      title: Impression to Click Conversion Efficiency (Campaigns)
       type: looker_column
       model: google_adwords
       explore: campaign_stats
@@ -515,7 +515,7 @@
 
 
     - name: click_to_conversion
-      title: Click to Conversion Efficiency
+      title: Click to Conversion Efficiency (Campaigns)
       type: looker_column
       model: google_adwords
       explore: campaign_stats
@@ -557,7 +557,7 @@
 
 
     - name: all_campaign_full_detail
-      title: All Campaigns Full Details
+      title: All Campaigns Full Details (Campaigns)
       type: table
       model: google_adwords
       explore: campaign_stats

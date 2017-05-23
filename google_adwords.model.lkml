@@ -7,6 +7,8 @@ include: "*.view"
 include: "*.dashboard"
 
 
+## Excludes all those adgroups that do not have associated stats file
+
 ## Stats tables are used as left-most tables. See "README" for explanation of join logic.
 explore: ad_stats {
   label: "Ad Stats"
@@ -48,6 +50,8 @@ explore:ad_group_stats {
   }
 
 }
+
+explore: campaign {}
 
 explore: campaign_stats {
   label: "Campaign Stats"

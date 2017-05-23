@@ -247,6 +247,7 @@ view: ad_stats {
 
   dimension_group: month {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       date,
@@ -266,6 +267,7 @@ view: ad_stats {
 
   dimension_group: quarter {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       date,
@@ -295,6 +297,7 @@ view: ad_stats {
 
   dimension_group: week {
     type: time
+    hidden: yes
     timeframes: [
       raw,
       date,
@@ -309,6 +312,7 @@ view: ad_stats {
 
   dimension: year {
     type: number
+    hidden: yes
     sql: ${TABLE}.Year ;;
   }
 

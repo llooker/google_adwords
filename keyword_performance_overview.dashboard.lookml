@@ -8,7 +8,7 @@
   elements:
 
     - name: total_keywords
-      title: Total Keywords
+      title: Total Keywords (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -50,7 +50,7 @@
       width: 4
 
     - name: total_cost
-      title: Total Cost
+      title: Total Cost (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -93,7 +93,7 @@
       width: 4
 
     - name: average_cost_per_conversion
-      title: Average Cost per Conversion
+      title: Average Cost per Conversion (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -135,7 +135,7 @@
       width: 4
 
     - name: total_impressions
-      title: Total Impressions
+      title: Total Impressions (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -178,7 +178,7 @@
       width: 4
 
     - name: total_interactions
-      title: Total Interactions
+      title: Total Interactions (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -221,7 +221,7 @@
       width: 4
 
     - name: average_interaction_rate
-      title: Average Interaction Rate
+      title: Average Interaction Rate (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -263,7 +263,7 @@
       width: 4
 
     - name: total_clicks
-      title: Total Clicks
+      title: Total Clicks (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -306,7 +306,7 @@
       width: 4
 
     - name: total_conversions
-      title: Total Conversions
+      title: Total Conversions (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -350,7 +350,7 @@
 
 
     - name: average_conversion_rate
-      title: Average Conversion Rate
+      title: Average Conversion Rate (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
@@ -392,7 +392,7 @@
       width: 4
 
     - name: keyword_efficiency_over_time
-      title: Keyword Efficiency Over Time
+      title: Keyword Efficiency Over Time (Keywords)
       type: looker_line
       model: google_adwords
       explore: keyword_stats
@@ -440,7 +440,7 @@
 
 
     - name: keyword_funnel_by_device
-      title: Keyword Funnel by Device
+      title: Keyword Funnel by Device (Keywords)
       type: looker_column
       model: google_adwords
       explore: keyword_stats
