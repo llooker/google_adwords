@@ -1,7 +1,7 @@
-include: "stats.view.lkml"
+include: "conversion_stats.view.lkml"
 
 view: ad_conversion_stats {
-  extends: [stats]
+  extends: [conversion_stats]
 
   sql_table_name: adwords_v201609.AdConversionStats_6747157124 ;;
 

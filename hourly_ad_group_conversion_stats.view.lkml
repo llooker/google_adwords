@@ -1,7 +1,8 @@
-include: "stats.view.lkml"
+include: "conversion_stats.view.lkml"
 
 view: hourly_ad_group_conversion_stats {
-  extends: [stats]
+  extends: [conversion_stats]
+
   sql_table_name: adwords_v201609.HourlyAdGroupConversionStats_6747157124 ;;
 
   dimension_group: _data {
