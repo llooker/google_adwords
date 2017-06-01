@@ -2,8 +2,6 @@ view: ad_group {
   sql_table_name: (select * from `bigquery-connectors.adwords_v201609.AdGroup_6747157124` where _LATEST_DATE = _DATA_DATE)  ;;
 ## must limit the table scope using latest_date = _data_date to ensure we're always using the latest recorded informaiton
 
-
-
   dimension_group: _data {
     type: time
     timeframes: [
@@ -15,7 +13,7 @@ view: ad_group {
       year
     ]
     convert_tz: no
-    sql: ${TABLE}._DATA_DATE ;;
+    sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
   dimension_group: _latest {
@@ -161,6 +159,11 @@ view: ad_group {
 
   measure: count {
     type: count
-    drill_fields: [ad_group_name, bidding_strategy_name]
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [ad_group_id, ad_group_name, ad_group_status, cpc_bid, ad.count, keyword.count]
   }
 }

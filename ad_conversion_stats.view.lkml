@@ -1,4 +1,8 @@
-view: ad_conversion_stats_6747157124 {
+include: "conversion_stats.view.lkml"
+
+view: ad_conversion_stats {
+  extends: [conversion_stats]
+
   sql_table_name: adwords_v201609.AdConversionStats_6747157124 ;;
 
   dimension_group: _data {
@@ -9,10 +13,11 @@ view: ad_conversion_stats_6747157124 {
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_week
     ]
     convert_tz: no
-    sql: ${TABLE}._DATA_DATE ;;
+    sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
   dimension_group: _latest {

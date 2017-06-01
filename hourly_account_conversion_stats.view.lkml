@@ -1,9 +1,9 @@
 include: "conversion_stats.view.lkml"
 
-view: account_conversion_stats {
+view: hourly_account_conversion_stats {
   extends: [conversion_stats]
 
-  sql_table_name: adwords_v201609.AccountConversionStats_6747157124 ;;
+  sql_table_name: adwords_v201609.HourlyAccountConversionStats_6747157124 ;;
 
   dimension_group: _data {
     type: time
@@ -113,6 +113,11 @@ view: account_conversion_stats {
     sql: ${TABLE}.ExternalCustomerId ;;
   }
 
+  dimension: hour_of_day {
+    type: number
+    sql: ${TABLE}.HourOfDay ;;
+  }
+
   dimension_group: month {
     type: time
     timeframes: [
@@ -144,11 +149,6 @@ view: account_conversion_stats {
     ]
     convert_tz: no
     sql: ${TABLE}.Quarter ;;
-  }
-
-  dimension: slot {
-    type: string
-    sql: ${TABLE}.Slot ;;
   }
 
   dimension: value_per_conversion {

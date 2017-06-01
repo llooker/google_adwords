@@ -1,9 +1,9 @@
 include: "conversion_stats.view.lkml"
 
-view: account_conversion_stats {
+view: hourly_ad_group_conversion_stats {
   extends: [conversion_stats]
 
-  sql_table_name: adwords_v201609.AccountConversionStats_6747157124 ;;
+  sql_table_name: adwords_v201609.HourlyAdGroupConversionStats_6747157124 ;;
 
   dimension_group: _data {
     type: time
@@ -34,6 +34,11 @@ view: account_conversion_stats {
     sql: ${TABLE}._LATEST_DATE ;;
   }
 
+  dimension: ad_group_id {
+    type: number
+    sql: ${TABLE}.AdGroupId ;;
+  }
+
   dimension: ad_network_type1 {
     type: string
     sql: ${TABLE}.AdNetworkType1 ;;
@@ -42,6 +47,21 @@ view: account_conversion_stats {
   dimension: ad_network_type2 {
     type: string
     sql: ${TABLE}.AdNetworkType2 ;;
+  }
+
+  dimension: base_ad_group_id {
+    type: number
+    sql: ${TABLE}.BaseAdGroupId ;;
+  }
+
+  dimension: base_campaign_id {
+    type: number
+    sql: ${TABLE}.BaseCampaignId ;;
+  }
+
+  dimension: campaign_id {
+    type: number
+    sql: ${TABLE}.CampaignId ;;
   }
 
   dimension: click_type {
@@ -113,6 +133,11 @@ view: account_conversion_stats {
     sql: ${TABLE}.ExternalCustomerId ;;
   }
 
+  dimension: hour_of_day {
+    type: number
+    sql: ${TABLE}.HourOfDay ;;
+  }
+
   dimension_group: month {
     type: time
     timeframes: [
@@ -146,11 +171,6 @@ view: account_conversion_stats {
     sql: ${TABLE}.Quarter ;;
   }
 
-  dimension: slot {
-    type: string
-    sql: ${TABLE}.Slot ;;
-  }
-
   dimension: value_per_conversion {
     type: number
     sql: ${TABLE}.ValuePerConversion ;;
@@ -182,6 +202,6 @@ view: account_conversion_stats {
 
   measure: count {
     type: count
-    drill_fields: [conversion_category_name, conversion_type_name]
+    drill_fields: [conversion_type_name, conversion_category_name]
   }
 }

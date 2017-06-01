@@ -1,4 +1,7 @@
+include: "stats.view.lkml"
+
 view: campaign_stats{
+  extends: [stats]
   sql_table_name: adwords_v201609.CampaignStats_6747157124 ;;
 
   dimension_group: _data {
@@ -10,7 +13,8 @@ view: campaign_stats{
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_week
     ]
     convert_tz: no
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
@@ -133,7 +137,7 @@ view: campaign_stats{
 
   dimension: cost {
     type: number
-    sql:( ${TABLE}.Cost/1000000 ) ;;
+    sql: ${TABLE}.Cost ;;
     value_format_name: usd_0
   }
 
@@ -285,77 +289,31 @@ view: campaign_stats{
     drill_fields: []
   }
 
-
-  measure: total_impressions {
-    type:  sum
-    sql:  ${impressions} ;;
-    drill_fields: [campaign_id, total_impressions]
-  }
-
-  measure: total_interactions {
-    type:  sum
-    sql:  ${interactions} ;;
-    drill_fields: [campaign_id, total_impressions]
-  }
-
-  measure: total_gmail_forwards {
-    type: sum
-    sql: ${gmail_forwards} ;;
-  }
-
-  measure: total_gmail_saves {
-    type: sum
-    sql: ${gmail_saves} ;;
-  }
-
-  measure: total_gmail_secondary_clicks {
-    type: sum
-    sql: ${gmail_secondary_clicks} ;;
-  }
-
-## Due the manner in which Looker compiles SQL queries, finding weighted averages in this instance is better accomplished through an aggregated measure
-## rather than creating a new dimension to be aggregated over
-
-  measure: average_interaction_rate{
-    type: number
-    sql: ${total_interactions}*1.0/nullif(${total_impressions},0) ;;
-    value_format_name: percent_2
-  }
-
   measure: total_cost {
-    type: sum
-    sql: ${cost} ;;
-    value_format_name: usd
+    drill_fields: [campaign.detail*]
   }
-
   measure: total_conversions {
-    type: sum
-    sql: ${conversions} ;;
-    value_format_name: decimal_0
+    drill_fields: [campaign.detail*]
   }
-
-  measure: average_cost_per_conversion {
-    type: number
-    sql: ${total_cost}*1.0 / NULLIF(${total_conversions},0) ;;
-    value_format_name: usd
+  measure: total_impressions {
+    drill_fields: [campaign.detail*]
   }
-
-  measure: average_cost_per_click {
-    type: number
-    sql: ${total_clicks}*1.0 / NULLIF(${total_conversions},0) ;;
-    value_format_name: usd
+  measure: total_interactions {
+    drill_fields: [campaign.detail*]
   }
-
   measure: total_clicks {
-    type: sum
-    sql: ${clicks} ;;
-    value_format_name: decimal_0
+    drill_fields: [campaign.detail*]
   }
-
+  measure: average_interaction_rate {
+    drill_fields: [campaign.detail*]
+  }
+  measure: average_cost_per_conversion {
+    drill_fields: [campaign.detail*]
+  }
+  measure: average_cost_per_click {
+    drill_fields: [campaign.detail*]
+  }
   measure: average_conversion_rate {
-    type: number
-    sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
-    value_format_name: percent_2
+    drill_fields: [campaign.detail*]
   }
-
 }

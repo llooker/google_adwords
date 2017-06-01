@@ -188,6 +188,11 @@ view: campaign {
 
   measure: count {
     type: count
-    drill_fields: [campaign_name, bidding_strategy_name]
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [campaign_id, campaign_name, campaign_status, ad_group.count, ad.count, keyword.count]
   }
 }

@@ -1,12 +1,11 @@
 include: "stats.view.lkml"
 
-view: ad_group_stats {
+view: hourly_campaign_stats {
   extends: [stats]
 
-  sql_table_name: adwords_v201609.AdGroupStats_6747157124 ;;
+  sql_table_name: adwords_v201609.HourlyCampaignStats_6747157124 ;;
 
   dimension_group: _data {
-    description: "Filter on this field to limit query to a specified date range"
     type: time
     timeframes: [
       raw,
@@ -22,7 +21,6 @@ view: ad_group_stats {
   }
 
   dimension_group: _latest {
-    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -71,11 +69,6 @@ view: ad_group_stats {
     sql: ${TABLE}.ActiveViewViewability ;;
   }
 
-  dimension: ad_group_id {
-    type: number
-    sql: ${TABLE}.AdGroupId ;;
-  }
-
   dimension: ad_network_type1 {
     type: string
     sql: ${TABLE}.AdNetworkType1 ;;
@@ -104,11 +97,6 @@ view: ad_group_stats {
   dimension: average_position {
     type: number
     sql: ${TABLE}.AveragePosition ;;
-  }
-
-  dimension: base_ad_group_id {
-    type: number
-    sql: ${TABLE}.BaseAdGroupId ;;
   }
 
   dimension: base_campaign_id {
@@ -205,6 +193,11 @@ view: ad_group_stats {
     sql: ${TABLE}.GmailSecondaryClicks ;;
   }
 
+  dimension: hour_of_day {
+    type: number
+    sql: ${TABLE}.HourOfDay ;;
+  }
+
   dimension: impressions {
     type: number
     sql: ${TABLE}.Impressions ;;
@@ -258,11 +251,6 @@ view: ad_group_stats {
     sql: ${TABLE}.Quarter ;;
   }
 
-  dimension: slot {
-    type: string
-    sql: ${TABLE}.Slot ;;
-  }
-
   dimension: value_per_conversion {
     type: number
     sql: ${TABLE}.ValuePerConversion ;;
@@ -295,33 +283,5 @@ view: ad_group_stats {
   measure: count {
     type: count
     drill_fields: []
-  }
-
-  measure: total_cost {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: total_conversions {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: total_impressions {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: total_interactions {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: total_clicks {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: average_interaction_rate {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: average_cost_per_conversion {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: average_cost_per_click {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: average_conversion_rate {
-    drill_fields: [ad_group.detail*]
   }
 }

@@ -476,8 +476,7 @@
       explore: ad_stats
       dimensions: [ad.headline_part1]
       measures: [ad_stats.total_impressions, ad_stats.total_clicks, ad_stats.average_interaction_rate,
-        ad_stats.total_conversions, ad_stats.average_conversion_rate, ad_stats.total_cost,
-        ad_stats.total_cost_per_click]
+        ad_stats.total_conversions, ad_stats.average_conversion_rate, ad_stats.total_cost]
       filters:
         ad.headline_part1: "-NULL"
       sorts: [ad_stats.total_impressions desc]

@@ -1,12 +1,11 @@
 include: "stats.view.lkml"
 
-view: ad_group_stats {
+view: geo_stats {
   extends: [stats]
 
-  sql_table_name: adwords_v201609.AdGroupStats_6747157124 ;;
+  sql_table_name: adwords_v201609.GeoStats_6747157124 ;;
 
   dimension_group: _data {
-    description: "Filter on this field to limit query to a specified date range"
     type: time
     timeframes: [
       raw,
@@ -22,7 +21,6 @@ view: ad_group_stats {
   }
 
   dimension_group: _latest {
-    hidden: yes
     type: time
     timeframes: [
       raw,
@@ -36,44 +34,24 @@ view: ad_group_stats {
     sql: ${TABLE}._LATEST_DATE ;;
   }
 
-  dimension: active_view_cpm {
-    type: number
-    sql: ${TABLE}.ActiveViewCpm ;;
-  }
-
-  dimension: active_view_ctr {
-    type: number
-    sql: ${TABLE}.ActiveViewCtr ;;
-  }
-
-  dimension: active_view_impressions {
-    type: number
-    sql: ${TABLE}.ActiveViewImpressions ;;
-  }
-
-  dimension: active_view_measurability {
-    type: number
-    sql: ${TABLE}.ActiveViewMeasurability ;;
-  }
-
-  dimension: active_view_measurable_cost {
-    type: number
-    sql: ${TABLE}.ActiveViewMeasurableCost ;;
-  }
-
-  dimension: active_view_measurable_impressions {
-    type: number
-    sql: ${TABLE}.ActiveViewMeasurableImpressions ;;
-  }
-
-  dimension: active_view_viewability {
-    type: number
-    sql: ${TABLE}.ActiveViewViewability ;;
+  dimension: ad_format {
+    type: string
+    sql: ${TABLE}.AdFormat ;;
   }
 
   dimension: ad_group_id {
     type: number
     sql: ${TABLE}.AdGroupId ;;
+  }
+
+  dimension: ad_group_name {
+    type: string
+    sql: ${TABLE}.AdGroupName ;;
+  }
+
+  dimension: ad_group_status {
+    type: string
+    sql: ${TABLE}.AdGroupStatus ;;
   }
 
   dimension: ad_network_type1 {
@@ -84,6 +62,21 @@ view: ad_group_stats {
   dimension: ad_network_type2 {
     type: string
     sql: ${TABLE}.AdNetworkType2 ;;
+  }
+
+  dimension: all_conversion_rate {
+    type: number
+    sql: ${TABLE}.AllConversionRate ;;
+  }
+
+  dimension: all_conversion_value {
+    type: number
+    sql: ${TABLE}.AllConversionValue ;;
+  }
+
+  dimension: all_conversions {
+    type: number
+    sql: ${TABLE}.AllConversions ;;
   }
 
   dimension: average_cost {
@@ -101,19 +94,14 @@ view: ad_group_stats {
     sql: ${TABLE}.AverageCpm ;;
   }
 
+  dimension: average_cpv {
+    type: number
+    sql: ${TABLE}.AverageCpv ;;
+  }
+
   dimension: average_position {
     type: number
     sql: ${TABLE}.AveragePosition ;;
-  }
-
-  dimension: base_ad_group_id {
-    type: number
-    sql: ${TABLE}.BaseAdGroupId ;;
-  }
-
-  dimension: base_campaign_id {
-    type: number
-    sql: ${TABLE}.BaseCampaignId ;;
   }
 
   dimension: campaign_id {
@@ -121,9 +109,9 @@ view: ad_group_stats {
     sql: ${TABLE}.CampaignId ;;
   }
 
-  dimension: click_type {
-    type: string
-    sql: ${TABLE}.ClickType ;;
+  dimension: city_criteria_id {
+    type: number
+    sql: ${TABLE}.CityCriteriaId ;;
   }
 
   dimension: clicks {
@@ -151,9 +139,24 @@ view: ad_group_stats {
     sql: ${TABLE}.Cost ;;
   }
 
+  dimension: cost_per_all_conversion {
+    type: number
+    sql: ${TABLE}.CostPerAllConversion ;;
+  }
+
   dimension: cost_per_conversion {
     type: number
     sql: ${TABLE}.CostPerConversion ;;
+  }
+
+  dimension: country_criteria_id {
+    type: number
+    sql: ${TABLE}.CountryCriteriaId ;;
+  }
+
+  dimension: cross_device_conversions {
+    type: number
+    sql: ${TABLE}.CrossDeviceConversions ;;
   }
 
   dimension: ctr {
@@ -190,21 +193,6 @@ view: ad_group_stats {
     sql: ${TABLE}.ExternalCustomerId ;;
   }
 
-  dimension: gmail_forwards {
-    type: number
-    sql: ${TABLE}.GmailForwards ;;
-  }
-
-  dimension: gmail_saves {
-    type: number
-    sql: ${TABLE}.GmailSaves ;;
-  }
-
-  dimension: gmail_secondary_clicks {
-    type: number
-    sql: ${TABLE}.GmailSecondaryClicks ;;
-  }
-
   dimension: impressions {
     type: number
     sql: ${TABLE}.Impressions ;;
@@ -223,6 +211,21 @@ view: ad_group_stats {
   dimension: interactions {
     type: number
     sql: ${TABLE}.Interactions ;;
+  }
+
+  dimension: is_targeting_location {
+    type: yesno
+    sql: ${TABLE}.IsTargetingLocation ;;
+  }
+
+  dimension: location_type {
+    type: string
+    sql: ${TABLE}.LocationType ;;
+  }
+
+  dimension: metro_criteria_id {
+    type: number
+    sql: ${TABLE}.MetroCriteriaId ;;
   }
 
   dimension_group: month {
@@ -244,6 +247,11 @@ view: ad_group_stats {
     sql: ${TABLE}.MonthOfYear ;;
   }
 
+  dimension: most_specific_criteria_id {
+    type: number
+    sql: ${TABLE}.MostSpecificCriteriaId ;;
+  }
+
   dimension_group: quarter {
     type: time
     timeframes: [
@@ -258,14 +266,29 @@ view: ad_group_stats {
     sql: ${TABLE}.Quarter ;;
   }
 
-  dimension: slot {
-    type: string
-    sql: ${TABLE}.Slot ;;
+  dimension: region_criteria_id {
+    type: number
+    sql: ${TABLE}.RegionCriteriaId ;;
+  }
+
+  dimension: value_per_all_conversion {
+    type: number
+    sql: ${TABLE}.ValuePerAllConversion ;;
   }
 
   dimension: value_per_conversion {
     type: number
     sql: ${TABLE}.ValuePerConversion ;;
+  }
+
+  dimension: video_view_rate {
+    type: number
+    sql: ${TABLE}.VideoViewRate ;;
+  }
+
+  dimension: video_views {
+    type: number
+    sql: ${TABLE}.VideoViews ;;
   }
 
   dimension: view_through_conversions {
@@ -294,34 +317,39 @@ view: ad_group_stats {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [detail*, ad_group.detail*]
   }
 
   measure: total_cost {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
   }
   measure: total_conversions {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
   }
   measure: total_impressions {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
   }
   measure: total_interactions {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
   }
   measure: total_clicks {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
   }
   measure: average_interaction_rate {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
   }
   measure: average_cost_per_conversion {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
   }
   measure: average_cost_per_click {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
   }
   measure: average_conversion_rate {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [most_specific_criteria_id, ad_group_name]
   }
 }
