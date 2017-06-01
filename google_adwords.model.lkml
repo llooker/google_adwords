@@ -53,6 +53,8 @@ explore: keyword {
 
 explore: ad {}
 
+## Excludes all those adgroups that do not have associated stats file
+
 ## Stats tables are used as left-most tables. See "README" for explanation of join logic.
 explore: ad_stats {
   label: "Ad Stats"
@@ -113,6 +115,8 @@ explore:ad_group_stats {
     relationship: many_to_one
   }
 }
+
+explore: campaign {}
 
 explore: campaign_stats {
   label: "Campaign Stats"

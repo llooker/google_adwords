@@ -288,7 +288,7 @@ view: ad {
   }
 
   # ----- Detail ------
-  set: detail {
-    fields: [creative_id, status, ad_type, creative]
+    type: count
+    drill_fields: [image_creative_name, business_name]
   }
 }
