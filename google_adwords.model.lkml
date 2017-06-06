@@ -116,8 +116,6 @@ explore:ad_group_stats {
   }
 }
 
-explore: campaign {}
-
 explore: campaign_stats {
   label: "Campaign Stats"
   view_label: "Campaign Stats"

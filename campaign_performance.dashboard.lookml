@@ -846,7 +846,7 @@
     - ad_group_stats.average_conversion_rate
     - ad_group_stats.average_cost_per_click
     - ad_group_stats.average_cost_per_conversion
-    - ad_group_stats.day_of_week_clean
+    - ad_group_stats.day_of_week
     sorts:
     - ad_group_stats.total_impressions desc
     limit: 500

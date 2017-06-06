@@ -284,11 +284,9 @@ view: ad {
   measure: count {
     type: number
     sql: count(${ad_group_id}) ;;
-    drill_fields: [detail*]
+    drill_fields: [image_creative_name, business_name]
   }
 
   # ----- Detail ------
-    type: count
-    drill_fields: [image_creative_name, business_name]
+#     drill_fields: [image_creative_name, business_name]
   }
-}

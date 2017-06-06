@@ -806,7 +806,7 @@
     - campaign_stats.average_conversion_rate
     - campaign_stats.average_cost_per_click
     - campaign_stats.average_cost_per_conversion
-    - campaign_stats.day_of_week_clean
+    - campaign_stats.day_of_week
     sorts:
     - campaign_stats.total_impressions desc
     limit: 500

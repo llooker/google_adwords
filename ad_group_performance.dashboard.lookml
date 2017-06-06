@@ -731,7 +731,7 @@
     - ad_stats.average_conversion_rate
     - ad_stats.average_cost_per_click
     - ad_stats.average_cost_per_conversion
-    - ad_stats.day_of_week_clean
+    - ad_stats.day_of_week
     sorts:
     - ad_stats.total_impressions desc
     limit: 500
