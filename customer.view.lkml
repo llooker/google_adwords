@@ -1,6 +1,8 @@
+include: "entity_base.view.lkml"
+
 view: customer {
-  sql_table_name: (select * from `bigquery-connectors.adwords_v201609.Customer_6747157124` where _LATEST_DATE = _DATA_DATE) ;;
-## must limit the table scope using latest_date = _data_date to ensure we're always using the latest recorded informaiton
+  extends: [entity_base]
+  sql_table_name: adwords_v201609.Customer_6747157124 ;;
 
   dimension_group: _data {
     type: time

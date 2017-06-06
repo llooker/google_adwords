@@ -1,4 +1,7 @@
-view: audience_6747157124 {
+include: "entity_base.view.lkml"
+
+view: audience {
+  extends: [entity_base]
   sql_table_name: adwords_v201609.Audience_6747157124 ;;
 
   dimension_group: _data {

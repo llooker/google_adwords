@@ -1,16 +1,8 @@
-view: ad {
-  sql_table_name: (select * from `bigquery-connectors.adwords_v201609.Ad_6747157124` where _LATEST_DATE = _DATA_DATE)  ;;
-## must limit the table scope using latest_date = _data_date to ensure we're always using the latest recorded informaiton
+include: "entity_base.view.lkml"
 
-  dimension: block_name {
-    type: string
-    sql: "Adwords" ;;
-    link: {
-      url: "https://googlecloud.looker.com/dashboards/55"
-      label: "Adwords Dashboard"
-      icon_url: "http://www.looker.com/favicon.ico"
-    }
-  }
+view: ad {
+  extends: [entity_base]
+  sql_table_name: adwords_v201609.Ad_6747157124 ;;
 
   dimension_group: _data {
     type: time
@@ -284,9 +276,11 @@ view: ad {
   measure: count {
     type: number
     sql: count(${ad_group_id}) ;;
-    drill_fields: [image_creative_name, business_name]
+    drill_fields: [detail*]
   }
 
   # ----- Detail ------
-#     drill_fields: [image_creative_name, business_name]
+  set: detail {
+    fields: [creative_id, status, ad_type, creative]
   }
+}

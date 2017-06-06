@@ -1,4 +1,5 @@
 view: base {
+  extension: required
 
   dimension: ad_network_type1 {
     hidden: yes
