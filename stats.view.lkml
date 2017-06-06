@@ -48,24 +48,28 @@ view: stats {
 ## rather than creating a new dimension to be aggregated over
 
   measure: average_interaction_rate {
+    label: "Click Through Rate"
     type: number
-    sql: ${total_interactions}*1.0/nullif(${total_impressions},0) ;;
+    sql: ${total_clicks}*1.0/nullif(${total_impressions},0) ;;
     value_format_name: percent_2
   }
 
   measure: average_cost_per_conversion {
+    label: "Cost per Conversion"
     type: number
     sql: ${total_cost}*1.0 / NULLIF(${total_conversions},0) ;;
     value_format_name: usd
   }
 
   measure: average_cost_per_click {
+    label: "Cost per Click"
     type: number
     sql: ${total_cost}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: usd
   }
 
   measure: average_conversion_rate {
+    label: "Conversion Rate"
     type: number
     sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: percent_2

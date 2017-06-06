@@ -105,7 +105,11 @@ view: hourly_account_conversion_stats {
 
   dimension: device {
     type: string
-    sql: ${TABLE}.Device ;;
+    sql:  CASE
+         WHEN ${TABLE}.device LIKE '%Desktop%' THEN "Desktop"
+        WHEN ${TABLE}.device LIKE '%Mobile%' THEN "Mobile"
+        WHEN ${TABLE}.device LIKE '%Tablet%' THEN "Tablet"
+        ELSE "Unknown" END;;
   }
 
   dimension: external_customer_id {

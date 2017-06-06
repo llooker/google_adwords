@@ -4,6 +4,11 @@ _This Block is modeled on the schema brough in by Google's BigQuery Transfer Ser
 
 _The schema documentation for AdWords can be found in [Google's docs](https://developers.google.com/adwords/api/docs/guides/reporting#xml_schema_definition). Please note that your naming might vary slightly._
 
+### Reporting Schema Layout
+
+
+![image](https://cloud.githubusercontent.com/assets/9888083/26472690/18f621d0-415c-11e7-85fc-e77334847757.png)
+
 ### Implementation Instructions
 
 * **Sql_table_name** - in each of the views, the `sql_table_name` parameter must be changed to match your table names, particularly the tables with a wildcard operator when using `_table_suffix`. This must be changed in each view.
