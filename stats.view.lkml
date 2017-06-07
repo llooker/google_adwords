@@ -48,6 +48,13 @@ view: stats {
 ## rather than creating a new dimension to be aggregated over
 
   measure: average_interaction_rate {
+    label: "Interation Rate"
+    type: number
+    sql: ${total_interactions}*1.0/nullif(${total_impressions},0) ;;
+    value_format_name: percent_2
+  }
+
+  measure: average_click_rate {
     label: "Click Through Rate"
     type: number
     sql: ${total_clicks}*1.0/nullif(${total_impressions},0) ;;
@@ -65,6 +72,20 @@ view: stats {
     label: "Cost per Click"
     type: number
     sql: ${total_cost_usd}*1.0 / NULLIF(${total_clicks},0) ;;
+    value_format_name: usd
+  }
+
+  measure: average_cost_per_interaction {
+    label: "Cost per Click"
+    type: number
+    sql: ${total_cost_usd}*1.0 / NULLIF(${total_interactions},0) ;;
+    value_format_name: usd
+  }
+
+  measure: average_cost_per_impression {
+    label: "Cost per Impression"
+    type: number
+    sql: ${total_cost_usd}*1.0 / NULLIF(${total_impressions},0) ;;
     value_format_name: usd
   }
 
