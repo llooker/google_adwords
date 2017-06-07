@@ -192,6 +192,18 @@ explore: hourly_campaign_stats {
   }
 }
 
+explore: campaign_budget_stats {
+  label: "Campaign Budget Stats"
+  view_label: "Campaign Campaign Stats"
+
+  join: campaign {
+    view_label: "Campaign"
+    sql_on: ${campaign_budget_stats.campaign_id} = ${campaign.campaign_id}  AND
+      ${campaign_budget_stats._data_raw} = ${campaign._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
 explore: keyword_stats {
   label: "Keyword Stats"
   view_label: "Keyword Stats"

@@ -49,13 +49,13 @@
       height: 1
       width: 4
 
-    - name: total_cost
+    - name: total_cost_usd
       title: Total Cost (Keywords)
       type: single_value
       model: google_adwords
       explore: keyword_stats
-      measures: [keyword_stats.total_cost]
-      sorts: [keyword_stats.total_cost desc]
+      measures: [keyword_stats.total_cost_usd]
+      sorts: [keyword_stats.total_cost_usd desc]
       limit: '500'
       column_limit: '50'
       query_timezone: America/Los_Angeles

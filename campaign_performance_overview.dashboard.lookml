@@ -49,13 +49,13 @@
       height: 1
       width: 4
 
-    - name: total_cost
+    - name: total_cost_usd
       title: Total Cost (Campaigns)
       type: single_value
       model: google_adwords
       explore: campaign_stats
-      measures: [campaign_stats.total_cost]
-      sorts: [campaign_stats.total_cost desc]
+      measures: [campaign_stats.total_cost_usd]
+      sorts: [campaign_stats.total_cost_usd desc]
       limit: '500'
       column_limit: '50'
       query_timezone: America/Los_Angeles
@@ -563,7 +563,7 @@
       explore: campaign_stats
       dimensions: [campaign.campaign_name]
       measures: [campaign_stats.total_interactions, campaign_stats.total_impressions,
-        campaign_stats.average_interaction_rate, campaign_stats.total_conversions, campaign_stats.total_cost,
+        campaign_stats.average_interaction_rate, campaign_stats.total_conversions, campaign_stats.total_cost_usd,
         campaign_stats.average_cost_per_conversion]
       sorts: [campaign_stats.average_interaction_rate desc]
       limit: '500'

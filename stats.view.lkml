@@ -9,12 +9,12 @@ view: stats {
     sql: (${cost} / 1000000) ;;
   }
 
-  dimension: cost_per_click {
+  dimension: cost_usd_per_click {
     type: number
-    sql: ${cost}/(NULLIF(${clicks},0)) ;;
+    sql: ${cost_usd}/(NULLIF(${clicks},0)) ;;
   }
 
-  measure: total_cost {
+  measure: total_cost_usd {
     type: sum
     sql: ${cost_usd} ;;
     value_format_name: usd_0
@@ -57,21 +57,21 @@ view: stats {
   measure: average_cost_per_conversion {
     label: "Cost per Conversion"
     type: number
-    sql: ${total_cost}*1.0 / NULLIF(${total_conversions},0) ;;
+    sql: ${total_cost_usd}*1.0 / NULLIF(${total_conversions},0) ;;
     value_format_name: usd
   }
 
   measure: average_cost_per_click {
     label: "Cost per Click"
     type: number
-    sql: ${total_cost}*1.0 / NULLIF(${total_clicks},0) ;;
+    sql: ${total_cost_usd}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: usd
   }
 
   measure: average_conversion_rate {
     label: "Conversion Rate"
     type: number
-    sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
+    sql: ${total_cost_usd}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: percent_2
   }
 }

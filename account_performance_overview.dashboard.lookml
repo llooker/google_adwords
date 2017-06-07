@@ -52,9 +52,9 @@
     explore: campaign_stats
     type: single_value
     fields:
-    - campaign_stats.total_cost
+    - campaign_stats.total_cost_usd
     sorts:
-    - campaign_stats.total_cost desc
+    - campaign_stats.total_cost_usd desc
     limit: 500
     column_limit: 50
     query_timezone: America/Los_Angeles
@@ -376,7 +376,7 @@
     type: looker_area
     fields:
     - campaign_stats._data_date
-    - campaign_stats.total_cost
+    - campaign_stats.total_cost_usd
     - campaign_stats.ad_network_type
     pivots:
     - campaign_stats.ad_network_type
@@ -426,7 +426,7 @@
     type: table
     fields:
     - campaign.campaign_name
-    - campaign_stats.total_cost
+    - campaign_stats.total_cost_usd
     - campaign_stats.total_impressions
     - campaign_stats.total_interactions
     - campaign_stats.total_conversions
@@ -435,7 +435,7 @@
     - campaign_stats.average_cost_per_click
     - campaign_stats.average_cost_per_conversion
     sorts:
-    - campaign_stats.total_cost desc
+    - campaign_stats.total_cost_usd desc
     limit: 500
     column_limit: 50
     query_timezone: America/Los_Angeles
@@ -484,7 +484,7 @@
     fields:
     - campaign_stats.average_cost_per_conversion
     - campaign_stats._data_date
-    - campaign_stats.total_cost
+    - campaign_stats.total_cost_usd
     sorts:
     - campaign_stats._data_date
     limit: 500
@@ -530,9 +530,9 @@
     labelColorEnabled: false
     labelColor: "#FFF"
     series_types:
-      Content - campaign_stats.total_cost: column
-      Search - campaign_stats.total_cost: column
-      Search Partners - campaign_stats.total_cost: column
+      Content - campaign_stats.total_cost_usd: column
+      Search - campaign_stats.total_cost_usd: column
+      Search Partners - campaign_stats.total_cost_usd: column
     show_dropoff: true
     y_axes:
     - label: ''
@@ -561,13 +561,13 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: campaign_stats.total_cost
+      - id: campaign_stats.total_cost_usd
         name: Campaign Stats Total Cost
     discontinuous_nulls: false
     focus_on_hover: false
     hidden_fields: []
     hidden_series:
-    - campaign_stats.total_cost
+    - campaign_stats.total_cost_usd
     listen: {}
     row: 4
     col: 12
@@ -744,7 +744,7 @@
     - hourly_campaign_stats.total_impressions
     - hourly_campaign_stats.total_interactions
     - hourly_campaign_stats.total_conversions
-    - hourly_campaign_stats.total_cost
+    - hourly_campaign_stats.total_cost_usd
     - hourly_campaign_stats.average_interaction_rate
     - hourly_campaign_stats.average_conversion_rate
     - hourly_campaign_stats.average_cost_per_click
@@ -783,7 +783,7 @@
     - hourly_campaign_stats.total_impressions
     - hourly_campaign_stats.total_interactions
     - hourly_campaign_stats.total_conversions
-    - hourly_campaign_stats.total_cost
+    - hourly_campaign_stats.total_cost_usd
     - hourly_campaign_stats.average_interaction_rate
     - hourly_campaign_stats.average_conversion_rate
     - hourly_campaign_stats.average_cost_per_click
@@ -801,7 +801,7 @@
     - campaign_stats.total_impressions
     - campaign_stats.total_interactions
     - campaign_stats.total_conversions
-    - campaign_stats.total_cost
+    - campaign_stats.total_cost_usd
     - campaign_stats.average_interaction_rate
     - campaign_stats.average_conversion_rate
     - campaign_stats.average_cost_per_click
@@ -838,7 +838,7 @@
     - campaign_stats.total_impressions
     - campaign_stats.total_interactions
     - campaign_stats.total_conversions
-    - campaign_stats.total_cost
+    - campaign_stats.total_cost_usd
     - campaign_stats.average_interaction_rate
     - campaign_stats.average_conversion_rate
     - campaign_stats.average_cost_per_click
