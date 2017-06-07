@@ -76,7 +76,7 @@ view: stats {
   }
 
   measure: average_cost_per_interaction {
-    label: "Cost per Click"
+    label: "Cost per Interaction"
     type: number
     sql: ${total_cost_usd}*1.0 / NULLIF(${total_interactions},0) ;;
     value_format_name: usd
