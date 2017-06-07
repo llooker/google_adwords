@@ -22,7 +22,6 @@ view: ad_group_stats {
   }
 
   dimension_group: _latest {
-    hidden: yes
     type: time
     timeframes: [
       raw,

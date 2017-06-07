@@ -30,7 +30,6 @@ view: campaign_stats{
       quarter,
       year
     ]
-    hidden: yes
     convert_tz: no
     sql: ${TABLE}._LATEST_DATE ;;
   }

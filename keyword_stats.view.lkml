@@ -312,7 +312,7 @@ view: keyword_stats {
     drill_fields: []
   }
 
-  measure: total_cost {
+  measure: total_cost_usd {
     drill_fields: [keyword.detail*]
   }
   measure: total_conversions {
