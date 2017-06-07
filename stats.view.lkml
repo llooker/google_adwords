@@ -71,7 +71,7 @@ view: stats {
   measure: average_conversion_rate {
     label: "Conversion Rate"
     type: number
-    sql: ${total_cost_usd}*1.0 / NULLIF(${total_clicks},0) ;;
+    sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: percent_2
   }
 }
