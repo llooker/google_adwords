@@ -7,9 +7,9 @@
     explore: ad_stats
     type: single_value
     fields:
-    - ad_stats.total_cost
+    - ad_stats.total_cost_usd
     sorts:
-    - ad_stats.total_cost desc
+    - ad_stats.total_cost_usd desc
     limit: 500
     column_limit: 50
     query_timezone: America/Los_Angeles
@@ -338,7 +338,7 @@
     type: looker_area
     fields:
     - ad_stats._data_date
-    - ad_stats.total_cost
+    - ad_stats.total_cost_usd
     - ad_stats.ad_network_type
     - ad_stats.ad_network_type
     - ad_stats.ad_network_type
@@ -438,7 +438,7 @@
     fields:
     - ad_stats.average_cost_per_conversion
     - ad_stats._data_date
-    - ad_stats.total_cost
+    - ad_stats.total_cost_usd
     sorts:
     - ad_stats._data_date
     limit: 500
@@ -484,9 +484,9 @@
     labelColorEnabled: false
     labelColor: "#FFF"
     series_types:
-      Content - ad_stats.total_cost: column
-      Search - ad_stats.total_cost: column
-      Search Partners - ad_stats.total_cost: column
+      Content - ad_stats.total_cost_usd: column
+      Search - ad_stats.total_cost_usd: column
+      Search Partners - ad_stats.total_cost_usd: column
     show_dropoff: true
     y_axes:
     - label: ''
@@ -519,7 +519,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_stats.total_cost
+      - id: ad_stats.total_cost_usd
         name: ad Stats Total Cost
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
         __LINE_NUM: 471
@@ -529,7 +529,7 @@
     focus_on_hover: false
     hidden_fields: []
     hidden_series:
-    - ad_stats.total_cost
+    - ad_stats.total_cost_usd
     listen:
       Ad Group Name: ad_group.ad_group_name
     row: 4
@@ -726,7 +726,7 @@
     - ad_stats.total_impressions
     - ad_stats.total_interactions
     - ad_stats.total_conversions
-    - ad_stats.total_cost
+    - ad_stats.total_cost_usd
     - ad_stats.average_interaction_rate
     - ad_stats.average_conversion_rate
     - ad_stats.average_cost_per_click
@@ -763,7 +763,7 @@
     - ad_stats.total_impressions
     - ad_stats.total_interactions
     - ad_stats.total_conversions
-    - ad_stats.total_cost
+    - ad_stats.total_cost_usd
     - ad_stats.average_interaction_rate
     - ad_stats.average_conversion_rate
     - ad_stats.average_cost_per_click
@@ -783,13 +783,13 @@
     - geo_stats.total_impressions
     - geo_stats.total_interactions
     - geo_stats.total_conversions
-    - geo_stats.total_cost
+    - geo_stats.total_cost_usd
     - geo_stats.average_interaction_rate
     - geo_stats.average_conversion_rate
     - geo_stats.average_cost_per_click
     - geo_stats.average_cost_per_conversion
     sorts:
-    - geo_stats.total_cost desc
+    - geo_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     stacking: ''
@@ -863,7 +863,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: geo_stats.total_cost
+      - id: geo_stats.total_cost_usd
         name: Geo Stats Total Cost
         __FILE: google_adwords/ad_performance_overview.dashboard.lookml
         __LINE_NUM: 1104
@@ -883,14 +883,14 @@
     - ad_stats.total_impressions
     - ad_stats.total_interactions
     - ad_stats.total_conversions
-    - ad_stats.total_cost
+    - ad_stats.total_cost_usd
     - ad_stats.average_interaction_rate
     - ad_stats.average_conversion_rate
     - ad_stats.average_cost_per_click
     - ad_stats.average_cost_per_conversion
     - ad.creative
     sorts:
-    - ad_stats.total_cost desc
+    - ad_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     stacking: ''
@@ -964,7 +964,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_stats.total_cost
+      - id: ad_stats.total_cost_usd
         name: Total Cost
         __FILE: google_adwords/ad_performance_overview.dashboard.lookml
         __LINE_NUM: 1009
@@ -986,14 +986,14 @@
     - keyword_stats.total_impressions
     - keyword_stats.total_interactions
     - keyword_stats.total_conversions
-    - keyword_stats.total_cost
+    - keyword_stats.total_cost_usd
     - keyword_stats.average_interaction_rate
     - keyword_stats.average_conversion_rate
     - keyword_stats.average_cost_per_click
     - keyword_stats.average_cost_per_conversion
     - keyword.criteria
     sorts:
-    - keyword_stats.total_cost desc
+    - keyword_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     stacking: ''
@@ -1056,7 +1056,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: keyword_stats.total_cost
+      - id: keyword_stats.total_cost_usd
         name: Keyword Stats Total Cost
         __FILE: google_adwords/ad_performance_overview.dashboard.lookml
         __LINE_NUM: 914
@@ -1075,7 +1075,7 @@
     explore: ad_stats
     type: table
     fields:
-    - ad_stats.total_cost
+    - ad_stats.total_cost_usd
     - ad_stats.total_impressions
     - ad_stats.total_interactions
     - ad_stats.total_conversions
@@ -1085,7 +1085,7 @@
     - ad_stats.average_cost_per_conversion
     - ad.creative_id
     sorts:
-    - ad_stats.total_cost desc
+    - ad_stats.total_cost_usd desc
     limit: 500
     column_limit: 50
     query_timezone: America/Los_Angeles

@@ -8,6 +8,7 @@ include: "*.dashboard"
 
 ## Entity tables are daily snapshots
 explore: customer {
+  hidden: yes
   conditionally_filter: {
     filters: {
       field: latest
@@ -18,6 +19,7 @@ explore: customer {
 }
 
 explore: campaign {
+  hidden: yes
   conditionally_filter: {
     filters: {
       field: latest
@@ -34,6 +36,7 @@ explore: campaign {
 }
 
 explore: ad_group {
+  hidden: yes
   conditionally_filter: {
     filters: {
       field: latest
@@ -50,6 +53,7 @@ explore: ad_group {
 }
 
 explore: keyword {
+  hidden: yes
   conditionally_filter: {
     filters: {
       field: latest
@@ -72,6 +76,7 @@ explore: keyword {
 }
 
 explore: ad {
+  hidden: yes
   conditionally_filter: {
     filters: {
       field: latest
@@ -168,6 +173,73 @@ explore:ad_group_stats {
   }
 }
 
+
+explore: keyword_stats {
+  label: "Keyword Stats"
+  view_label: "Keyword Stats"
+
+  join: keyword {
+    view_label: "Keyword"
+    sql_on: ${keyword_stats.unique_key} = ${keyword.unique_key} AND
+      ${keyword_stats._data_raw} = ${keyword._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: ad_group {
+    view_label: "Ad Groups"
+    sql_on: ${keyword.ad_group_id} = ${ad_group.ad_group_id} AND
+      ${keyword._data_raw} = ${ad_group._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: campaign {
+    view_label: "Campaigns"
+    sql_on: ${keyword.campaign_id} = ${campaign.campaign_id} AND
+      ${keyword._data_raw} = ${campaign._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: geo_stats {
+  label: "Geo Stats"
+  view_label: "Geo Stats"
+
+  join: ad_group {
+    view_label: "Ad Groups"
+    sql_on: ${geo_stats.ad_group_id} = ${ad_group.ad_group_id} AND
+      ${geo_stats._data_raw} = ${ad_group._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: campaign {
+    view_label: "Campaigns"
+    sql_on: ${geo_stats.campaign_id} = ${campaign.campaign_id} AND
+      ${geo_stats._data_raw} = ${campaign._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: audience_stats {
+  label: "Audience Stats"
+  view_label: "Audience Stats"
+
+  join: audience {
+    view_label: "Audience"
+    sql_on: ${audience_stats.unique_key} = ${audience.unique_key} AND
+      ${audience_stats._data_raw} = ${audience._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: ad_group {
+    view_label: "Ad Groups"
+    sql_on: ${audience_stats.ad_group_id} = ${ad_group.ad_group_id} AND
+      ${audience_stats._data_raw} = ${ad_group._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: campaign {
+    view_label: "Campaigns"
+    sql_on: ${audience_stats.campaign_id} = ${campaign.campaign_id} AND
+      ${audience_stats._data_raw} = ${campaign._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
 explore: campaign_stats {
   label: "Campaign Stats"
   view_label: "Campaign Stats"
@@ -192,46 +264,14 @@ explore: hourly_campaign_stats {
   }
 }
 
-explore: keyword_stats {
-  label: "Keyword Stats"
-  view_label: "Keyword Stats"
-
-  join: keyword {
-    view_label: "Keyword"
-    sql_on: ${keyword_stats.unique_key} = ${keyword.unique_key} AND
-      ${keyword_stats._data_raw} = ${keyword._data_raw} ;;
-    relationship: many_to_one
-  }
-
-  join: ad_group {
-    view_label: "Ad Groups"
-    sql_on: ${keyword.ad_group_id} = ${ad_group.ad_group_id} AND
-      ${keyword._data_raw} = ${ad_group._data_raw} ;;
-    relationship: many_to_one
-  }
+explore: campaign_budget_stats {
+  label: "Campaign Budget Stats"
+  view_label: "Campaign Campaign Stats"
 
   join: campaign {
-    view_label: "Campaigns"
-    sql_on: ${keyword.campaign_id} = ${campaign.campaign_id} AND
-      ${keyword._data_raw} = ${campaign._data_raw} ;;
-    relationship: many_to_one
-  }
-}
-
-explore: geo_stats {
-  label: "Geo Stats"
-  view_label: "Geo Stats"
-
-  join: ad_group {
-    view_label: "Ad Groups"
-    sql_on: ${geo_stats.ad_group_id} = ${ad_group.ad_group_id} AND
-      ${geo_stats._data_raw} = ${ad_group._data_raw} ;;
-    relationship: many_to_one
-  }
-  join: campaign {
-    view_label: "Campaigns"
-    sql_on: ${geo_stats.campaign_id} = ${campaign.campaign_id} AND
-      ${geo_stats._data_raw} = ${campaign._data_raw} ;;
+    view_label: "Campaign"
+    sql_on: ${campaign_budget_stats.campaign_id} = ${campaign.campaign_id}  AND
+      ${campaign_budget_stats._data_raw} = ${campaign._data_raw} ;;
     relationship: many_to_one
   }
 }

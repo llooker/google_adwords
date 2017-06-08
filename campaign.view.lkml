@@ -192,6 +192,18 @@ view: campaign {
     drill_fields: [detail*]
   }
 
+  dimension: amount_usd {
+    description: "Daily Budget in USD"
+    type: number
+    sql: (${amount}  / 1000000) ;;
+  }
+
+  measure: total_amount_usd {
+    type: sum
+    sql: ${amount_usd} ;;
+    value_format_name: usd_0
+  }
+
   # ----- Detail ------
   set: detail {
     fields: [campaign_id, campaign_name, campaign_status, ad_group.count, ad.count, keyword.count]

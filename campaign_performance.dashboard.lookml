@@ -53,9 +53,9 @@
     explore: ad_group_stats
     type: single_value
     fields:
-    - ad_group_stats.total_cost
+    - ad_group_stats.total_cost_usd
     sorts:
-    - ad_group_stats.total_cost desc
+    - ad_group_stats.total_cost_usd desc
     limit: 500
     column_limit: 50
     query_timezone: America/Los_Angeles
@@ -385,7 +385,7 @@
     fields:
     - ad_group_stats.average_cost_per_conversion
     - ad_group_stats._data_date
-    - ad_group_stats.total_cost
+    - ad_group_stats.total_cost_usd
     sorts:
     - ad_group_stats._data_date
     limit: 500
@@ -431,9 +431,9 @@
     labelColorEnabled: false
     labelColor: "#FFF"
     series_types:
-      Content - ad_group_stats.total_cost: column
-      Search - ad_group_stats.total_cost: column
-      Search Partners - ad_group_stats.total_cost: column
+      Content - ad_group_stats.total_cost_usd: column
+      Search - ad_group_stats.total_cost_usd: column
+      Search Partners - ad_group_stats.total_cost_usd: column
     show_dropoff: true
     y_axes:
     - label: ''
@@ -466,7 +466,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_group_stats.total_cost
+      - id: ad_group_stats.total_cost_usd
         name: ad_group Stats Total Cost
         __FILE: google_adwords/campaign_performance.dashboard.lookml
         __LINE_NUM: 568
@@ -476,7 +476,7 @@
     focus_on_hover: false
     hidden_fields: []
     hidden_series:
-    - ad_group_stats.total_cost
+    - ad_group_stats.total_cost_usd
     listen:
       Campaign Name: campaign.campaign_name
     row: 4
@@ -584,7 +584,7 @@
     type: looker_area
     fields:
     - ad_group_stats._data_date
-    - ad_group_stats.total_cost
+    - ad_group_stats.total_cost_usd
     - ad_group_stats.ad_network_type
     - ad_group_stats.ad_network_type
     pivots:
@@ -639,7 +639,7 @@
     - hourly_ad_group_stats.total_impressions
     - hourly_ad_group_stats.total_interactions
     - hourly_ad_group_stats.total_conversions
-    - hourly_ad_group_stats.total_cost
+    - hourly_ad_group_stats.total_cost_usd
     - hourly_ad_group_stats.average_interaction_rate
     - hourly_ad_group_stats.average_conversion_rate
     - hourly_ad_group_stats.average_cost_per_click
@@ -678,7 +678,7 @@
     - hourly_ad_group_stats.total_impressions
     - hourly_ad_group_stats.total_interactions
     - hourly_ad_group_stats.total_conversions
-    - hourly_ad_group_stats.total_cost
+    - hourly_ad_group_stats.total_cost_usd
     - hourly_ad_group_stats.average_interaction_rate
     - hourly_ad_group_stats.average_conversion_rate
     - hourly_ad_group_stats.average_cost_per_click
@@ -781,7 +781,7 @@
     type: table
     fields:
     - ad_group.ad_group_name
-    - ad_group_stats.total_cost
+    - ad_group_stats.total_cost_usd
     - ad_group_stats.total_impressions
     - ad_group_stats.total_interactions
     - ad_group_stats.total_conversions
@@ -790,7 +790,7 @@
     - ad_group_stats.average_cost_per_click
     - ad_group_stats.average_cost_per_conversion
     sorts:
-    - ad_group_stats.total_cost desc
+    - ad_group_stats.total_cost_usd desc
     limit: 500
     column_limit: 50
     query_timezone: America/Los_Angeles
@@ -841,7 +841,7 @@
     - ad_group_stats.total_impressions
     - ad_group_stats.total_interactions
     - ad_group_stats.total_conversions
-    - ad_group_stats.total_cost
+    - ad_group_stats.total_cost_usd
     - ad_group_stats.average_interaction_rate
     - ad_group_stats.average_conversion_rate
     - ad_group_stats.average_cost_per_click
@@ -878,7 +878,7 @@
     - ad_group_stats.total_impressions
     - ad_group_stats.total_interactions
     - ad_group_stats.total_conversions
-    - ad_group_stats.total_cost
+    - ad_group_stats.total_cost_usd
     - ad_group_stats.average_interaction_rate
     - ad_group_stats.average_conversion_rate
     - ad_group_stats.average_cost_per_click

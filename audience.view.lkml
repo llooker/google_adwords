@@ -32,6 +32,12 @@ view: audience {
     sql: ${TABLE}._LATEST_DATE ;;
   }
 
+  dimension: unique_key {
+    type: string
+    primary_key: yes
+    sql: CONCAT(CAST(${ad_group_id} AS STRING),CAST(${criterion_id} AS STRING)) ;;
+  }
+
   dimension: ad_group_id {
     type: number
     sql: ${TABLE}.AdGroupId ;;
