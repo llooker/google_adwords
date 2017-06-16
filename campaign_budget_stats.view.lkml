@@ -49,6 +49,18 @@ GROUP BY 1,2,3
     sql: ${remaining_budget} / ${amount_usd} ;;
     value_format_name: percent_2
   }
+  dimension: percent_used_budget {
+    type: number
+    sql: COALESCE(1 - ${percent_remaining_budget}, 0) ;;
+    value_format_name: percent_2
+  }
+  dimension: percent_used_budget_tier {
+    type: tier
+    tiers: [0, 0.2, 0.4, 0.6, 0.8, 1]
+    style: interval
+    sql: ${percent_used_budget} ;;
+    value_format_name: percent_2
+  }
   dimension: constrained_budget {
     type: yesno
     description: "Daily spend within 20% of campaign budget"
