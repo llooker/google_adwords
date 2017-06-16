@@ -80,6 +80,7 @@ view: keyword {
   }
 
   dimension: cpc_bid {
+    hidden: yes
     type: string
     sql: ${TABLE}.CpcBid ;;
   }
@@ -90,6 +91,7 @@ view: keyword {
   }
 
   dimension: cpm_bid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.CpmBid ;;
@@ -228,6 +230,17 @@ view: keyword {
   measure: count {
     type: number
     drill_fields: [detail*, ad_group.detail*]
+  }
+
+  dimension: cpc_bid_usd {
+    type: string
+    sql: coalesce((${cpc_bid} / 1000000), ${ad_group.cpc_bid_usd}) ;;
+  }
+
+  dimension: cpm_bid_usd {
+    type: number
+    value_format_name: id
+    sql: coalesce((${cpm_bid} / 1000000), ${ad_group.cpm_bid_usd}) ;;
   }
 
   # ----- Detail ------

@@ -96,37 +96,6 @@ view: ad {
     type: number
     primary_key: yes
     sql: ${TABLE}.CreativeId ;;
-#     html: <p> Sample Ad ID </p> ;;
-    action: {
-      label: "Change Bid Price"
-      url: "https://www.looker.com"
-      icon_url: "https://www.google.com/favicon.ico"
-      form_param: {
-        name: "Change Bid Price"
-        type: string
-        required:  yes
-      }
-    }
-    action: {
-      label: "Change Status"
-      url: "https://www.looker.com"
-      icon_url: "https://www.google.com/favicon.ico"
-      form_param: {
-        name: "Change Status"
-        type: select
-        default: "Pause Campaign"
-        option: {
-          name: "Pause Campaign"
-          label: "Pause Campaign"
-        }
-        option: {
-          name: "Resume Campaign"
-          label: "Resume Campaign"
-        }
-        required:  yes
-      }
-    }
-
   }
 
   dimension: creative_tracking_url_template {

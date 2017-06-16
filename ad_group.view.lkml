@@ -99,17 +99,20 @@ view: ad_group {
   }
 
   dimension: cpc_bid {
+    hidden: yes
     type: string
     sql: ${TABLE}.CpcBid ;;
   }
 
   dimension: cpm_bid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.CpmBid ;;
   }
 
   dimension: cpv_bid {
+    hidden: yes
     type: string
     sql: ${TABLE}.CpvBid ;;
   }
@@ -140,6 +143,7 @@ view: ad_group {
   }
 
   dimension: target_cpa {
+    hidden: yes
     type: number
     sql: ${TABLE}.TargetCpa ;;
   }
@@ -162,6 +166,27 @@ view: ad_group {
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+
+  dimension: cpc_bid_usd {
+    type: string
+    sql: (${cpc_bid} / 1000000)  ;;
+  }
+
+  dimension: cpm_bid_usd {
+    type: number
+    value_format_name: id
+    sql: (${cpm_bid} / 1000000) ;;
+  }
+
+  dimension: cpv_bid_usd {
+    type: string
+    sql: (${cpv_bid} / 1000000) ;;
+  }
+
+  dimension: target_cpa_usd {
+    type: number
+    sql: (${target_cpa} / 1000000) ;;
   }
 
   # ----- Detail ------
