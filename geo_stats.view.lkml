@@ -324,7 +324,7 @@ view: geo_stats {
     drill_fields: [detail*, ad_group.detail*]
   }
 
-  measure: total_cost {
+  measure: total_cost_usd {
     drill_fields: [detail*]
   }
   measure: total_conversions {

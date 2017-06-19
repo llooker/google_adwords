@@ -292,7 +292,7 @@ view: campaign_stats{
     drill_fields: []
   }
 
-  measure: total_cost {
+  measure: total_cost_usd {
     drill_fields: [campaign.detail*]
   }
   measure: total_conversions {

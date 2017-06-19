@@ -300,7 +300,7 @@ view: ad_group_stats {
     drill_fields: []
   }
 
-  measure: total_cost {
+  measure: total_cost_usd {
     drill_fields: [ad_group.detail*]
   }
   measure: total_conversions {
