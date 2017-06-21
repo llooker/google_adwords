@@ -13,7 +13,10 @@ view: hourly_ad_group_stats {
       month,
       quarter,
       year,
-      day_of_week
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year
     ]
     convert_tz: no
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
