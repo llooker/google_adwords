@@ -1,7 +1,7 @@
 include: "stats.view.lkml"
 
 view: keyword_stats {
-  extends: [stats]
+  extends: [base, stats]
 
   sql_table_name: adwords_v201609.KeywordStats_6747157124 ;;
 

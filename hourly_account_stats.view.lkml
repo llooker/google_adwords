@@ -1,7 +1,7 @@
 include: "stats.view.lkml"
 
 view: hourly_account_stats {
-  extends: [stats]
+  extends: [base, stats]
 
   sql_table_name: adwords_v201609.HourlyAccountStats_6747157124 ;;
 

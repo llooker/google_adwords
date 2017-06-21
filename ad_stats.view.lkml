@@ -1,7 +1,7 @@
 include: "stats.view.lkml"
 
 view: ad_stats {
-  extends: [stats]
+  extends: [base, stats]
 
   sql_table_name: adwords_v201609.AdStats_6747157124 ;;
   ### Metrics can be aggregated over time from this table, so we do NOT restrict on _data_date = _latest_date
