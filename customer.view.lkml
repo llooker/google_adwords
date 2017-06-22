@@ -79,6 +79,11 @@ view: customer {
 
   measure: count {
     type: count
-    drill_fields: [account_descriptive_name, customer_descriptive_name, primary_company_name]
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [external_customer_id, account_descriptive_name, customer_descriptive_name, primary_company_name]
   }
 }

@@ -266,4 +266,35 @@ view: account_stats {
     type: count
     drill_fields: []
   }
+
+  measure: total_impressions {
+    drill_fields: [customer.detail*, total_impressions]
+  }
+  measure: total_clicks {
+    drill_fields: [customer.detail*, total_clicks]
+  }
+  measure: total_interactions {
+    drill_fields: [customer.detail*, total_interactions]
+  }
+  measure: total_conversions {
+    drill_fields: [customer.detail*, total_conversions]
+  }
+  measure: total_cost_usd {
+    drill_fields: [customer.detail*, total_cost_usd]
+  }
+  measure: average_interaction_rate {
+    drill_fields: [customer.detail*, average_interaction_rate]
+  }
+  measure: average_click_rate {
+    drill_fields: [customer.detail*, average_click_rate]
+  }
+  measure: average_conversion_rate {
+    drill_fields: [customer.detail*, average_conversion_rate]
+  }
+  measure: average_cost_per_click {
+    drill_fields: [customer.detail*, average_cost_per_click]
+  }
+  measure: average_cost_per_conversion {
+    drill_fields: [customer.detail*, average_cost_per_conversion]
+  }
 }

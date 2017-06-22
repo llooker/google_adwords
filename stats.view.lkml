@@ -13,6 +13,12 @@ view: stats {
     sql: ${cost_usd}/(NULLIF(${clicks},0)) ;;
   }
 
+  measure: total_cost {
+    hidden: yes
+    type: sum
+    sql: ${cost} ;;
+  }
+
   measure: total_cost_usd {
     type: sum
     sql: ${cost_usd} ;;

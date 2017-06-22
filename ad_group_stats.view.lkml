@@ -191,9 +191,9 @@ view: ad_group_stats {
         ELSE NULL END;;
   }
 
-  dimension: external_customer_id {
+  dimension: external_ad_group_id {
     type: number
-    sql: ${TABLE}.ExternalCustomerId ;;
+    sql: ${TABLE}.Externalad_groupId ;;
   }
 
   dimension: gmail_forwards {
@@ -303,31 +303,34 @@ view: ad_group_stats {
     drill_fields: []
   }
 
-  measure: total_cost_usd {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: total_conversions {
-    drill_fields: [ad_group.detail*]
-  }
   measure: total_impressions {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: total_interactions {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [ad_group.detail*, total_impressions]
   }
   measure: total_clicks {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [ad_group.detail*, total_clicks]
+  }
+  measure: total_interactions {
+    drill_fields: [ad_group.detail*, total_interactions]
+  }
+  measure: total_conversions {
+    drill_fields: [ad_group.detail*, total_conversions]
+  }
+  measure: total_cost_usd {
+    drill_fields: [ad_group.detail*, total_cost_usd]
   }
   measure: average_interaction_rate {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [ad_group.detail*, average_interaction_rate]
   }
-  measure: average_cost_per_conversion {
-    drill_fields: [ad_group.detail*]
-  }
-  measure: average_cost_per_click {
-    drill_fields: [ad_group.detail*]
+  measure: average_click_rate {
+    drill_fields: [ad_group.detail*, average_click_rate]
   }
   measure: average_conversion_rate {
-    drill_fields: [ad_group.detail*]
+    drill_fields: [ad_group.detail*, average_conversion_rate]
+  }
+  measure: average_cost_per_click {
+    drill_fields: [ad_group.detail*, average_cost_per_click]
+  }
+  measure: average_cost_per_conversion {
+    drill_fields: [ad_group.detail*, average_cost_per_conversion]
   }
 }

@@ -157,6 +157,11 @@ view: audience {
 
   measure: count {
     type: count
-    drill_fields: [user_list_name]
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [criteria]
   }
 }
