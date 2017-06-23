@@ -51,6 +51,11 @@ view: ad_group {
   dimension: ad_group_name {
     type: string
     sql: ${TABLE}.AdGroupName ;;
+    link: {
+      label: "Ad Group Dashboard"
+      url: "/dashboards/8?Ad%20Group%20Name={{ value | encode_uri }}"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: ad_group_status {

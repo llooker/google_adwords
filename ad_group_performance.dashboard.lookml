@@ -1,390 +1,37 @@
-- dashboard: Ad Performance
+- dashboard: ad_performance
+  title: Ad Performance
   layout: newspaper
   elements:
-  - name: Ad spend qtd (ad)
-    label: Ad Spend QTD
-    model: google_adwords
-    explore: ad_stats
-    type: single_value
-    fields:
-    - ad_stats.total_cost_usd
-    - ad_stats._data_quarter
-    fill_fields:
-    - ad_stats._data_quarter
-    sorts:
-    - ad_stats._data_quarter desc
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - table_calculation: quarterly_change
-      label: Quarterly Change
-      expression: "${ad_stats.total_cost_usd} - offset(${ad_stats.total_cost_usd},\
-        \ 1)\n"
-      value_format:
-      value_format_name: usd_0
-    query_timezone: America/Los_Angeles
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Spend QTD
-    comparison_label: ''
-    listen:
-      Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
-      Campaign Name: campaign.campaign_name
+  - name: Progress
+    type: text
+    title_text: Progress
+    subtitle_text: Current Performance Trends
+    body_text: ''
     row: 0
     col: 0
-    width: 12
-    height: 4
-  - name: Cost per conversion qtd (ad)
-    label: Cost per Conversion QTD
-    model: google_adwords
-    explore: ad_stats
-    type: single_value
-    fields:
-    - ad_stats._data_quarter
-    - ad_stats.average_cost_per_conversion
-    fill_fields:
-    - ad_stats._data_quarter
-    sorts:
-    - ad_stats._data_quarter desc
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - table_calculation: quarterly_change
-      label: Quarterly % Change
-      expression: "(${ad_stats.average_cost_per_conversion} - offset(${ad_stats.average_cost_per_conversion},\
-        \ 1) )/offset(${ad_stats.average_cost_per_conversion}, 1)\n"
-      value_format:
-      value_format_name: percent_0
-    query_timezone: America/Los_Angeles
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: true
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Cost per Conversion QTD
-    comparison_label: ''
-    listen:
-      Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
-      Campaign Name: campaign.campaign_name
-    row: 4
+    width: 24
+    height: 2
+  - name: Details
+    type: text
+    title_text: Details
+    subtitle_text: Drill to Explore Specific Trends
+    row: 24
     col: 0
-    width: 6
-    height: 4
-  - name: Conversions qtd (ad)
-    label: Conversions QTD
+    width: 24
+    height: 2
+  - name: Average cost per conversion over time (ad group)
+    title: Average cost per conversion over time (ad group)
     model: google_adwords
-    explore: ad_stats
-    type: single_value
-    fields:
-    - ad_stats._data_quarter
-    - ad_stats.total_conversions
-    fill_fields:
-    - ad_stats._data_quarter
-    sorts:
-    - ad_stats._data_quarter desc
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - table_calculation: quarterly_change
-      label: Quarterly Change
-      expression: "${ad_stats.total_conversions} - offset(${ad_stats.total_conversions},\
-        \ 1)\n"
-      value_format:
-      value_format_name:
-    query_timezone: America/Los_Angeles
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Conversions QTD
-    comparison_label: ''
-    listen:
-      Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
-      Campaign Name: campaign.campaign_name
-    row: 0
-    col: 12
-    width: 12
-    height: 4
-  - name: Cost per interaction qtd (ad)
-    label: Cost per Interaction QTD
-    model: google_adwords
-    explore: ad_stats
-    type: single_value
-    fields:
-    - ad_stats._data_quarter
-    - ad_stats.average_cost_per_interaction
-    fill_fields:
-    - ad_stats._data_quarter
-    sorts:
-    - ad_stats._data_quarter desc
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - table_calculation: quarterly_change
-      label: Quarterly % Change
-      expression: "(${ad_stats.average_cost_per_interaction} - offset(${ad_stats.average_cost_per_interaction},\
-        \ 1) )/offset(${ad_stats.average_cost_per_interaction}, 1)\n"
-      value_format:
-      value_format_name: percent_0
-    query_timezone: America/Los_Angeles
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Cost per Interaction QTD
-    comparison_label: ''
-    listen:
-      Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
-      Campaign Name: campaign.campaign_name
-    row: 4
-    col: 12
-    width: 6
-    height: 4
-  - name: Conversion rate qtd (ad)
-    label: Conversion Rate QTD
-    model: google_adwords
-    explore: ad_stats
-    type: single_value
-    fields:
-    - ad_stats._data_quarter
-    - ad_stats.average_conversion_rate
-    fill_fields:
-    - ad_stats._data_quarter
-    sorts:
-    - ad_stats._data_quarter desc
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - table_calculation: quarterly_change
-      label: Quarterly % Change
-      expression: "(${ad_stats.average_conversion_rate} - offset(${ad_stats.average_conversion_rate},\
-        \ 1) )/offset(${ad_stats.average_conversion_rate}, 1)\n"
-      value_format:
-      value_format_name: percent_0
-    query_timezone: America/Los_Angeles
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Conversion Rate QTD
-    comparison_label: ''
-    listen:
-      Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
-      Campaign Name: campaign.campaign_name
-    row: 4
-    col: 6
-    width: 6
-    height: 4
-  - name: Interaction rate qtd (ad)
-    label: Interaction Rate QTD
-    model: google_adwords
-    explore: ad_stats
-    type: single_value
-    fields:
-    - ad_stats._data_quarter
-    - ad_stats.average_interaction_rate
-    fill_fields:
-    - ad_stats._data_quarter
-    sorts:
-    - ad_stats._data_quarter desc
-    limit: 500
-    column_limit: 50
-    dynamic_fields:
-    - table_calculation: quarterly_change
-      label: Quarterly % Change
-      expression: "(${ad_stats.average_interaction_rate} - offset(${ad_stats.average_interaction_rate},\
-        \ 1) )/offset(${ad_stats.average_interaction_rate}, 1)\n"
-      value_format:
-      value_format_name: percent_0
-    query_timezone: America/Los_Angeles
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: true
-    comparison_type: change
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    single_value_title: Interaction Rate QTD
-    comparison_label: ''
-    listen:
-      Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
-      Campaign Name: campaign.campaign_name
-    row: 4
-    col: 18
-    width: 6
-    height: 4
-  - name: Average cost per conversion over time (ad)
-    label: Average Cost per Conversion
-    model: google_adwords
-    explore: ad_stats
+    explore: ad_group_stats
     type: looker_line
     fields:
-    - ad_stats.average_cost_per_conversion
-    - ad_stats._data_week
+    - ad_group_stats.average_cost_per_conversion
+    - ad_group_stats._data_week
     sorts:
-    - ad_stats._data_week desc
+    - ad_group_stats._data_week desc
     limit: 500
     column_limit: 50
+    label: Average Cost per Conversion
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -440,20 +87,20 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_stats.total_impressions
+      - id: ad_group_stats.total_impressions
         name: Ad Stats Total Impressions
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 375
-      - id: ad_stats.total_interactions
+        __LINE_NUM: 88
+      - id: ad_group_stats.total_interactions
         name: Ad Stats Total Interactions
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 379
-      - id: ad_stats.total_conversions
+        __LINE_NUM: 92
+      - id: ad_group_stats.total_conversions
         name: Ad Stats Total Conversions
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 383
+        __LINE_NUM: 96
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 363
+      __LINE_NUM: 76
     discontinuous_nulls: false
     focus_on_hover: false
     reference_lines: []
@@ -466,17 +113,17 @@
       show_label: false
       label_type: string
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 393
+      __LINE_NUM: 106
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
+      Date: ad_group_stats._data_date
       Campaign Name: campaign.campaign_name
-    row: 8
+    row: 2
     col: 0
     width: 24
     height: 7
   - name: Top 10 keyword performance (keyword)
-    label: Top 10 Keyword Performance (keyword)
+    title: Top 10 keyword performance (keyword)
     model: google_adwords
     explore: keyword_stats
     type: looker_column
@@ -494,6 +141,7 @@
     - keyword_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
+    label: Top 10 Keyword Performance (keyword)
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -539,9 +187,9 @@
       - id: keyword_stats.average_cost_per_conversion
         name: Cost per Conversion
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 1011
+        __LINE_NUM: 184
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 999
+      __LINE_NUM: 172
     - label:
       maxValue:
       minValue:
@@ -557,21 +205,21 @@
       - id: keyword_stats.total_cost_usd
         name: Total Cost USD
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 1029
+        __LINE_NUM: 202
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 1017
+      __LINE_NUM: 190
     series_types:
       keyword_stats.average_cost_per_conversion: line
     listen:
       Ad Group Name: ad_group.ad_group_name
       Date: keyword_stats._data_date
       Campaign Name: campaign.campaign_name
-    row: 15
+    row: 9
     col: 12
     width: 12
     height: 7
   - name: Top 10 creative performance (ad)
-    label: Top 10 Creative Performance (ad)
+    title: Top 10 creative performance (ad)
     model: google_adwords
     explore: ad_stats
     type: looker_column
@@ -589,6 +237,7 @@
     - ad_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
+    label: Top 10 Creative Performance (ad group)
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -645,9 +294,9 @@
       - id: ad_stats.average_cost_per_conversion
         name: Cost per Conversion
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 1117
+        __LINE_NUM: 290
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 1105
+      __LINE_NUM: 278
     - label:
       maxValue:
       minValue:
@@ -663,21 +312,21 @@
       - id: ad_stats.total_cost_usd
         name: Total Cost USD
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 1135
+        __LINE_NUM: 308
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 1123
+      __LINE_NUM: 296
     x_axis_datetime_label: ''
     y_axis_reversed: false
     listen:
       Ad Group Name: ad_group.ad_group_name
       Date: ad_stats._data_date
       Campaign Name: campaign.campaign_name
-    row: 15
+    row: 9
     col: 0
     width: 12
     height: 7
   - name: Top 10 audience performance (audience)
-    label: Top 10 audience performance (audience)
+    title: Top 10 audience performance (audience)
     model: google_adwords
     explore: audience_stats
     type: looker_column
@@ -689,6 +338,7 @@
     - audience_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
+    label: Top 10 audience performance (audience)
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -726,6 +376,10 @@
       series:
       - id: audience_stats.average_cost_per_conversion
         name: Audience Stats Cost per Conversion
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 372
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 360
     - label:
       maxValue:
       minValue:
@@ -740,18 +394,22 @@
       series:
       - id: audience_stats.total_cost_usd
         name: Audience Stats Total Cost USD
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 386
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 374
     series_types:
       audience_stats.average_cost_per_conversion: line
     listen:
       Ad Group Name: ad_group.ad_group_name
       Date: audience_stats._data_date
       Campaign Name: campaign.campaign_name
-    row: 22
+    row: 16
     col: 0
     width: 12
     height: 8
-  - name: Bid Strategy and Match Cost per Conversion
-    label: Top 10 Keyword Performance (keyword)
+  - name: Bid strategy and match cost per conversion
+    title: Bid strategy and match cost per conversion
     model: google_adwords
     explore: keyword_stats
     type: looker_column
@@ -767,6 +425,7 @@
     - keyword_stats.total_cost_usd desc 0
     limit: 500
     column_limit: 50
+    label: Top 10 Keyword Performance (keyword)
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -820,13 +479,17 @@
       - id: PHRASE - Keyword Stats Cost per Conversion
         name: PHRASE - Keyword Stats Cost per Conversion
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 1011
+        __LINE_NUM: 465
       - id: EXACT - Keyword Stats Cost per Conversion
         name: EXACT - Keyword Stats Cost per Conversion
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 469
       - id: BROAD - Keyword Stats Cost per Conversion
         name: BROAD - Keyword Stats Cost per Conversion
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 471
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 999
+      __LINE_NUM: 453
     - label:
       maxValue:
       minValue:
@@ -842,46 +505,53 @@
       - id: PHRASE - Keyword Stats Total Cost USD
         name: PHRASE - Keyword Stats Total Cost USD
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 1029
+        __LINE_NUM: 487
       - id: EXACT - Keyword Stats Total Cost USD
         name: EXACT - Keyword Stats Total Cost USD
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 491
       - id: BROAD - Keyword Stats Total Cost USD
         name: BROAD - Keyword Stats Total Cost USD
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 493
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 1017
+      __LINE_NUM: 475
     series_types: {}
     listen:
       Ad Group Name: ad_group.ad_group_name
       Date: keyword_stats._data_date
       Campaign Name: campaign.campaign_name
-    row: 22
+    row: 16
     col: 12
     width: 12
     height: 8
   - name: Ad details
-    label: Ad Details
+    title: Ad details
     model: google_adwords
     explore: ad_stats
     type: table
     fields:
     - ad_group.ad_group_name
+    - ad_stats.average_cost_per_conversion
+    - ad_stats.average_interaction_rate
+    - ad_stats.average_cost_per_click
+    - ad_stats.average_conversion_rate
     - ad_stats.total_impressions
     - ad_stats.total_interactions
     - ad_stats.total_conversions
     - ad_stats.total_cost_usd
-    - ad_stats.average_interaction_rate
-    - ad_stats.average_conversion_rate
-    - ad_stats.average_cost_per_click
-    - ad_stats.average_cost_per_conversion
-    limit: 500
+    sorts:
+    - ad_stats.total_cost_usd desc
+    limit: 20
     column_limit: 50
+    label: Ad Details
     query_timezone: America/Los_Angeles
     show_view_names: false
     show_row_numbers: true
     truncate_column_names: false
     hide_totals: false
     hide_row_totals: false
-    table_theme: gray
+    table_theme: white
     limit_displayed_rows: false
     stacking: ''
     show_value_labels: false
@@ -912,12 +582,12 @@
       Ad Group Name: ad_group.ad_group_name
       Date: ad_stats._data_date
       Campaign Name: campaign.campaign_name
-    row: 30
+    row: 26
     col: 0
     width: 24
     height: 8
   - name: Keyword details (keyword)
-    label: Top 10 Keyword Performance (keyword)
+    title: Keyword details (keyword)
     model: google_adwords
     explore: keyword_stats
     type: table
@@ -937,6 +607,7 @@
     - keyword_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
+    label: Top 10 Keyword Performance (keyword)
     show_view_names: false
     show_row_numbers: false
     truncate_column_names: false
@@ -985,9 +656,9 @@
       - id: keyword_stats.average_cost_per_conversion
         name: Keyword Stats Average Cost per Conversion
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 1213
+        __LINE_NUM: 630
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 1201
+      __LINE_NUM: 618
     - label:
       maxValue:
       minValue:
@@ -1003,15 +674,15 @@
       - id: keyword_stats.total_cost
         name: Keyword Stats Total Cost
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 1231
+        __LINE_NUM: 648
       __FILE: google_adwords/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 1219
+      __LINE_NUM: 636
     series_types: {}
     listen:
       Ad Group Name: ad_group.ad_group_name
       Date: keyword_stats._data_date
       Campaign Name: campaign.campaign_name
-    row: 38
+    row: 34
     col: 0
     width: 24
     height: 6
@@ -1040,7 +711,7 @@
     type: field_filter
     default_value: 6 months
     model: google_adwords
-    explore: ad_stats
-    field: ad_stats._data_date
+    explore: ad_group_stats
+    field: ad_group_stats._data_date
     listens_to_filters: []
     allow_multiple_values: true

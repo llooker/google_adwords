@@ -173,6 +173,7 @@ view: account_stats {
   dimension: external_customer_id {
     type: number
     sql: ${TABLE}.ExternalCustomerId ;;
+    drill_fields: [campaign.name]
   }
 
   dimension: impressions {

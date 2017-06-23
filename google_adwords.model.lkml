@@ -252,6 +252,44 @@ explore: campaign_stats {
   }
 }
 
+explore: account_quarter_stats {
+  label: "Account Quarter Stats"
+  view_label: "Account Quarter Stats"
+
+  join: last_account_quarter_stats {
+    from: account_quarter_stats
+    view_label: "Last Quarter Account Stats"
+    sql_on: ${account_quarter_stats.external_customer_id} = ${last_account_quarter_stats.external_customer_id} AND
+      ${account_quarter_stats._data_last_quarter} = ${last_account_quarter_stats._data_quarter} ;;
+    relationship: one_to_one
+  }
+#   join:  customer {
+#     view_label: "Customer"
+#     sql_on: ${account_quarter_stats.external_customer_id} = ${customer.external_customer_id} AND
+#       ${customer.latest} = 'Yes' ;;
+#     relationship: many_to_one
+#   }
+}
+
+explore: campaign_quarter_stats {
+  label: "Campaign Quarter Stats"
+  view_label: "Campaign Quarter Stats"
+
+  join: last_campaign_quarter_stats {
+    from: campaign_quarter_stats
+    view_label: "Last Quarter Campaign Stats"
+    sql_on: ${campaign_quarter_stats.campaign_id} = ${last_campaign_quarter_stats.campaign_id} AND
+      ${campaign_quarter_stats._data_last_quarter} = ${last_campaign_quarter_stats._data_quarter} ;;
+    relationship: one_to_one
+  }
+#   join: campaign {
+#     view_label: "Campaign"
+#     sql_on: ${campaign_quarter_stats.campaign_id} = ${campaign.campaign_id} AND
+#       ${campaign.latest} = 'Yes' ;;
+#     relationship: many_to_one
+#   }
+}
+
 explore: hourly_campaign_stats {
   label: "Hourly Campaign Stats"
   view_label: "Hourly Campaign Stats"
@@ -266,7 +304,7 @@ explore: hourly_campaign_stats {
 
 explore: campaign_budget_stats {
   label: "Campaign Budget Stats"
-  view_label: "Campaign Campaign Stats"
+  view_label: "Campaign Budget Stats"
 
   join: campaign {
     view_label: "Campaign"
@@ -281,6 +319,15 @@ explore: account_stats {
     view_label: "Customer"
     sql_on: ${account_stats.external_customer_id} = ${customer.external_customer_id} AND
       ${account_stats._data_raw} = ${customer._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: hourly_account_stats {
+  join:  customer {
+    view_label: "Customer"
+    sql_on: ${hourly_account_stats.external_customer_id} = ${customer.external_customer_id} AND
+      ${hourly_account_stats._data_raw} = ${customer._data_raw} ;;
     relationship: many_to_one
   }
 }

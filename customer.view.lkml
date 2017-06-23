@@ -55,6 +55,11 @@ view: customer {
   dimension: customer_descriptive_name {
     type: string
     sql: ${TABLE}.CustomerDescriptiveName ;;
+    link: {
+      label: "Account Dashboard"
+      url: "/dashboards/8?Customer%20Name={{ value | encode_uri }}"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: external_customer_id {
@@ -84,6 +89,6 @@ view: customer {
 
   # ----- Detail ------
   set: detail {
-    fields: [external_customer_id, account_descriptive_name, customer_descriptive_name, primary_company_name]
+    fields: [external_customer_id, primary_company_name]
   }
 }
