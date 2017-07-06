@@ -5,17 +5,17 @@
   - name: Cost by ad network over time (account)
     title: Cost by ad network over time (account)
     model: google_adwords
-    explore: account_stats
+    explore: account_basic_stats
     type: looker_area
     fields:
-    - account_stats.ad_network_type
-    - account_stats._data_week
-    - account_stats.total_cost_usd
+    - account_basic_stats.ad_network_type
+    - account_basic_stats._data_week
+    - account_basic_stats.total_cost_usd
     pivots:
-    - account_stats.ad_network_type
+    - account_basic_stats.ad_network_type
     sorts:
-    - account_stats.ad_network_type
-    - account_stats._data_week desc
+    - account_basic_stats.ad_network_type
+    - account_basic_stats._data_week desc
     limit: 500
     column_limit: 50
     label: Cost by ad network over time
@@ -56,7 +56,7 @@
     - "#1BD4BC"
     series_colors: {}
     listen:
-      Date: account_stats._data_date
+      Date: account_basic_stats._data_date
     row: 19
     col: 0
     width: 12
@@ -64,16 +64,16 @@
   - name: Cost by device over time (account)
     title: Cost by device over time (account)
     model: google_adwords
-    explore: account_stats
+    explore: account_basic_stats
     type: looker_area
     fields:
-    - account_stats.device
-    - account_stats.total_cost_usd
-    - account_stats._data_week
+    - account_basic_stats.device_type
+    - account_basic_stats.total_cost_usd
+    - account_basic_stats._data_week
     pivots:
-    - account_stats.device
+    - account_basic_stats.device_type
     sorts:
-    - account_stats.device
+    - account_basic_stats.device_type
     limit: 500
     column_limit: 50
     label: Cost by device
@@ -118,7 +118,7 @@
     - "#1BD4BC"
     series_colors: {}
     listen:
-      Date: account_stats._data_date
+      Date: account_basic_stats._data_date
     row: 27
     col: 0
     width: 12
@@ -126,13 +126,13 @@
   - name: Average cost per conversion over time (account)
     title: Average cost per conversion over time (account)
     model: google_adwords
-    explore: account_stats
+    explore: account_basic_stats
     type: looker_line
     fields:
-    - account_stats.average_cost_per_conversion
-    - account_stats._data_week
+    - account_basic_stats.average_cost_per_conversion
+    - account_basic_stats._data_week
     sorts:
-    - account_stats._data_week desc
+    - account_basic_stats._data_week desc
     limit: 500
     column_limit: 50
     label: Average Cost per Conversion
@@ -191,15 +191,15 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: account_stats.total_impressions
+      - id: account_basic_stats.total_impressions
         name: Campaign Stats Total Impressions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 190
-      - id: account_stats.total_interactions
+      - id: account_basic_stats.total_interactions
         name: Campaign Stats Total Interactions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 194
-      - id: account_stats.total_conversions
+      - id: account_basic_stats.total_conversions
         name: Campaign Stats Total Conversions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 198
@@ -219,7 +219,7 @@
       __FILE: google_adwords/account_performance.dashboard.lookml
       __LINE_NUM: 208
     listen:
-      Date: account_stats._data_date
+      Date: account_basic_stats._data_date
     row: 12
     col: 0
     width: 24
@@ -227,15 +227,15 @@
   - name: Funnel by ad network (account)
     title: Funnel by ad network (account)
     model: google_adwords
-    explore: account_stats
+    explore: account_basic_stats
     type: looker_column
     fields:
-    - account_stats.ad_network_type
-    - account_stats.total_impressions
-    - account_stats.total_interactions
-    - account_stats.total_conversions
+    - account_basic_stats.ad_network_type
+    - account_basic_stats.total_impressions
+    - account_basic_stats.total_interactions
+    - account_basic_stats.total_conversions
     sorts:
-    - account_stats.total_impressions desc
+    - account_basic_stats.total_impressions desc
     limit: 500
     column_limit: 50
     label: Funnel by Ad Network
@@ -291,22 +291,22 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: account_stats.total_impressions
+      - id: account_basic_stats.total_impressions
         name: Campaign Stats Total Impressions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 289
-      - id: account_stats.total_interactions
+      - id: account_basic_stats.total_interactions
         name: Campaign Stats Total Interactions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 293
-      - id: account_stats.total_conversions
+      - id: account_basic_stats.total_conversions
         name: Campaign Stats Total Conversions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 297
       __FILE: google_adwords/account_performance.dashboard.lookml
       __LINE_NUM: 277
     listen:
-      Date: account_stats._data_date
+      Date: account_basic_stats._data_date
     row: 19
     col: 12
     width: 12
@@ -314,15 +314,15 @@
   - name: Funnel by device (account)
     title: Funnel by device (account)
     model: google_adwords
-    explore: account_stats
+    explore: account_basic_stats
     type: looker_column
     fields:
-    - account_stats.total_impressions
-    - account_stats.total_interactions
-    - account_stats.total_conversions
-    - account_stats.device
+    - account_basic_stats.total_impressions
+    - account_basic_stats.total_interactions
+    - account_basic_stats.total_conversions
+    - account_basic_stats.device_type
     sorts:
-    - account_stats.total_impressions desc
+    - account_basic_stats.total_impressions desc
     limit: 500
     column_limit: 50
     label: Funnel by device
@@ -378,22 +378,22 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: account_stats.total_impressions
+      - id: account_basic_stats.total_impressions
         name: Campaign Stats Total Impressions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 375
-      - id: account_stats.total_interactions
+      - id: account_basic_stats.total_interactions
         name: Campaign Stats Total Interactions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 379
-      - id: account_stats.total_conversions
+      - id: account_basic_stats.total_conversions
         name: Campaign Stats Total Conversions
         __FILE: google_adwords/account_performance.dashboard.lookml
         __LINE_NUM: 383
       __FILE: google_adwords/account_performance.dashboard.lookml
       __LINE_NUM: 363
     listen:
-      Date: account_stats._data_date
+      Date: account_basic_stats._data_date
     row: 27
     col: 12
     width: 12
@@ -401,20 +401,20 @@
   - name: Campaign details
     title: Campaign details
     model: google_adwords
-    explore: campaign_stats
+    explore: campaign_basic_stats
     type: table
     fields:
     - campaign.campaign_name
-    - campaign_stats.total_impressions
-    - campaign_stats.total_interactions
-    - campaign_stats.total_conversions
-    - campaign_stats.total_cost_usd
-    - campaign_stats.average_interaction_rate
-    - campaign_stats.average_conversion_rate
-    - campaign_stats.average_cost_per_click
-    - campaign_stats.average_cost_per_conversion
+    - campaign_basic_stats.total_impressions
+    - campaign_basic_stats.total_interactions
+    - campaign_basic_stats.total_conversions
+    - campaign_basic_stats.total_cost_usd
+    - campaign_basic_stats.average_interaction_rate
+    - campaign_basic_stats.average_conversion_rate
+    - campaign_basic_stats.average_cost_per_click
+    - campaign_basic_stats.average_cost_per_conversion
     sorts:
-    - campaign_stats.total_impressions desc
+    - campaign_basic_stats.total_impressions desc
     limit: 500
     column_limit: 50
     label: Campaign Details
@@ -452,7 +452,7 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     listen:
-      Date: campaign_stats._data_date
+      Date: campaign_basic_stats._data_date
     row: 43
     col: 0
     width: 24
@@ -936,17 +936,17 @@
   - name: Day of Week Average Cost per Conversion (account)
     title: Day of Week Average Cost per Conversion (account)
     model: google_adwords
-    explore: account_stats
+    explore: account_basic_stats
     type: looker_column
     fields:
-    - account_stats._data_day_of_week
-    - account_stats.average_cost_per_conversion
-    - account_stats.total_conversions
-    - account_stats.total_cost_usd
+    - account_basic_stats._data_day_of_week
+    - account_basic_stats.average_cost_per_conversion
+    - account_basic_stats.total_conversions
+    - account_basic_stats.total_cost_usd
     fill_fields:
-    - account_stats._data_day_of_week
+    - account_basic_stats._data_day_of_week
     sorts:
-    - account_stats._data_day_of_week
+    - account_basic_stats._data_day_of_week
     limit: 500
     column_limit: 50
     stacking: ''
@@ -987,7 +987,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: account_stats.total_conversions
+      - id: account_basic_stats.total_conversions
         name: Campaign Stats Total Conversions
     - label:
       maxValue:
@@ -1001,7 +1001,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: account_stats.total_cost_usd
+      - id: account_basic_stats.total_cost_usd
         name: Campaign Stats Total Cost USD
     - label:
       maxValue:
@@ -1015,14 +1015,14 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: account_stats.average_cost_per_conversion
+      - id: account_basic_stats.average_cost_per_conversion
         name: Campaign Stats Cost per Conversion
     series_types:
-      account_stats.average_cost_per_conversion: line
+      account_basic_stats.average_cost_per_conversion: line
     hidden_series:
-    - account_stats.total_cost_usd
+    - account_basic_stats.total_cost_usd
     listen:
-      Date: account_stats._data_date
+      Date: account_basic_stats._data_date
     row: 34
     col: 0
     width: 12
@@ -1033,7 +1033,7 @@
     type: field_filter
     default_value: 6 months
     model: google_adwords
-    explore: account_stats
-    field: account_stats._data_date
+    explore: account_basic_stats
+    field: account_basic_stats._data_date
     listens_to_filters: []
     allow_multiple_values: true

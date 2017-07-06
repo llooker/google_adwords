@@ -1,7 +1,8 @@
 include: "entity_base.view.lkml"
+include: "ad_criterion_base.view.lkml"
 
 view: keyword {
-  extends: [entity_base]
+  extends: [ad_criterion_base, entity_base]
   sql_table_name: adwords_v201609.Keyword_6747157124 ;;
 
   dimension_group: _data {
@@ -30,13 +31,6 @@ view: keyword {
     ]
     convert_tz: no
     sql: ${TABLE}._LATEST_DATE ;;
-  }
-
-  dimension: unique_key {
-    type: string
-    primary_key: yes
-    hidden: yes
-    sql: CONCAT(CAST(${ad_group_id} AS STRING),CAST(${criterion_id} AS STRING)) ;;
   }
 
   dimension: ad_group_id {

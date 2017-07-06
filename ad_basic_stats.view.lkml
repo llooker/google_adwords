@@ -1,12 +1,13 @@
 include: "stats.view.lkml"
 include: "ad_criterion_base.view.lkml"
 
-view: audience_stats {
+view: ad_basic_stats {
   extends: [ad_criterion_base, base_stats, stats]
 
-  sql_table_name: adwords_v201609.AudienceStats_6747157124 ;;
+  sql_table_name: adwords_v201609.AdBasicStats_6747157124 ;;
 
   dimension_group: _data {
+    description: "Filter on this field to limit query to a specified date range"
     type: time
     timeframes: [
       raw,
@@ -36,16 +37,6 @@ view: audience_stats {
     ]
     convert_tz: no
     sql: ${TABLE}._LATEST_DATE ;;
-  }
-
-  dimension: active_view_cpm {
-    type: number
-    sql: ${TABLE}.ActiveViewCpm ;;
-  }
-
-  dimension: active_view_ctr {
-    type: number
-    sql: ${TABLE}.ActiveViewCtr ;;
   }
 
   dimension: active_view_impressions {
@@ -88,21 +79,6 @@ view: audience_stats {
     sql: ${TABLE}.AdNetworkType2 ;;
   }
 
-  dimension: average_cost {
-    type: number
-    sql: ${TABLE}.AverageCost ;;
-  }
-
-  dimension: average_cpc {
-    type: number
-    sql: ${TABLE}.AverageCpc ;;
-  }
-
-  dimension: average_cpm {
-    type: number
-    sql: ${TABLE}.AverageCpm ;;
-  }
-
   dimension: average_position {
     type: number
     sql: ${TABLE}.AveragePosition ;;
@@ -123,19 +99,9 @@ view: audience_stats {
     sql: ${TABLE}.CampaignId ;;
   }
 
-  dimension: click_type {
-    type: string
-    sql: ${TABLE}.ClickType ;;
-  }
-
   dimension: clicks {
     type: number
     sql: ${TABLE}.Clicks ;;
-  }
-
-  dimension: conversion_rate {
-    type: number
-    sql: ${TABLE}.ConversionRate ;;
   }
 
   dimension: conversion_value {
@@ -153,9 +119,9 @@ view: audience_stats {
     sql: ${TABLE}.Cost ;;
   }
 
-  dimension: cost_per_conversion {
+  dimension: creative_id {
     type: number
-    sql: ${TABLE}.CostPerConversion ;;
+    sql: ${TABLE}.CreativeId ;;
   }
 
   dimension: criterion_id {
@@ -163,9 +129,9 @@ view: audience_stats {
     sql: ${TABLE}.CriterionId ;;
   }
 
-  dimension: ctr {
-    type: number
-    sql: ${TABLE}.Ctr ;;
+  dimension: criterion_type {
+    type: string
+    sql: ${TABLE}.CriterionType ;;
   }
 
   dimension_group: date {
@@ -182,11 +148,6 @@ view: audience_stats {
     sql: ${TABLE}.Date ;;
   }
 
-  dimension: day_of_week {
-    type: string
-    sql: ${TABLE}.DayOfWeek ;;
-  }
-
   dimension: device {
     type: string
     sql: ${TABLE}.Device ;;
@@ -197,29 +158,9 @@ view: audience_stats {
     sql: ${TABLE}.ExternalCustomerId ;;
   }
 
-  dimension: gmail_forwards {
-    type: number
-    sql: ${TABLE}.GmailForwards ;;
-  }
-
-  dimension: gmail_saves {
-    type: number
-    sql: ${TABLE}.GmailSaves ;;
-  }
-
-  dimension: gmail_secondary_clicks {
-    type: number
-    sql: ${TABLE}.GmailSecondaryClicks ;;
-  }
-
   dimension: impressions {
     type: number
     sql: ${TABLE}.Impressions ;;
-  }
-
-  dimension: interaction_rate {
-    type: number
-    sql: ${TABLE}.InteractionRate ;;
   }
 
   dimension: interaction_types {
@@ -232,37 +173,9 @@ view: audience_stats {
     sql: ${TABLE}.Interactions ;;
   }
 
-  dimension_group: month {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Month ;;
-  }
-
-  dimension: month_of_year {
-    type: string
-    sql: ${TABLE}.MonthOfYear ;;
-  }
-
-  dimension_group: quarter {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Quarter ;;
+  dimension: is_negative {
+    type: yesno
+    sql: ${TABLE}.IsNegative ;;
   }
 
   dimension: slot {
@@ -270,68 +183,13 @@ view: audience_stats {
     sql: ${TABLE}.Slot ;;
   }
 
-  dimension: value_per_conversion {
-    type: number
-    sql: ${TABLE}.ValuePerConversion ;;
-  }
-
   dimension: view_through_conversions {
     type: number
     sql: ${TABLE}.ViewThroughConversions ;;
   }
 
-  dimension_group: week {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Week ;;
-  }
-
-  dimension: year {
-    type: number
-    sql: ${TABLE}.Year ;;
-  }
-
   measure: count {
     type: count
     drill_fields: []
-  }
-
-  measure: total_impressions {
-    drill_fields: [audience.detail*, total_impressions]
-  }
-  measure: total_clicks {
-    drill_fields: [audience.detail*, total_clicks]
-  }
-  measure: total_interactions {
-    drill_fields: [audience.detail*, total_interactions]
-  }
-  measure: total_conversions {
-    drill_fields: [audience.detail*, total_conversions]
-  }
-  measure: total_cost_usd {
-    drill_fields: [audience.detail*, total_cost_usd]
-  }
-  measure: average_interaction_rate {
-    drill_fields: [audience.detail*, average_interaction_rate]
-  }
-  measure: average_click_rate {
-    drill_fields: [audience.detail*, average_click_rate]
-  }
-  measure: average_conversion_rate {
-    drill_fields: [audience.detail*, average_conversion_rate]
-  }
-  measure: average_cost_per_click {
-    drill_fields: [audience.detail*, average_cost_per_click]
-  }
-  measure: average_cost_per_conversion {
-    drill_fields: [audience.detail*, average_cost_per_conversion]
   }
 }

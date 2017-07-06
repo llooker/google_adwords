@@ -1,11 +1,12 @@
 include: "stats.view.lkml"
 
-view: account_stats {
-  extends: [base_stats, stats]
+view: account_basic_stats {
+  extends: [base, stats]
 
-  sql_table_name: adwords_v201609.AccountStats_6747157124 ;;
+  sql_table_name: adwords_v201609.AccountBasicStats_6747157124 ;;
 
   dimension_group: _data {
+    description: "Filter on this field to limit query to a specified date range"
     type: time
     timeframes: [
       raw,
@@ -35,16 +36,6 @@ view: account_stats {
     ]
     convert_tz: no
     sql: ${TABLE}._LATEST_DATE ;;
-  }
-
-  dimension: active_view_cpm {
-    type: number
-    sql: ${TABLE}.ActiveViewCpm ;;
-  }
-
-  dimension: active_view_ctr {
-    type: number
-    sql: ${TABLE}.ActiveViewCtr ;;
   }
 
   dimension: active_view_impressions {
@@ -82,39 +73,14 @@ view: account_stats {
     sql: ${TABLE}.AdNetworkType2 ;;
   }
 
-  dimension: average_cost {
-    type: number
-    sql: ${TABLE}.AverageCost ;;
-  }
-
-  dimension: average_cpc {
-    type: number
-    sql: ${TABLE}.AverageCpc ;;
-  }
-
-  dimension: average_cpm {
-    type: number
-    sql: ${TABLE}.AverageCpm ;;
-  }
-
   dimension: average_position {
     type: number
     sql: ${TABLE}.AveragePosition ;;
   }
 
-  dimension: click_type {
-    type: string
-    sql: ${TABLE}.ClickType ;;
-  }
-
   dimension: clicks {
     type: number
     sql: ${TABLE}.Clicks ;;
-  }
-
-  dimension: conversion_rate {
-    type: number
-    sql: ${TABLE}.ConversionRate ;;
   }
 
   dimension: conversion_value {
@@ -132,16 +98,6 @@ view: account_stats {
     sql: ${TABLE}.Cost ;;
   }
 
-  dimension: cost_per_conversion {
-    type: number
-    sql: ${TABLE}.CostPerConversion ;;
-  }
-
-  dimension: ctr {
-    type: number
-    sql: ${TABLE}.Ctr ;;
-  }
-
   dimension_group: date {
     type: time
     timeframes: [
@@ -156,11 +112,6 @@ view: account_stats {
     sql: ${TABLE}.Date ;;
   }
 
-  dimension: day_of_week {
-    type: string
-    sql: ${TABLE}.DayOfWeek ;;
-  }
-
   dimension: device {
     type: string
     sql: ${TABLE}.Device ;;
@@ -169,17 +120,11 @@ view: account_stats {
   dimension: external_customer_id {
     type: number
     sql: ${TABLE}.ExternalCustomerId ;;
-    drill_fields: [campaign.name]
   }
 
   dimension: impressions {
     type: number
     sql: ${TABLE}.Impressions ;;
-  }
-
-  dimension: interaction_rate {
-    type: number
-    sql: ${TABLE}.InteractionRate ;;
   }
 
   dimension: interaction_types {
@@ -192,71 +137,14 @@ view: account_stats {
     sql: ${TABLE}.Interactions ;;
   }
 
-  dimension_group: month {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Month ;;
-  }
-
-  dimension: month_of_year {
-    type: string
-    sql: ${TABLE}.MonthOfYear ;;
-  }
-
-  dimension_group: quarter {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Quarter ;;
-  }
-
   dimension: slot {
     type: string
     sql: ${TABLE}.Slot ;;
   }
 
-  dimension: value_per_conversion {
-    type: number
-    sql: ${TABLE}.ValuePerConversion ;;
-  }
-
   dimension: view_through_conversions {
     type: number
     sql: ${TABLE}.ViewThroughConversions ;;
-  }
-
-  dimension_group: week {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Week ;;
-  }
-
-  dimension: year {
-    type: number
-    sql: ${TABLE}.Year ;;
   }
 
   measure: count {

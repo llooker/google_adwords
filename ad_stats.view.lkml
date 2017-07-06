@@ -1,7 +1,8 @@
 include: "stats.view.lkml"
+include: "ad_criterion_base.view.lkml"
 
 view: ad_stats {
-  extends: [base, stats]
+  extends: [ad_criterion_base, base_stats, stats]
 
   sql_table_name: adwords_v201609.AdStats_6747157124 ;;
   ### Metrics can be aggregated over time from this table, so we do NOT restrict on _data_date = _latest_date
@@ -74,7 +75,7 @@ view: ad_stats {
     sql: ${TABLE}.ActiveViewViewability  ;;
   }
 
-  dimension: ad_id {
+  dimension: ad_group_id {
     type: number
     sql: ${TABLE}.AdGroupId ;;
   }
@@ -200,11 +201,7 @@ view: ad_stats {
 
   dimension: device {
     type: string
-    sql:  CASE
-         WHEN ${TABLE}.device LIKE '%Desktop%' THEN "Desktop"
-        WHEN ${TABLE}.device LIKE '%Mobile%' THEN "Mobile"
-        WHEN ${TABLE}.device LIKE '%Tablet%' THEN "Tablet"
-        ELSE "Unknown" END;;
+    sql: ${TABLE}.Device ;;
   }
 
   dimension: external_customer_id {
@@ -317,13 +314,6 @@ view: ad_stats {
   dimension: year {
     type: number
     sql: ${TABLE}.Year ;;
-  }
-
-  dimension: unique_key {
-    type: string
-    primary_key: yes
-    hidden: yes
-    sql: CONCAT(CAST(${TABLE}.AdGroupId AS STRING),CAST(${TABLE}.CriterionID AS STRING)) ;;
   }
 
   measure: count {

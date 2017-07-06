@@ -1,7 +1,7 @@
 include: "stats.view.lkml"
 
 view: hourly_campaign_stats {
-  extends: [base, stats]
+  extends: [base_stats, stats]
 
   sql_table_name: adwords_v201609.HourlyCampaignStats_6747157124 ;;
 
@@ -173,11 +173,7 @@ view: hourly_campaign_stats {
 
   dimension: device {
     type: string
-    sql:  CASE
-         WHEN ${TABLE}.device LIKE '%Desktop%' THEN "Desktop"
-        WHEN ${TABLE}.device LIKE '%Mobile%' THEN "Mobile"
-        WHEN ${TABLE}.device LIKE '%Tablet%' THEN "Tablet"
-        ELSE "Unknown" END;;
+    sql: ${TABLE}.Device ;;
   }
 
   dimension: external_customer_id {

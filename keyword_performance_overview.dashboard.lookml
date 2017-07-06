@@ -444,7 +444,7 @@
       type: looker_column
       model: google_adwords
       explore: keyword_stats
-      dimensions: [keyword_stats.device]
+      dimensions: [keyword_stats.device_type]
       measures: [keyword_stats.total_impressions, keyword_stats.total_clicks, keyword_stats.total_conversions]
       sorts: [keyword_stats.total_impressions desc]
       limit: '500'

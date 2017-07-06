@@ -1,4 +1,5 @@
 include: "base.view.lkml"
+include: "base_stats.view.lkml"
 
 view: stats {
   extension: required

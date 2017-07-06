@@ -48,29 +48,6 @@ view: base {
     sql: ${_data_day_of_year} ;;
   }
 
-
-  dimension_group: date {
-    hidden: yes
-  }
-  dimension: day_of_week {
-    hidden: yes
-  }
-  dimension_group: month {
-    hidden: yes
-  }
-  dimension: month_of_year {
-    hidden: yes
-  }
-  dimension_group: quarter {
-    hidden: yes
-  }
-  dimension_group: week {
-    hidden: yes
-  }
-  dimension: year {
-    hidden: yes
-  }
-
   dimension: ad_network_type1 {
     hidden: yes
   }
@@ -91,5 +68,18 @@ view: base {
       ELSE 'Other'
       END
       ;;
+  }
+
+  dimension: device {
+    hidden: yes
+  }
+
+  dimension: device_type {
+    type: string
+    sql:  CASE
+      WHEN ${device} LIKE '%Desktop%' THEN "Desktop"
+      WHEN ${device} LIKE '%Mobile%' THEN "Mobile"
+      WHEN ${device} LIKE '%Tablet%' THEN "Tablet"
+      ELSE "Unknown" END;;
   }
 }

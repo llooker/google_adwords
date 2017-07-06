@@ -22,13 +22,13 @@
   - name: Average cost per conversion over time (ad group)
     title: Average cost per conversion over time (ad group)
     model: google_adwords
-    explore: ad_group_stats
+    explore: ad_group_basic_stats
     type: looker_line
     fields:
-    - ad_group_stats.average_cost_per_conversion
-    - ad_group_stats._data_week
+    - ad_group_basic_stats.average_cost_per_conversion
+    - ad_group_basic_stats._data_week
     sorts:
-    - ad_group_stats._data_week desc
+    - ad_group_basic_stats._data_week desc
     limit: 500
     column_limit: 50
     label: Average Cost per Conversion
@@ -87,15 +87,15 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_group_stats.total_impressions
+      - id: ad_group_basic_stats.total_impressions
         name: Ad Stats Total Impressions
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
         __LINE_NUM: 88
-      - id: ad_group_stats.total_interactions
+      - id: ad_group_basic_stats.total_interactions
         name: Ad Stats Total Interactions
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
         __LINE_NUM: 92
-      - id: ad_group_stats.total_conversions
+      - id: ad_group_basic_stats.total_conversions
         name: Ad Stats Total Conversions
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
         __LINE_NUM: 96
@@ -116,7 +116,7 @@
       __LINE_NUM: 106
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: ad_group_stats._data_date
+      Date: ad_group_basic_stats._data_date
       Campaign Name: campaign.campaign_name
     row: 2
     col: 0
@@ -221,20 +221,20 @@
   - name: Top 10 creative performance (ad)
     title: Top 10 creative performance (ad)
     model: google_adwords
-    explore: ad_stats
+    explore: ad_basic_stats
     type: looker_column
     fields:
     - ad.creative
-    - ad_stats.average_cost_per_conversion
-    - ad_stats.total_impressions
-    - ad_stats.total_interactions
-    - ad_stats.total_conversions
-    - ad_stats.total_cost_usd
-    - ad_stats.average_interaction_rate
-    - ad_stats.average_conversion_rate
-    - ad_stats.average_cost_per_click
+    - ad_basic_stats.average_cost_per_conversion
+    - ad_basic_stats.total_impressions
+    - ad_basic_stats.total_interactions
+    - ad_basic_stats.total_conversions
+    - ad_basic_stats.total_cost_usd
+    - ad_basic_stats.average_interaction_rate
+    - ad_basic_stats.average_conversion_rate
+    - ad_basic_stats.average_cost_per_click
     sorts:
-    - ad_stats.total_cost_usd desc
+    - ad_basic_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     label: Top 10 Creative Performance (ad group)
@@ -270,14 +270,14 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     series_types:
-      ad_stats.average_cost_per_conversion: line
+      ad_basic_stats.average_cost_per_conversion: line
     hidden_fields:
-    - ad_stats.total_conversions
-    - ad_stats.total_interactions
-    - ad_stats.total_impressions
-    - ad_stats.average_interaction_rate
-    - ad_stats.average_conversion_rate
-    - ad_stats.average_cost_per_click
+    - ad_basic_stats.total_conversions
+    - ad_basic_stats.total_interactions
+    - ad_basic_stats.total_impressions
+    - ad_basic_stats.average_interaction_rate
+    - ad_basic_stats.average_conversion_rate
+    - ad_basic_stats.average_cost_per_click
     y_axes:
     - label:
       maxValue:
@@ -291,7 +291,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_stats.average_cost_per_conversion
+      - id: ad_basic_stats.average_cost_per_conversion
         name: Cost per Conversion
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
         __LINE_NUM: 290
@@ -309,7 +309,7 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_stats.total_cost_usd
+      - id: ad_basic_stats.total_cost_usd
         name: Total Cost USD
         __FILE: google_adwords/ad_group_performance.dashboard.lookml
         __LINE_NUM: 308
@@ -319,7 +319,7 @@
     y_axis_reversed: false
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
+      Date: ad_basic_stats._data_date
       Campaign Name: campaign.campaign_name
     row: 9
     col: 0
@@ -528,20 +528,20 @@
   - name: Ad details
     title: Ad details
     model: google_adwords
-    explore: ad_stats
+    explore: ad_basic_stats
     type: table
     fields:
     - ad_group.ad_group_name
-    - ad_stats.average_cost_per_conversion
-    - ad_stats.average_interaction_rate
-    - ad_stats.average_cost_per_click
-    - ad_stats.average_conversion_rate
-    - ad_stats.total_impressions
-    - ad_stats.total_interactions
-    - ad_stats.total_conversions
-    - ad_stats.total_cost_usd
+    - ad_basic_stats.average_cost_per_conversion
+    - ad_basic_stats.average_interaction_rate
+    - ad_basic_stats.average_cost_per_click
+    - ad_basic_stats.average_conversion_rate
+    - ad_basic_stats.total_impressions
+    - ad_basic_stats.total_interactions
+    - ad_basic_stats.total_conversions
+    - ad_basic_stats.total_cost_usd
     sorts:
-    - ad_stats.total_cost_usd desc
+    - ad_basic_stats.total_cost_usd desc
     limit: 20
     column_limit: 50
     label: Ad Details
@@ -580,7 +580,7 @@
     conditional_formatting_include_nulls: false
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: ad_stats._data_date
+      Date: ad_basic_stats._data_date
       Campaign Name: campaign.campaign_name
     row: 26
     col: 0
@@ -711,7 +711,7 @@
     type: field_filter
     default_value: 6 months
     model: google_adwords
-    explore: ad_group_stats
-    field: ad_group_stats._data_date
+    explore: ad_group_basic_stats
+    field: ad_group_basic_stats._data_date
     listens_to_filters: []
     allow_multiple_values: true

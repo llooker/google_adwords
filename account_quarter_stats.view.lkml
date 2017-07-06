@@ -14,7 +14,7 @@ view: account_quarter_stats {
         , COALESCE(SUM(stats.Conversions ), 0) AS conversions
         , COALESCE(SUM(stats.Impressions ), 0) AS impressions
         , COALESCE(SUM(stats.Interactions ), 0) AS interactions
-      FROM adwords_v201609.AccountStats_6747157124 AS stats
+      FROM adwords_v201609.AccountBasicStats_6747157124 AS stats
       WHERE
       -- quarter <= max_day_of_quarter of max quarter
         (DATE_DIFF(
@@ -26,11 +26,11 @@ view: account_quarter_stats {
                        (CAST(TIMESTAMP(account_stats._DATA_DATE)  AS DATE)),
                       CAST(CONCAT((FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(account_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))), '-01') as DATE),
                       day) + 1) ) max_day_of_quarter
-            FROM adwords_v201609.AccountStats_6747157124  AS account_stats
+            FROM adwords_v201609.AccountBasicStats_6747157124  AS account_stats
             -- max quarter
             WHERE FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(account_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))  = (
               SELECT MAX(FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(account_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))) AS quarter
-              FROM adwords_v201609.AccountStats_6747157124  AS account_stats))
+              FROM adwords_v201609.AccountBasicStats_6747157124  AS account_stats))
       GROUP BY 1,2
         ;;
 
