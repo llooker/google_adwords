@@ -7,37 +7,12 @@ view: ad_stats {
   sql_table_name: adwords_v201609.AdStats_6747157124 ;;
   ### Metrics can be aggregated over time from this table, so we do NOT restrict on _data_date = _latest_date
 
-  dimension_group: _data {
-    description: "Use this field to filter on a specific time period for ad performance"
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      day_of_week,
-      day_of_week_index,
-      day_of_month,
-      day_of_year
-    ]
-    convert_tz: no
+  dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
-  dimension_group: _latest {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: (TIMESTAMP(${TABLE}._LATEST_DATE)) ;;
+  dimension: _latest {
+    sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
 
   dimension: active_view_cpm {
