@@ -20,8 +20,7 @@ view: entity_base {
     sql: TIMESTAMP(${_data}) ;;
   }
 
-
-  dimension_group: _latest {
+  dimension: _latest {
     hidden: yes
   }
 
