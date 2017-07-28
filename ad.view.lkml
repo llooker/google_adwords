@@ -12,7 +12,6 @@ view: ad {
     sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
 
-
   dimension: ad_group_ad_disapproval_reasons {
     type: string
     sql: ${TABLE}.AdGroupAdDisapprovalReasons ;;
