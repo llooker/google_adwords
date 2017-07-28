@@ -10,16 +10,16 @@ view: base_stats {
   dimension: day_of_week {
     hidden: yes
   }
-  dimension_group: month {
+  dimension: month {
     hidden: yes
   }
   dimension: month_of_year {
     hidden: yes
   }
-  dimension_group: quarter {
+  dimension: quarter {
     hidden: yes
   }
-  dimension_group: week {
+  dimension: week {
     hidden: yes
   }
   dimension: year {
