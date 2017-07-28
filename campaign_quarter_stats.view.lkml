@@ -23,14 +23,14 @@ view: campaign_quarter_stats {
           day) + 1) <= (
             SELECT
               MAX((DATE_DIFF(
-                       (CAST(TIMESTAMP(account_stats._DATA_DATE)  AS DATE)),
-                      CAST(CONCAT((FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(account_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))), '-01') as DATE),
+                       (CAST(TIMESTAMP(campaign_stats._DATA_DATE)  AS DATE)),
+                      CAST(CONCAT((FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(campaign_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))), '-01') as DATE),
                       day) + 1) ) max_day_of_quarter
-            FROM adwords_v201609.CampaignBasicStats_6747157124  AS account_stats
+            FROM adwords_v201609.CampaignBasicStats_6747157124  AS campaign_stats
             -- max quarter
-            WHERE FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(account_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))  = (
-              SELECT MAX(FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(account_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))) AS quarter
-              FROM adwords_v201609.CampaignBasicStats_6747157124  AS account_stats))
+            WHERE FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(campaign_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))  = (
+              SELECT MAX(FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(campaign_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))) AS quarter
+              FROM adwords_v201609.CampaignBasicStats_6747157124  AS campaign_stats))
 
       GROUP BY 1,2
         ;;
