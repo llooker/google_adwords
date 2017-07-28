@@ -2,8 +2,8 @@
   title: Account Performance
   layout: newspaper
   elements:
-  - name: Cost by ad network over time (account)
-    title: Cost by ad network over time (account)
+  - name: cost_by_ad_network_over_time_account
+    title: Cost by ad network over time
     model: google_adwords
     explore: account_basic_stats
     type: looker_area
@@ -61,8 +61,8 @@
     col: 0
     width: 12
     height: 8
-  - name: Cost by device over time (account)
-    title: Cost by device over time (account)
+  - name: cost_by_device_over_time_account
+    title: Cost by device over time
     model: google_adwords
     explore: account_basic_stats
     type: looker_area
@@ -123,8 +123,8 @@
     col: 0
     width: 12
     height: 7
-  - name: Average cost per conversion over time (account)
-    title: Average cost per conversion over time (account)
+  - name: average_cost_per_conversion_over_time_account
+    title: Average cost per conversion over time
     model: google_adwords
     explore: account_basic_stats
     type: looker_line
@@ -224,8 +224,8 @@
     col: 0
     width: 24
     height: 7
-  - name: Funnel by ad network (account)
-    title: Funnel by ad network (account)
+  - name: funnel_by_ad_network_account
+    title: Funnel by ad network
     model: google_adwords
     explore: account_basic_stats
     type: looker_column
@@ -311,8 +311,8 @@
     col: 12
     width: 12
     height: 8
-  - name: Funnel by device (account)
-    title: Funnel by device (account)
+  - name: funnel_by_device_account
+    title: Funnel by device
     model: google_adwords
     explore: account_basic_stats
     type: looker_column
@@ -398,7 +398,7 @@
     col: 12
     width: 12
     height: 7
-  - name: Campaign details
+  - name: campaign_details
     title: Campaign details
     model: google_adwords
     explore: campaign_basic_stats
@@ -457,8 +457,8 @@
     col: 0
     width: 24
     height: 6
-  - name: Ad spend qtd (account)
-    title: Ad spend qtd (account)
+  - name: ad_spend_qtd_account
+    title: Ad spend qtd
     model: google_adwords
     explore: account_quarter_stats
     type: single_value
@@ -517,8 +517,8 @@
     col: 0
     width: 12
     height: 4
-  - name: Cost per conversion qtd (account)
-    title: Cost per conversion qtd (account)
+  - name: cost_per_conversion_qtd_account
+    title: Cost per conversion qtd
     model: google_adwords
     explore: account_quarter_stats
     type: single_value
@@ -577,8 +577,8 @@
     col: 0
     width: 6
     height: 4
-  - name: Conversion rate qtd (account)
-    title: Conversion rate qtd (account)
+  - name: conversion_rate_qtd_account
+    title: Conversion rate qtd
     model: google_adwords
     explore: account_quarter_stats
     type: single_value
@@ -637,8 +637,8 @@
     col: 6
     width: 6
     height: 4
-  - name: Conversions qtd (account)
-    title: Conversions qtd (account)
+  - name: conversions_qtd_account
+    title: Conversions qtd
     model: google_adwords
     explore: account_quarter_stats
     type: single_value
@@ -697,8 +697,8 @@
     col: 12
     width: 12
     height: 4
-  - name: Interaction rate qtd (account)
-    title: Interaction rate qtd (account)
+  - name: interaction_rate_qtd_account
+    title: Interaction rate qtd
     model: google_adwords
     explore: account_quarter_stats
     type: single_value
@@ -757,8 +757,8 @@
     col: 18
     width: 6
     height: 4
-  - name: Cost per interaction qtd (account)
-    title: Cost per interaction qtd (account)
+  - name: cost_per_interaction_qtd_account
+    title: Cost per interaction qtd
     model: google_adwords
     explore: account_quarter_stats
     type: single_value
@@ -842,8 +842,8 @@
     col: 0
     width: 24
     height: 2
-  - name: Hourly Average Cost per Conversion (account)
-    title: Hourly Average Cost per Conversion (account)
+  - name: hourly_average_cost_per_conversion_account
+    title: Hourly Average Cost per Conversion
     model: google_adwords
     explore: hourly_account_stats
     type: looker_column
@@ -933,8 +933,8 @@
     col: 12
     width: 12
     height: 7
-  - name: Day of Week Average Cost per Conversion (account)
-    title: Day of Week Average Cost per Conversion (account)
+  - name: day_of_week_average_cost_per_conversion_account
+    title: Day of Week Average Cost per Conversion
     model: google_adwords
     explore: account_basic_stats
     type: looker_column
