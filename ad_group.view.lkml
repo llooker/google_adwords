@@ -4,32 +4,12 @@ view: ad_group {
   extends: [entity_base]
   sql_table_name: adwords_v201609.AdGroup_6747157124 ;;
 
-  dimension_group: _data {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
+  dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
-  dimension_group: _latest {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
+  dimension: _latest {
+    sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
 
   dimension: ad_group_desktop_bid_modifier {
@@ -51,6 +31,11 @@ view: ad_group {
   dimension: ad_group_name {
     type: string
     sql: ${TABLE}.AdGroupName ;;
+    link: {
+      label: "Ad Group Dashboard"
+      url: "/dashboards/google_adwords::ad_performance?Ad%20Group%20Name={{ value | encode_uri }}&Campaign%20Name={{ campaign.campaign_name._value | encode_uri }}"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: ad_group_status {
@@ -169,18 +154,17 @@ view: ad_group {
   }
 
   dimension: cpc_bid_usd {
-    type: string
+    type: number
     sql: (${cpc_bid} / 1000000)  ;;
   }
 
   dimension: cpm_bid_usd {
     type: number
-    value_format_name: id
     sql: (${cpm_bid} / 1000000) ;;
   }
 
   dimension: cpv_bid_usd {
-    type: string
+    type: number
     sql: (${cpv_bid} / 1000000) ;;
   }
 

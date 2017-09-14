@@ -1,46 +1,19 @@
 include: "stats.view.lkml"
+include: "ad_criterion_base.view.lkml"
+
 
 view: keyword_stats {
-  extends: [stats]
+  extends: [ad_criterion_base, base_stats, stats]
 
   sql_table_name: adwords_v201609.KeywordStats_6747157124 ;;
 
-  dimension_group: _data {
-    description: "Filter on this field to constain the query to a specific time range"
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      day_of_week
-    ]
-    convert_tz: no
+  dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
-  dimension_group: _latest {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: (TIMESTAMP(${TABLE}._LATEST_DATE)) ;;
+  dimension: _latest {
+    sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
-
-  dimension: unique_key {
-    type:  string
-    primary_key: yes
-    hidden: yes
-    sql: CONCAT(CAST(${TABLE}.AdGroupId AS STRING),CAST(${TABLE}.CriterionID AS STRING)) ;;
-   }
 
   dimension: active_view_cpm {
     type: number
@@ -193,11 +166,7 @@ view: keyword_stats {
 
   dimension: device {
     type: string
-    sql:  CASE
-         WHEN ${TABLE}.device LIKE '%Desktop%' THEN "Desktop"
-        WHEN ${TABLE}.device LIKE '%Mobile%' THEN "Mobile"
-        WHEN ${TABLE}.device LIKE '%Tablet%' THEN "Tablet"
-        ELSE "Unknown" END;;
+    sql: ${TABLE}.Device ;;
   }
 
   dimension: external_customer_id {
@@ -312,31 +281,34 @@ view: keyword_stats {
     drill_fields: []
   }
 
-  measure: total_cost_usd {
-    drill_fields: [keyword.detail*]
-  }
-  measure: total_conversions {
-    drill_fields: [keyword.detail*]
-  }
   measure: total_impressions {
-    drill_fields: [keyword.detail*]
-  }
-  measure: total_interactions {
-    drill_fields: [keyword.detail*]
+    drill_fields: [keyword.detail*, total_impressions]
   }
   measure: total_clicks {
-    drill_fields: [keyword.detail*]
+    drill_fields: [keyword.detail*, total_clicks]
+  }
+  measure: total_interactions {
+    drill_fields: [keyword.detail*, total_interactions]
+  }
+  measure: total_conversions {
+    drill_fields: [keyword.detail*, total_conversions]
+  }
+  measure: total_cost_usd {
+    drill_fields: [keyword.detail*, total_cost_usd]
   }
   measure: average_interaction_rate {
-    drill_fields: [keyword.detail*]
+    drill_fields: [keyword.detail*, average_interaction_rate]
   }
-  measure: average_cost_per_conversion {
-    drill_fields: [keyword.detail*]
-  }
-  measure: average_cost_per_click {
-    drill_fields: [keyword.detail*]
+  measure: average_click_rate {
+    drill_fields: [keyword.detail*, average_click_rate]
   }
   measure: average_conversion_rate {
-    drill_fields: [keyword.detail*]
+    drill_fields: [keyword.detail*, average_conversion_rate]
+  }
+  measure: average_cost_per_click {
+    drill_fields: [keyword.detail*, average_cost_per_click]
+  }
+  measure: average_cost_per_conversion {
+    drill_fields: [keyword.detail*, average_cost_per_conversion]
   }
 }

@@ -4,26 +4,48 @@ view: base {
   extends: [entity_base]
   extension: required
 
-  dimension_group: date {
-    hidden: yes
+  dimension: _data_day_of_quarter {
+    group_label: "Data Date"
+    label: "Day of Quarter"
+    type: number
+    sql: DATE_DIFF(
+           ${_data_date},
+          CAST(CONCAT(${_data_quarter}, '-01') as DATE),
+          day) + 1
+       ;;
   }
-  dimension: day_of_week {
-    hidden: yes
+
+  dimension: _data_next_quarter {
+    type: date
+    sql: DATE_ADD(CAST(CONCAT(${_data_quarter}, '-01') as DATE), INTERVAL 1 QUARTER) ;;
   }
-  dimension_group: month {
-    hidden: yes
+
+  dimension:  _data_days_in_quarter {
+    type: number
+    sql: DATE_DIFF(
+           ${_data_next_quarter},
+           CAST(CONCAT(${_data_quarter}, '-01') as DATE),
+           day) ;;
   }
-  dimension: month_of_year {
-    hidden: yes
+
+  measure: _data_max_day_of_week_index {
+    type: max
+    sql: ${_data_day_of_week_index} ;;
   }
-  dimension_group: quarter {
-    hidden: yes
+
+  measure: _data_max_day_of_month {
+    type: max
+    sql: ${_data_day_of_month} ;;
   }
-  dimension_group: week {
-    hidden: yes
+
+  measure: _data_max_day_of_quarter {
+    type: max
+    sql: ${_data_day_of_quarter} ;;
   }
-  dimension: year {
-    hidden: yes
+
+  measure: _data_max_day_of_year {
+    type: max
+    sql: ${_data_day_of_year} ;;
   }
 
   dimension: ad_network_type1 {
@@ -46,5 +68,18 @@ view: base {
       ELSE 'Other'
       END
       ;;
+  }
+
+  dimension: device {
+    hidden: yes
+  }
+
+  dimension: device_type {
+    type: string
+    sql:  CASE
+      WHEN ${device} LIKE '%Desktop%' THEN "Desktop"
+      WHEN ${device} LIKE '%Mobile%' THEN "Mobile"
+      WHEN ${device} LIKE '%Tablet%' THEN "Tablet"
+      ELSE "Unknown" END;;
   }
 }

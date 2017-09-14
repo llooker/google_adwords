@@ -135,6 +135,36 @@ explore: ad_stats {
   }
 }
 
+explore: ad_basic_stats {
+  label: "Ad Stats"
+  view_label: "Ad Stats"
+
+  join: keyword {
+    view_label: "Keyword"
+    sql_on: ${ad_basic_stats.unique_key} = ${keyword.unique_key} AND
+      ${ad_basic_stats._data_raw} = ${keyword._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: ad {
+    view_label: "Ads"
+    sql_on: ${ad.creative_id} = ${ad_basic_stats.creative_id} AND
+      ${ad_basic_stats._data_raw} = ${ad._data_raw} ;;
+    relationship:  many_to_one
+  }
+  join: ad_group {
+    view_label: "Ad Groups"
+    sql_on: ${ad.ad_group_id} = ${ad_group.ad_group_id} AND
+      ${ad._data_raw} = ${ad_group._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: campaign {
+    view_label: "Campaigns"
+    sql_on: ${ad_group.campaign_id} = ${campaign.campaign_id} AND
+      ${ad_group._data_raw} = ${campaign._data_raw};;
+    relationship: many_to_one
+  }
+}
+
 explore: hourly_ad_group_stats {
   label: "Hourly Ad Group Stats"
   view_label: "Hourly Ad Group Stats"
@@ -173,6 +203,24 @@ explore:ad_group_stats {
   }
 }
 
+explore:ad_group_basic_stats {
+  label: "Ad Group Stats"
+  view_label: "Ad Group Stats"
+
+  join: ad_group {
+    view_label: "Ad Groups"
+    sql_on: ${ad_group_basic_stats.ad_group_id} = ${ad_group.ad_group_id} AND
+      ${ad_group_basic_stats._data_raw} = ${ad_group._data_raw} ;;
+    relationship: many_to_one
+  }
+
+  join: campaign {
+    view_label: "Campaigns"
+    sql_on: ${ad_group.campaign_id} = ${campaign.campaign_id}  AND
+      ${ad_group._data_raw} = ${campaign._data_raw} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: keyword_stats {
   label: "Keyword Stats"
@@ -182,6 +230,30 @@ explore: keyword_stats {
     view_label: "Keyword"
     sql_on: ${keyword_stats.unique_key} = ${keyword.unique_key} AND
       ${keyword_stats._data_raw} = ${keyword._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: ad_group {
+    view_label: "Ad Groups"
+    sql_on: ${keyword.ad_group_id} = ${ad_group.ad_group_id} AND
+      ${keyword._data_raw} = ${ad_group._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: campaign {
+    view_label: "Campaigns"
+    sql_on: ${keyword.campaign_id} = ${campaign.campaign_id} AND
+      ${keyword._data_raw} = ${campaign._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: keyword_basic_stats {
+  label: "Keyword Stats"
+  view_label: "Keyword Stats"
+
+  join: keyword {
+    view_label: "Keyword"
+    sql_on: ${keyword_basic_stats.unique_key} = ${keyword.unique_key} AND
+      ${keyword_basic_stats._data_raw} = ${keyword._data_raw} ;;
     relationship: many_to_one
   }
   join: ad_group {
@@ -240,6 +312,30 @@ explore: audience_stats {
   }
 }
 
+explore: audience_basic_stats {
+  label: "Audience Stats"
+  view_label: "Audience Stats"
+
+  join: audience {
+    view_label: "Audience"
+    sql_on: ${audience_basic_stats.unique_key} = ${audience.unique_key} AND
+      ${audience_basic_stats._data_raw} = ${audience._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: ad_group {
+    view_label: "Ad Groups"
+    sql_on: ${audience_basic_stats.ad_group_id} = ${ad_group.ad_group_id} AND
+      ${audience_basic_stats._data_raw} = ${ad_group._data_raw} ;;
+    relationship: many_to_one
+  }
+  join: campaign {
+    view_label: "Campaigns"
+    sql_on: ${audience_basic_stats.campaign_id} = ${campaign.campaign_id} AND
+      ${audience_basic_stats._data_raw} = ${campaign._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
 explore: campaign_stats {
   label: "Campaign Stats"
   view_label: "Campaign Stats"
@@ -250,6 +346,56 @@ explore: campaign_stats {
       ${campaign_stats._data_raw} = ${campaign._data_raw} ;;
     relationship: many_to_one
   }
+}
+
+explore: campaign_basic_stats {
+  label: "Campaign Stats"
+  view_label: "Campaign Stats"
+
+  join: campaign {
+    view_label: "Campaign"
+    sql_on: ${campaign_basic_stats.campaign_id} = ${campaign.campaign_id} AND
+      ${campaign_basic_stats._data_raw} = ${campaign._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: account_quarter_stats {
+  label: "Account Quarter Stats"
+  view_label: "Account Quarter Stats"
+
+  join: last_account_quarter_stats {
+    from: account_quarter_stats
+    view_label: "Last Quarter Account Stats"
+    sql_on: ${account_quarter_stats.external_customer_id} = ${last_account_quarter_stats.external_customer_id} AND
+      ${account_quarter_stats._data_last_quarter} = ${last_account_quarter_stats._data_quarter} ;;
+    relationship: one_to_one
+  }
+#   join:  customer {
+#     view_label: "Customer"
+#     sql_on: ${account_quarter_stats.external_customer_id} = ${customer.external_customer_id} AND
+#       ${customer.latest} = 'Yes' ;;
+#     relationship: many_to_one
+#   }
+}
+
+explore: campaign_quarter_stats {
+  label: "Campaign Quarter Stats"
+  view_label: "Campaign Quarter Stats"
+
+  join: last_campaign_quarter_stats {
+    from: campaign_quarter_stats
+    view_label: "Last Quarter Campaign Stats"
+    sql_on: ${campaign_quarter_stats.campaign_id} = ${last_campaign_quarter_stats.campaign_id} AND
+      ${campaign_quarter_stats._data_last_quarter} = ${last_campaign_quarter_stats._data_quarter} ;;
+    relationship: one_to_one
+  }
+#   join: campaign {
+#     view_label: "Campaign"
+#     sql_on: ${campaign_quarter_stats.campaign_id} = ${campaign.campaign_id} AND
+#       ${campaign.latest} = 'Yes' ;;
+#     relationship: many_to_one
+#   }
 }
 
 explore: hourly_campaign_stats {
@@ -266,7 +412,7 @@ explore: hourly_campaign_stats {
 
 explore: campaign_budget_stats {
   label: "Campaign Budget Stats"
-  view_label: "Campaign Campaign Stats"
+  view_label: "Campaign Budget Stats"
 
   join: campaign {
     view_label: "Campaign"
@@ -276,11 +422,35 @@ explore: campaign_budget_stats {
   }
 }
 
+explore: account_basic_stats {
+  label: "Account Stats"
+  view_label: "Account Stats"
+
+  join:  customer {
+    view_label: "Customer"
+    sql_on: ${account_basic_stats.external_customer_id} = ${customer.external_customer_id} AND
+      ${account_basic_stats._data_raw} = ${customer._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
 explore: account_stats {
+  label: "Account Stats"
+  view_label: "Account Stats"
+
   join:  customer {
     view_label: "Customer"
     sql_on: ${account_stats.external_customer_id} = ${customer.external_customer_id} AND
       ${account_stats._data_raw} = ${customer._data_raw} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: hourly_account_stats {
+  join:  customer {
+    view_label: "Customer"
+    sql_on: ${hourly_account_stats.external_customer_id} = ${customer.external_customer_id} AND
+      ${hourly_account_stats._data_raw} = ${customer._data_raw} ;;
     relationship: many_to_one
   }
 }

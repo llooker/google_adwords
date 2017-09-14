@@ -1,4 +1,19 @@
 view: campaign_budget_stats {
+
+#   derived_table: {
+#     explore_source: campaign_basic_stats {
+#       column: _data_date {}
+#       column: budget_id { field: campaign.budget_id }
+#       column: campaign_id { field: campaign.campaign_id }
+#       column: amount_usd { field: campaign.total_amount_usd }
+#       column: cost_usd {}
+#     }
+#   }
+#   dimension: _data_date {}
+#   dimension: budget_id {}
+#   dimension: campaign_id {}
+#   dimension: amount_usd {}
+#   dimension: cost_usd {}
   derived_table: {
     sql: SELECT
   campaign.CampaignId  AS campaign_id,
@@ -24,7 +39,11 @@ GROUP BY 1,2,3
       week,
       month,
       quarter,
-      year
+      year,
+      day_of_week,
+      day_of_week_index,
+      day_of_month,
+      day_of_year
     ]
     convert_tz: no
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;

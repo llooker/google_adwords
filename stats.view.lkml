@@ -1,7 +1,7 @@
 include: "base.view.lkml"
+include: "base_stats.view.lkml"
 
 view: stats {
-  extends: [base]
   extension: required
 
   dimension: cost_usd {
@@ -12,6 +12,12 @@ view: stats {
   dimension: cost_usd_per_click {
     type: number
     sql: ${cost_usd}/(NULLIF(${clicks},0)) ;;
+  }
+
+  measure: total_cost {
+    hidden: yes
+    type: sum
+    sql: ${cost} ;;
   }
 
   measure: total_cost_usd {

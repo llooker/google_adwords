@@ -438,11 +438,11 @@
       type: looker_column
       model: google_adwords
       explore: campaign_stats
-      dimensions: [campaign_stats._data_date, campaign_stats.device]
-      pivots: [campaign_stats.device]
+      dimensions: [campaign_stats._data_date, campaign_stats.device_type]
+      pivots: [campaign_stats.device_type]
       fill_fields: [campaign_stats._data_date]
       measures: [campaign_stats.total_impressions]
-      sorts: [campaign_stats._data_date desc, campaign_stats.device]
+      sorts: [campaign_stats._data_date desc, campaign_stats.device_type]
       limit: '500'
       column_limit: '50'
       query_timezone: America/Los_Angeles

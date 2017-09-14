@@ -1,42 +1,16 @@
 include: "entity_base.view.lkml"
+include: "ad_criterion_base.view.lkml"
 
 view: keyword {
-  extends: [entity_base]
+  extends: [ad_criterion_base, entity_base]
   sql_table_name: adwords_v201609.Keyword_6747157124 ;;
 
-  dimension_group: _data {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
+  dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
-  dimension_group: _latest {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
-  }
-
-  dimension: unique_key {
-    type: string
-    primary_key: yes
-    hidden: yes
-    sql: CONCAT(CAST(${ad_group_id} AS STRING),CAST(${criterion_id} AS STRING)) ;;
+  dimension: _latest {
+    sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
 
   dimension: ad_group_id {
@@ -81,7 +55,7 @@ view: keyword {
 
   dimension: cpc_bid {
     hidden: yes
-    type: string
+    type: number
     sql: ${TABLE}.CpcBid ;;
   }
 
@@ -93,7 +67,6 @@ view: keyword {
   dimension: cpm_bid {
     hidden: yes
     type: number
-    value_format_name: id
     sql: ${TABLE}.CpmBid ;;
   }
 
@@ -233,13 +206,12 @@ view: keyword {
   }
 
   dimension: cpc_bid_usd {
-    type: string
+    type: number
     sql: coalesce((${cpc_bid} / 1000000), ${ad_group.cpc_bid_usd}) ;;
   }
 
   dimension: cpm_bid_usd {
     type: number
-    value_format_name: id
     sql: coalesce((${cpm_bid} / 1000000), ${ad_group.cpm_bid_usd}) ;;
   }
 
