@@ -33,7 +33,7 @@ view: ad_group {
     sql: ${TABLE}.AdGroupName ;;
     link: {
       label: "Ad Group Dashboard"
-      url: "/dashboards/google_adwords::ad_performance?Ad%20Group%20Name={{ value | encode_uri }}&Campaign%20Name={{ campaign.campaign_name._value | encode_uri }}"
+      url: "/dashboards/adwords_demo::ad_performance?Ad%20Group%20Name={{ value | encode_uri }}&Campaign%20Name={{ campaign.campaign_name._value | encode_uri }}"
       icon_url: "http://www.looker.com/favicon.ico"
     }
   }

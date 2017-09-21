@@ -29,7 +29,7 @@
     height: 2
   - name: Ad spend qtd (campaign)
     title: Ad spend qtd (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -92,7 +92,7 @@
     height: 4
   - name: Conversions qtd (campaign)
     title: Conversions qtd (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -155,7 +155,7 @@
     height: 4
   - name: Cost per conversion qtd (campaign)
     title: Cost per conversion qtd (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -218,7 +218,7 @@
     height: 4
   - name: Conversion rate qtd (campaign)
     title: Conversion rate qtd (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -281,7 +281,7 @@
     height: 4
   - name: Cost per interaction qtd (campaign)
     title: Cost per interaction qtd (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -344,7 +344,7 @@
     height: 4
   - name: Average cost per conversion over time (campaign)
     title: Average cost per conversion over time (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_basic_stats
     type: looker_line
     fields:
@@ -412,17 +412,17 @@
       series:
       - id: campaign_basic_stats.total_impressions
         name: Campaign Stats Total Impressions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 342
       - id: campaign_basic_stats.total_interactions
         name: Campaign Stats Total Interactions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 346
       - id: campaign_basic_stats.total_conversions
         name: Campaign Stats Total Conversions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 350
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 330
     discontinuous_nulls: false
     focus_on_hover: false
@@ -435,7 +435,7 @@
       series_index: 1
       show_label: false
       label_type: string
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 360
     listen:
       Campaign Name: campaign.campaign_name
@@ -446,7 +446,7 @@
     height: 7
   - name: Interaction rate qtd (campaign)
     title: Interaction rate qtd (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -510,7 +510,7 @@
     height: 4
   - name: Cost by ad network over time (campaign)
     title: Cost by ad network over time (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_basic_stats
     type: looker_area
     fields:
@@ -570,7 +570,7 @@
     height: 8
   - name: Funnel by ad network (campaign)
     title: Funnel by ad network (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_basic_stats
     type: looker_column
     fields:
@@ -637,17 +637,17 @@
       series:
       - id: campaign_basic_stats.total_impressions
         name: Campaign Stats Total Impressions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 626
       - id: campaign_basic_stats.total_interactions
         name: Campaign Stats Total Interactions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 630
       - id: campaign_basic_stats.total_conversions
         name: Campaign Stats Total Conversions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 634
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 614
     listen:
       Campaign Name: campaign.campaign_name
@@ -658,7 +658,7 @@
     height: 8
   - name: Cost by device over time (campaign)
     title: Cost by device over time (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_basic_stats
     type: looker_area
     fields:
@@ -721,7 +721,7 @@
     height: 7
   - name: Funnel by device (campaign)
     title: Funnel by device (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_basic_stats
     type: looker_column
     fields:
@@ -788,17 +788,17 @@
       series:
       - id: campaign_basic_stats.total_impressions
         name: Campaign Stats Total Impressions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 877
       - id: campaign_basic_stats.total_interactions
         name: Campaign Stats Total Interactions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 881
       - id: campaign_basic_stats.total_conversions
         name: Campaign Stats Total Conversions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 885
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 865
     listen:
       Campaign Name: campaign.campaign_name
@@ -809,7 +809,7 @@
     height: 7
   - name: Day of Week Average Cost per Conversion (campaign)
     title: Day of Week Average Cost per Conversion (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_basic_stats
     type: looker_column
     fields:
@@ -863,9 +863,9 @@
       series:
       - id: campaign_basic_stats.total_conversions
         name: Campaign Stats Total Conversions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 952
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 940
     - label:
       maxValue:
@@ -881,9 +881,9 @@
       series:
       - id: campaign_basic_stats.total_cost_usd
         name: Campaign Stats Total Cost USD
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 970
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 958
     - label:
       maxValue:
@@ -899,9 +899,9 @@
       series:
       - id: campaign_basic_stats.average_cost_per_conversion
         name: Campaign Stats Cost per Conversion
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 988
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 976
     series_types:
       campaign_basic_stats.average_cost_per_conversion: line
@@ -916,7 +916,7 @@
     height: 7
   - name: Hourly Average Cost per Conversion (campaign)
     title: Hourly Average Cost per Conversion (campaign)
-    model: google_adwords
+    model: adwords_demo
     explore: hourly_campaign_stats
     type: looker_column
     fields:
@@ -983,9 +983,9 @@
       series:
       - id: hourly_campaign_stats.total_conversions
         name: Total Conversions
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 777
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 765
     - label:
       maxValue:
@@ -1001,9 +1001,9 @@
       series:
       - id: hourly_campaign_stats.average_cost_per_conversion
         name: Cost per Conversion
-        __FILE: google_adwords/campaign_performance.dashboard.lookml
+        __FILE: adwords_demo/campaign_performance.dashboard.lookml
         __LINE_NUM: 795
-      __FILE: google_adwords/campaign_performance.dashboard.lookml
+      __FILE: adwords_demo/campaign_performance.dashboard.lookml
       __LINE_NUM: 783
     hidden_series:
     - hourly_campaign_stats.total_cost_usd
@@ -1016,7 +1016,7 @@
     height: 7
   - name: Campaign budget utilization
     title: Campaign budget utilization
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_budget_stats
     type: looker_column
     fields:
@@ -1085,7 +1085,7 @@
     height: 8
   - name: Ad group details
     title: Ad group details
-    model: google_adwords
+    model: adwords_demo
     explore: ad_group_basic_stats
     type: table
     fields:
@@ -1146,7 +1146,7 @@
     title: Campaign Name
     type: field_filter
     default_value: ''
-    model: google_adwords
+    model: adwords_demo
     explore: campaign
     field: campaign.campaign_name
     listens_to_filters:
@@ -1156,7 +1156,7 @@
     title: Date
     type: field_filter
     default_value: 6 months
-    model: google_adwords
+    model: adwords_demo
     explore: campaign_basic_stats
     field: campaign_basic_stats._data_date
     listens_to_filters: []

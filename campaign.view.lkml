@@ -73,7 +73,7 @@ view: campaign {
     sql: ${TABLE}.CampaignName ;;
     link: {
       label: "Campaign Dashboard"
-      url: "/dashboards/google_adwords::campaign_performance?Campaign%20Name={{ value | encode_uri }}"
+      url: "/dashboards/adwords_demo::campaign_performance?Campaign%20Name={{ value | encode_uri }}"
       icon_url: "http://www.looker.com/favicon.ico"
     }
   }

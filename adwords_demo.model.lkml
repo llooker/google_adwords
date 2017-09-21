@@ -390,12 +390,12 @@ explore: campaign_quarter_stats {
       ${campaign_quarter_stats._data_last_quarter} = ${last_campaign_quarter_stats._data_quarter} ;;
     relationship: one_to_one
   }
-#   join: campaign {
-#     view_label: "Campaign"
-#     sql_on: ${campaign_quarter_stats.campaign_id} = ${campaign.campaign_id} AND
-#       ${campaign.latest} = 'Yes' ;;
-#     relationship: many_to_one
-#   }
+  join: campaign {
+    view_label: "Campaign"
+    sql_on: ${campaign_quarter_stats.campaign_id} = ${campaign.campaign_id} AND
+      ${campaign.latest} = 'Yes' ;;
+    relationship: many_to_one
+  }
 }
 
 explore: hourly_campaign_stats {

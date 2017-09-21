@@ -10,7 +10,7 @@
     - name: total_campaigns
       title: Total Campaigns (Campaigns)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign.count]
       limit: '500'
@@ -52,7 +52,7 @@
     - name: total_cost_usd
       title: Total Cost (Campaigns)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.total_cost_usd]
       sorts: [campaign_stats.total_cost_usd desc]
@@ -95,7 +95,7 @@
     - name: average_cost_per_conversion
       title: Average Cost per Conversion (Campaigns)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.average_cost_per_conversion]
       limit: '500'
@@ -137,7 +137,7 @@
     - name: total_impressions
       title: Total Impressions (Campaigns)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.total_impressions]
       sorts: [campaign_stats.total_impressions desc]
@@ -180,7 +180,7 @@
     - name: total_interactions
       title: Total Interactions (Campaigns)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.total_interactions]
       sorts: [campaign_stats.total_interactions desc]
@@ -223,7 +223,7 @@
     - name: average_interaction_rate
       title: Average Interaction Rate (Campaigns)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.average_interaction_rate]
       limit: '500'
@@ -265,7 +265,7 @@
     - name: total_clicks
       title: Total Clicks (Campaigns)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.total_clicks]
       sorts: [campaign_stats.total_clicks desc]
@@ -308,7 +308,7 @@
     - name: total_conversions
       title: Total Conversions (Campaigns)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.total_conversions]
       sorts: [campaign_stats.total_conversions desc]
@@ -352,7 +352,7 @@
     - name: average_conversion_rate
       title: Average Conversion Rate
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.average_conversion_rate]
       limit: '500'
@@ -396,7 +396,7 @@
     - name: campaign_funnel
       title: Campaign Funnel (Campaigns)
       type: looker_column
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       measures: [campaign_stats.total_impressions, campaign_stats.total_interactions,
         campaign_stats.total_conversions]
@@ -436,7 +436,7 @@
     - name: performance_by_device
       title: Campaign Performance by Device (Campaigns)
       type: looker_column
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       dimensions: [campaign_stats._data_date, campaign_stats.device_type]
       pivots: [campaign_stats.device_type]
@@ -474,7 +474,7 @@
     - name: impression_to_interaction
       title: Impression to Click Conversion Efficiency (Campaigns)
       type: looker_column
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       dimensions: [campaign.campaign_name]
       measures: [campaign_stats.total_impressions, campaign_stats.average_interaction_rate]
@@ -517,7 +517,7 @@
     - name: click_to_conversion
       title: Click to Conversion Efficiency (Campaigns)
       type: looker_column
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       dimensions: [campaign.campaign_name]
       measures: [campaign_stats.total_clicks, campaign_stats.average_conversion_rate]
@@ -559,7 +559,7 @@
     - name: all_campaign_full_detail
       title: All Campaigns Full Details (Campaigns)
       type: table
-      model: google_adwords
+      model: adwords_demo
       explore: campaign_stats
       dimensions: [campaign.campaign_name]
       measures: [campaign_stats.total_interactions, campaign_stats.total_impressions,

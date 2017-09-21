@@ -10,7 +10,7 @@
     - name: total_keywords
       title: Total Keywords (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword.count]
       limit: '500'
@@ -52,7 +52,7 @@
     - name: total_cost_usd
       title: Total Cost (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword_stats.total_cost_usd]
       sorts: [keyword_stats.total_cost_usd desc]
@@ -95,7 +95,7 @@
     - name: average_cost_per_conversion
       title: Average Cost per Conversion (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword_stats.average_cost_per_conversion]
       limit: '500'
@@ -137,7 +137,7 @@
     - name: total_impressions
       title: Total Impressions (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword_stats.total_impressions]
       sorts: [keyword_stats.total_impressions desc]
@@ -180,7 +180,7 @@
     - name: total_interactions
       title: Total Interactions (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword_stats.total_interactions]
       sorts: [keyword_stats.total_interactions desc]
@@ -223,7 +223,7 @@
     - name: average_interaction_rate
       title: Average Interaction Rate (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword_stats.average_interaction_rate]
       limit: '500'
@@ -265,7 +265,7 @@
     - name: total_clicks
       title: Total Clicks (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword_stats.total_clicks]
       sorts: [keyword_stats.total_clicks desc]
@@ -308,7 +308,7 @@
     - name: total_conversions
       title: Total Conversions (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword_stats.total_conversions]
       sorts: [keyword_stats.total_conversions desc]
@@ -352,7 +352,7 @@
     - name: average_conversion_rate
       title: Average Conversion Rate (Keywords)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       measures: [keyword_stats.average_conversion_rate]
       limit: '500'
@@ -394,7 +394,7 @@
     - name: keyword_efficiency_over_time
       title: Keyword Efficiency Over Time (Keywords)
       type: looker_line
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       dimensions: [keyword_stats._data_date]
       fill_fields: [keyword_stats._data_date]
@@ -442,7 +442,7 @@
     - name: keyword_funnel_by_device
       title: Keyword Funnel by Device (Keywords)
       type: looker_column
-      model: google_adwords
+      model: adwords_demo
       explore: keyword_stats
       dimensions: [keyword_stats.device_type]
       measures: [keyword_stats.total_impressions, keyword_stats.total_clicks, keyword_stats.total_conversions]

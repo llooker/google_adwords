@@ -21,7 +21,7 @@
     height: 2
   - name: Average cost per conversion over time (ad group)
     title: Average cost per conversion over time (ad group)
-    model: google_adwords
+    model: adwords_demo
     explore: ad_group_basic_stats
     type: looker_line
     fields:
@@ -89,17 +89,17 @@
       series:
       - id: ad_group_basic_stats.total_impressions
         name: Ad Stats Total Impressions
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 88
       - id: ad_group_basic_stats.total_interactions
         name: Ad Stats Total Interactions
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 92
       - id: ad_group_basic_stats.total_conversions
         name: Ad Stats Total Conversions
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 96
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 76
     discontinuous_nulls: false
     focus_on_hover: false
@@ -112,7 +112,7 @@
       series_index: 1
       show_label: false
       label_type: string
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 106
     listen:
       Ad Group Name: ad_group.ad_group_name
@@ -124,7 +124,7 @@
     height: 7
   - name: Top 10 keyword performance (keyword)
     title: Top 10 keyword performance (keyword)
-    model: google_adwords
+    model: adwords_demo
     explore: keyword_stats
     type: looker_column
     fields:
@@ -186,9 +186,9 @@
       series:
       - id: keyword_stats.average_cost_per_conversion
         name: Cost per Conversion
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 184
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 172
     - label:
       maxValue:
@@ -204,9 +204,9 @@
       series:
       - id: keyword_stats.total_cost_usd
         name: Total Cost USD
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 202
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 190
     series_types:
       keyword_stats.average_cost_per_conversion: line
@@ -220,7 +220,7 @@
     height: 7
   - name: Top 10 creative performance (ad)
     title: Top 10 creative performance (ad)
-    model: google_adwords
+    model: adwords_demo
     explore: ad_basic_stats
     type: looker_column
     fields:
@@ -293,9 +293,9 @@
       series:
       - id: ad_basic_stats.average_cost_per_conversion
         name: Cost per Conversion
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 290
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 278
     - label:
       maxValue:
@@ -311,9 +311,9 @@
       series:
       - id: ad_basic_stats.total_cost_usd
         name: Total Cost USD
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 308
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 296
     x_axis_datetime_label: ''
     y_axis_reversed: false
@@ -327,7 +327,7 @@
     height: 7
   - name: Top 10 audience performance (audience)
     title: Top 10 audience performance (audience)
-    model: google_adwords
+    model: adwords_demo
     explore: audience_stats
     type: looker_column
     fields:
@@ -376,9 +376,9 @@
       series:
       - id: audience_stats.average_cost_per_conversion
         name: Audience Stats Cost per Conversion
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 372
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 360
     - label:
       maxValue:
@@ -394,9 +394,9 @@
       series:
       - id: audience_stats.total_cost_usd
         name: Audience Stats Total Cost USD
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 386
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 374
     series_types:
       audience_stats.average_cost_per_conversion: line
@@ -410,7 +410,7 @@
     height: 8
   - name: Bid strategy and match cost per conversion
     title: Bid strategy and match cost per conversion
-    model: google_adwords
+    model: adwords_demo
     explore: keyword_stats
     type: looker_column
     fields:
@@ -478,17 +478,17 @@
       series:
       - id: PHRASE - Keyword Stats Cost per Conversion
         name: PHRASE - Keyword Stats Cost per Conversion
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 465
       - id: EXACT - Keyword Stats Cost per Conversion
         name: EXACT - Keyword Stats Cost per Conversion
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 469
       - id: BROAD - Keyword Stats Cost per Conversion
         name: BROAD - Keyword Stats Cost per Conversion
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 471
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 453
     - label:
       maxValue:
@@ -504,17 +504,17 @@
       series:
       - id: PHRASE - Keyword Stats Total Cost USD
         name: PHRASE - Keyword Stats Total Cost USD
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 487
       - id: EXACT - Keyword Stats Total Cost USD
         name: EXACT - Keyword Stats Total Cost USD
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 491
       - id: BROAD - Keyword Stats Total Cost USD
         name: BROAD - Keyword Stats Total Cost USD
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 493
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 475
     series_types: {}
     listen:
@@ -527,7 +527,7 @@
     height: 8
   - name: Ad details
     title: Ad details
-    model: google_adwords
+    model: adwords_demo
     explore: ad_basic_stats
     type: table
     fields:
@@ -588,7 +588,7 @@
     height: 8
   - name: Keyword details (keyword)
     title: Keyword details (keyword)
-    model: google_adwords
+    model: adwords_demo
     explore: keyword_stats
     type: table
     fields:
@@ -655,9 +655,9 @@
       series:
       - id: keyword_stats.average_cost_per_conversion
         name: Keyword Stats Average Cost per Conversion
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 630
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 618
     - label:
       maxValue:
@@ -673,9 +673,9 @@
       series:
       - id: keyword_stats.total_cost
         name: Keyword Stats Total Cost
-        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
         __LINE_NUM: 648
-      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
       __LINE_NUM: 636
     series_types: {}
     listen:
@@ -691,7 +691,7 @@
     title: Campaign Name
     type: field_filter
     default_value: ''
-    model: google_adwords
+    model: adwords_demo
     explore: campaign
     field: campaign.campaign_name
     listens_to_filters:
@@ -701,7 +701,7 @@
     title: Ad Group Name
     type: field_filter
     default_value: ''
-    model: google_adwords
+    model: adwords_demo
     explore: ad_group
     field: ad_group.ad_group_name
     listens_to_filters: []
@@ -710,7 +710,7 @@
     title: Date
     type: field_filter
     default_value: 6 months
-    model: google_adwords
+    model: adwords_demo
     explore: ad_group_basic_stats
     field: ad_group_basic_stats._data_date
     listens_to_filters: []
