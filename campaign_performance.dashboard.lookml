@@ -29,7 +29,7 @@
     height: 2
   - name: Ad spend qtd (campaign)
     title: Ad spend qtd (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -92,7 +92,7 @@
     height: 4
   - name: Conversions qtd (campaign)
     title: Conversions qtd (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -155,7 +155,7 @@
     height: 4
   - name: Cost per conversion qtd (campaign)
     title: Cost per conversion qtd (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -218,7 +218,7 @@
     height: 4
   - name: Conversion rate qtd (campaign)
     title: Conversion rate qtd (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -281,7 +281,7 @@
     height: 4
   - name: Cost per interaction qtd (campaign)
     title: Cost per interaction qtd (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -344,7 +344,7 @@
     height: 4
   - name: Average cost per conversion over time (campaign)
     title: Average cost per conversion over time (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_basic_stats
     type: looker_line
     fields:
@@ -446,7 +446,7 @@
     height: 7
   - name: Interaction rate qtd (campaign)
     title: Interaction rate qtd (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_quarter_stats
     type: single_value
     fields:
@@ -510,7 +510,7 @@
     height: 4
   - name: Cost by ad network over time (campaign)
     title: Cost by ad network over time (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_basic_stats
     type: looker_area
     fields:
@@ -570,7 +570,7 @@
     height: 8
   - name: Funnel by ad network (campaign)
     title: Funnel by ad network (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_basic_stats
     type: looker_column
     fields:
@@ -658,7 +658,7 @@
     height: 8
   - name: Cost by device over time (campaign)
     title: Cost by device over time (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_basic_stats
     type: looker_area
     fields:
@@ -721,7 +721,7 @@
     height: 7
   - name: Funnel by device (campaign)
     title: Funnel by device (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_basic_stats
     type: looker_column
     fields:
@@ -809,7 +809,7 @@
     height: 7
   - name: Day of Week Average Cost per Conversion (campaign)
     title: Day of Week Average Cost per Conversion (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_basic_stats
     type: looker_column
     fields:
@@ -916,7 +916,7 @@
     height: 7
   - name: Hourly Average Cost per Conversion (campaign)
     title: Hourly Average Cost per Conversion (campaign)
-    model: adwords_demo
+    model: google_adwords
     explore: hourly_campaign_stats
     type: looker_column
     fields:
@@ -1016,7 +1016,7 @@
     height: 7
   - name: Campaign budget utilization
     title: Campaign budget utilization
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_budget_stats
     type: looker_column
     fields:
@@ -1085,7 +1085,7 @@
     height: 8
   - name: Ad group details
     title: Ad group details
-    model: adwords_demo
+    model: google_adwords
     explore: ad_group_basic_stats
     type: table
     fields:
@@ -1146,7 +1146,7 @@
     title: Campaign Name
     type: field_filter
     default_value: ''
-    model: adwords_demo
+    model: google_adwords
     explore: campaign
     field: campaign.campaign_name
     listens_to_filters:
@@ -1156,7 +1156,7 @@
     title: Date
     type: field_filter
     default_value: 6 months
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_basic_stats
     field: campaign_basic_stats._data_date
     listens_to_filters: []

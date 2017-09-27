@@ -21,7 +21,7 @@
     height: 2
   - name: Average cost per conversion over time (ad group)
     title: Average cost per conversion over time (ad group)
-    model: adwords_demo
+    model: google_adwords
     explore: ad_group_basic_stats
     type: looker_line
     fields:
@@ -124,7 +124,7 @@
     height: 7
   - name: Top 10 keyword performance (keyword)
     title: Top 10 keyword performance (keyword)
-    model: adwords_demo
+    model: google_adwords
     explore: keyword_stats
     type: looker_column
     fields:
@@ -220,7 +220,7 @@
     height: 7
   - name: Top 10 creative performance (ad)
     title: Top 10 creative performance (ad)
-    model: adwords_demo
+    model: google_adwords
     explore: ad_basic_stats
     type: looker_column
     fields:
@@ -327,7 +327,7 @@
     height: 7
   - name: Top 10 audience performance (audience)
     title: Top 10 audience performance (audience)
-    model: adwords_demo
+    model: google_adwords
     explore: audience_stats
     type: looker_column
     fields:
@@ -410,7 +410,7 @@
     height: 8
   - name: Bid strategy and match cost per conversion
     title: Bid strategy and match cost per conversion
-    model: adwords_demo
+    model: google_adwords
     explore: keyword_stats
     type: looker_column
     fields:
@@ -527,7 +527,7 @@
     height: 8
   - name: Ad details
     title: Ad details
-    model: adwords_demo
+    model: google_adwords
     explore: ad_basic_stats
     type: table
     fields:
@@ -588,7 +588,7 @@
     height: 8
   - name: Keyword details (keyword)
     title: Keyword details (keyword)
-    model: adwords_demo
+    model: google_adwords
     explore: keyword_stats
     type: table
     fields:
@@ -691,7 +691,7 @@
     title: Campaign Name
     type: field_filter
     default_value: ''
-    model: adwords_demo
+    model: google_adwords
     explore: campaign
     field: campaign.campaign_name
     listens_to_filters:
@@ -701,7 +701,7 @@
     title: Ad Group Name
     type: field_filter
     default_value: ''
-    model: adwords_demo
+    model: google_adwords
     explore: ad_group
     field: ad_group.ad_group_name
     listens_to_filters: []
@@ -710,7 +710,7 @@
     title: Date
     type: field_filter
     default_value: 6 months
-    model: adwords_demo
+    model: google_adwords
     explore: ad_group_basic_stats
     field: ad_group_basic_stats._data_date
     listens_to_filters: []

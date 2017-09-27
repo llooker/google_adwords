@@ -4,7 +4,7 @@
   elements:
   - name: cost_by_ad_network_over_time_account
     title: Cost by ad network over time
-    model: adwords_demo
+    model: google_adwords
     explore: account_basic_stats
     type: looker_area
     fields:
@@ -63,7 +63,7 @@
     height: 8
   - name: cost_by_device_over_time_account
     title: Cost by device over time
-    model: adwords_demo
+    model: google_adwords
     explore: account_basic_stats
     type: looker_area
     fields:
@@ -125,7 +125,7 @@
     height: 7
   - name: average_cost_per_conversion_over_time_account
     title: Average cost per conversion over time
-    model: adwords_demo
+    model: google_adwords
     explore: account_basic_stats
     type: looker_line
     fields:
@@ -226,7 +226,7 @@
     height: 7
   - name: funnel_by_ad_network_account
     title: Funnel by ad network
-    model: adwords_demo
+    model: google_adwords
     explore: account_basic_stats
     type: looker_column
     fields:
@@ -313,7 +313,7 @@
     height: 8
   - name: funnel_by_device_account
     title: Funnel by device
-    model: adwords_demo
+    model: google_adwords
     explore: account_basic_stats
     type: looker_column
     fields:
@@ -400,7 +400,7 @@
     height: 7
   - name: campaign_details
     title: Campaign details
-    model: adwords_demo
+    model: google_adwords
     explore: campaign_basic_stats
     type: table
     fields:
@@ -459,7 +459,7 @@
     height: 6
   - name: ad_spend_qtd_account
     title: Ad spend qtd
-    model: adwords_demo
+    model: google_adwords
     explore: account_quarter_stats
     type: single_value
     fields:
@@ -519,7 +519,7 @@
     height: 4
   - name: cost_per_conversion_qtd_account
     title: Cost per conversion qtd
-    model: adwords_demo
+    model: google_adwords
     explore: account_quarter_stats
     type: single_value
     fields:
@@ -579,7 +579,7 @@
     height: 4
   - name: conversion_rate_qtd_account
     title: Conversion rate qtd
-    model: adwords_demo
+    model: google_adwords
     explore: account_quarter_stats
     type: single_value
     fields:
@@ -639,7 +639,7 @@
     height: 4
   - name: conversions_qtd_account
     title: Conversions qtd
-    model: adwords_demo
+    model: google_adwords
     explore: account_quarter_stats
     type: single_value
     fields:
@@ -699,7 +699,7 @@
     height: 4
   - name: interaction_rate_qtd_account
     title: Interaction rate qtd
-    model: adwords_demo
+    model: google_adwords
     explore: account_quarter_stats
     type: single_value
     fields:
@@ -759,7 +759,7 @@
     height: 4
   - name: cost_per_interaction_qtd_account
     title: Cost per interaction qtd
-    model: adwords_demo
+    model: google_adwords
     explore: account_quarter_stats
     type: single_value
     fields:
@@ -844,7 +844,7 @@
     height: 2
   - name: hourly_average_cost_per_conversion_account
     title: Hourly Average Cost per Conversion
-    model: adwords_demo
+    model: google_adwords
     explore: hourly_account_stats
     type: looker_column
     fields:
@@ -935,7 +935,7 @@
     height: 7
   - name: day_of_week_average_cost_per_conversion_account
     title: Day of Week Average Cost per Conversion
-    model: adwords_demo
+    model: google_adwords
     explore: account_basic_stats
     type: looker_column
     fields:
@@ -1032,7 +1032,7 @@
     title: Date
     type: field_filter
     default_value: 6 months
-    model: adwords_demo
+    model: google_adwords
     explore: account_basic_stats
     field: account_basic_stats._data_date
     listens_to_filters: []
