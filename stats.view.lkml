@@ -42,6 +42,7 @@ view: stats {
     type: sum
     sql: ${clicks} ;;
     value_format_name: decimal_0
+    drill_fields: [device, total_clicks]
   }
 
 ## Due the manner in which Looker compiles SQL queries, finding weighted averages in this instance is better accomplished through an aggregated measure
