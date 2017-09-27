@@ -4,32 +4,12 @@ view: campaign {
   extends: [entity_base]
   sql_table_name: adwords_v201609.Campaign_6747157124 ;;
 
-  dimension_group: _data {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
+  dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
-  dimension_group: _latest {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
+  dimension: _latest {
+    sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
 
   dimension: advertising_channel_sub_type {
@@ -91,7 +71,11 @@ view: campaign {
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.CampaignName ;;
-    # html: Campaign Name ;;
+    link: {
+      label: "Campaign Dashboard"
+      url: "/dashboards/adwords_demo::campaign_performance?Campaign%20Name={{ value | encode_uri }}"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: campaign_status {

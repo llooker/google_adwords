@@ -1,42 +1,17 @@
 include: "stats.view.lkml"
+include: "ad_criterion_base.view.lkml"
 
 view: audience_stats {
-  extends: [stats]
+  extends: [ad_criterion_base, base_stats, stats]
 
   sql_table_name: adwords_v201609.AudienceStats_6747157124 ;;
 
-  dimension_group: _data {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
+  dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
-  dimension_group: _latest {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
-  }
-
-  dimension: unique_key {
-    type: string
-    primary_key: yes
-    sql: CONCAT(CAST(${ad_group_id} AS STRING),CAST(${criterion_id} AS STRING)) ;;
+  dimension: _latest {
+    sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
 
   dimension: active_view_cpm {
@@ -303,5 +278,36 @@ view: audience_stats {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: total_impressions {
+    drill_fields: [audience.detail*, total_impressions]
+  }
+  measure: total_clicks {
+    drill_fields: [audience.detail*, total_clicks]
+  }
+  measure: total_interactions {
+    drill_fields: [audience.detail*, total_interactions]
+  }
+  measure: total_conversions {
+    drill_fields: [audience.detail*, total_conversions]
+  }
+  measure: total_cost_usd {
+    drill_fields: [audience.detail*, total_cost_usd]
+  }
+  measure: average_interaction_rate {
+    drill_fields: [audience.detail*, average_interaction_rate]
+  }
+  measure: average_click_rate {
+    drill_fields: [audience.detail*, average_click_rate]
+  }
+  measure: average_conversion_rate {
+    drill_fields: [audience.detail*, average_conversion_rate]
+  }
+  measure: average_cost_per_click {
+    drill_fields: [audience.detail*, average_cost_per_click]
+  }
+  measure: average_cost_per_conversion {
+    drill_fields: [audience.detail*, average_cost_per_conversion]
   }
 }

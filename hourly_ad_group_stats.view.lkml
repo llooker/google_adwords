@@ -1,36 +1,16 @@
 include: "stats.view.lkml"
 
 view: hourly_ad_group_stats {
-  extends: [stats]
+  extends: [base_stats, stats]
+
   sql_table_name: adwords_v201609.HourlyAdGroupStats_6747157124 ;;
 
-  dimension_group: _data {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      day_of_week
-    ]
-    convert_tz: no
+  dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
-  dimension_group: _latest {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
+  dimension: _latest {
+    sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
 
   dimension: active_view_cpm {
@@ -179,11 +159,7 @@ view: hourly_ad_group_stats {
 
   dimension: device {
     type: string
-    sql:  CASE
-         WHEN ${TABLE}.device LIKE '%Desktop%' THEN "Desktop"
-        WHEN ${TABLE}.device LIKE '%Mobile%' THEN "Mobile"
-        WHEN ${TABLE}.device LIKE '%Tablet%' THEN "Tablet"
-        ELSE NULL END;;
+    sql: ${TABLE}.Device ;;
   }
 
   dimension: external_customer_id {
@@ -296,5 +272,36 @@ view: hourly_ad_group_stats {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: total_impressions {
+    drill_fields: [ad_group.detail*, total_impressions]
+  }
+  measure: total_clicks {
+    drill_fields: [ad_group.detail*, total_clicks]
+  }
+  measure: total_interactions {
+    drill_fields: [ad_group.detail*, total_interactions]
+  }
+  measure: total_conversions {
+    drill_fields: [ad_group.detail*, total_conversions]
+  }
+  measure: total_cost_usd {
+    drill_fields: [ad_group.detail*, total_cost_usd]
+  }
+  measure: average_interaction_rate {
+    drill_fields: [ad_group.detail*, average_interaction_rate]
+  }
+  measure: average_click_rate {
+    drill_fields: [ad_group.detail*, average_click_rate]
+  }
+  measure: average_conversion_rate {
+    drill_fields: [ad_group.detail*, average_conversion_rate]
+  }
+  measure: average_cost_per_click {
+    drill_fields: [ad_group.detail*, average_cost_per_click]
+  }
+  measure: average_cost_per_conversion {
+    drill_fields: [ad_group.detail*, average_cost_per_conversion]
   }
 }

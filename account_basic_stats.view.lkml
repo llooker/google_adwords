@@ -1,9 +1,9 @@
 include: "stats.view.lkml"
 
-view: hourly_account_stats {
-  extends: [base_stats, stats]
+view: account_basic_stats {
+  extends: [base, stats]
 
-  sql_table_name: adwords_v201609.HourlyAccountStats_6747157124 ;;
+  sql_table_name: adwords_v201609.AccountBasicStats_6747157124 ;;
 
   dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
@@ -11,16 +11,6 @@ view: hourly_account_stats {
 
   dimension: _latest {
     sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
-  }
-
-  dimension: active_view_cpm {
-    type: number
-    sql: ${TABLE}.ActiveViewCpm ;;
-  }
-
-  dimension: active_view_ctr {
-    type: number
-    sql: ${TABLE}.ActiveViewCtr ;;
   }
 
   dimension: active_view_impressions {
@@ -58,39 +48,14 @@ view: hourly_account_stats {
     sql: ${TABLE}.AdNetworkType2 ;;
   }
 
-  dimension: average_cost {
-    type: number
-    sql: ${TABLE}.AverageCost ;;
-  }
-
-  dimension: average_cpc {
-    type: number
-    sql: ${TABLE}.AverageCpc ;;
-  }
-
-  dimension: average_cpm {
-    type: number
-    sql: ${TABLE}.AverageCpm ;;
-  }
-
   dimension: average_position {
     type: number
     sql: ${TABLE}.AveragePosition ;;
   }
 
-  dimension: click_type {
-    type: string
-    sql: ${TABLE}.ClickType ;;
-  }
-
   dimension: clicks {
     type: number
     sql: ${TABLE}.Clicks ;;
-  }
-
-  dimension: conversion_rate {
-    type: number
-    sql: ${TABLE}.ConversionRate ;;
   }
 
   dimension: conversion_value {
@@ -108,16 +73,6 @@ view: hourly_account_stats {
     sql: ${TABLE}.Cost ;;
   }
 
-  dimension: cost_per_conversion {
-    type: number
-    sql: ${TABLE}.CostPerConversion ;;
-  }
-
-  dimension: ctr {
-    type: number
-    sql: ${TABLE}.Ctr ;;
-  }
-
   dimension_group: date {
     type: time
     timeframes: [
@@ -132,11 +87,6 @@ view: hourly_account_stats {
     sql: ${TABLE}.Date ;;
   }
 
-  dimension: day_of_week {
-    type: string
-    sql: ${TABLE}.DayOfWeek ;;
-  }
-
   dimension: device {
     type: string
     sql: ${TABLE}.Device ;;
@@ -147,19 +97,9 @@ view: hourly_account_stats {
     sql: ${TABLE}.ExternalCustomerId ;;
   }
 
-  dimension: hour_of_day {
-    type: number
-    sql: ${TABLE}.HourOfDay ;;
-  }
-
   dimension: impressions {
     type: number
     sql: ${TABLE}.Impressions ;;
-  }
-
-  dimension: interaction_rate {
-    type: number
-    sql: ${TABLE}.InteractionRate ;;
   }
 
   dimension: interaction_types {
@@ -172,66 +112,14 @@ view: hourly_account_stats {
     sql: ${TABLE}.Interactions ;;
   }
 
-  dimension_group: month {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Month ;;
-  }
-
-  dimension: month_of_year {
+  dimension: slot {
     type: string
-    sql: ${TABLE}.MonthOfYear ;;
-  }
-
-  dimension_group: quarter {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Quarter ;;
-  }
-
-  dimension: value_per_conversion {
-    type: number
-    sql: ${TABLE}.ValuePerConversion ;;
+    sql: ${TABLE}.Slot ;;
   }
 
   dimension: view_through_conversions {
     type: number
     sql: ${TABLE}.ViewThroughConversions ;;
-  }
-
-  dimension_group: week {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.Week ;;
-  }
-
-  dimension: year {
-    type: number
-    sql: ${TABLE}.Year ;;
   }
 
   measure: count {

@@ -10,7 +10,7 @@
     - name: total_ads
       title: Total Keywords (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad.count]
       limit: '500'
@@ -52,7 +52,7 @@
     - name: total_cost_usd
       title: Total Cost (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad_stats.total_cost_usd]
       sorts: [ad_stats.total_cost_usd desc]
@@ -95,7 +95,7 @@
     - name: average_cost_per_conversion
       title: Average Cost per Conversion (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad_stats.average_cost_per_conversion]
       limit: '500'
@@ -137,7 +137,7 @@
     - name: total_impressions
       title: Total Impressions (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad_stats.total_impressions]
       sorts: [ad_stats.total_impressions desc]
@@ -180,7 +180,7 @@
     - name: total_interactions
       title: Total Interactions (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad_stats.total_interactions]
       sorts: [ad_stats.total_interactions desc]
@@ -223,7 +223,7 @@
     - name: average_interaction_rate
       title: Average Interaction Rate (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad_stats.average_interaction_rate]
       limit: '500'
@@ -265,7 +265,7 @@
     - name: total_clicks
       title: Total Clicks (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad_stats.total_clicks]
       sorts: [ad_stats.total_clicks desc]
@@ -308,7 +308,7 @@
     - name: total_conversions
       title: Total Conversions (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad_stats.total_conversions]
       sorts: [ad_stats.total_conversions desc]
@@ -352,7 +352,7 @@
     - name: average_conversion_rate
       title: Average Conversion Rate (Ads)
       type: single_value
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       measures: [ad_stats.average_conversion_rate]
       limit: '500'
@@ -396,7 +396,7 @@
     - name: ad_performance_over_time
       title: Ad Performance over Time (Ads)
       type: looker_column
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       dimensions: [ad_stats._data_date]
       fill_fields: [ad_stats._data_date]
@@ -431,7 +431,7 @@
     - name: ad_efficiency_over_time
       title: Ad Efficiency Over Time (Ads)
       type: looker_line
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       dimensions: [ad_stats._data_date]
       fill_fields: [ad_stats._data_date]
@@ -472,7 +472,7 @@
     - name: ad_keyword_performance
       title: Ad Keyword Performance (Ads)
       type: table
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       dimensions: [ad.headline_part1]
       measures: [ad_stats.total_impressions, ad_stats.total_clicks, ad_stats.average_interaction_rate,
@@ -515,7 +515,7 @@
     - name: add_a_unique_name_1487316761
       title: Ad Performance (Ads)
       type: looker_bar
-      model: google_adwords
+      model: adwords_demo
       explore: ad_stats
       dimensions: [ad.creative_id]
       measures: [ad_stats.average_conversion_rate, ad_stats.total_conversions]

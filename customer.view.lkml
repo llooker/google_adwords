@@ -4,32 +4,12 @@ view: customer {
   extends: [entity_base]
   sql_table_name: adwords_v201609.Customer_6747157124 ;;
 
-  dimension_group: _data {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
+  dimension: _data {
     sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
 
-  dimension_group: _latest {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}._LATEST_DATE ;;
+  dimension: _latest {
+    sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
   }
 
   dimension: account_currency_code {
@@ -55,6 +35,11 @@ view: customer {
   dimension: customer_descriptive_name {
     type: string
     sql: ${TABLE}.CustomerDescriptiveName ;;
+    link: {
+      label: "Account Dashboard"
+      url: "/dashboards/adwords_demo::account_performance?Customer%20Name={{ value | encode_uri }}"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: external_customer_id {
@@ -79,6 +64,11 @@ view: customer {
 
   measure: count {
     type: count
-    drill_fields: [account_descriptive_name, customer_descriptive_name, primary_company_name]
+    drill_fields: [detail*]
+  }
+
+  # ----- Detail ------
+  set: detail {
+    fields: [external_customer_id, primary_company_name]
   }
 }
