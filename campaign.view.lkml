@@ -71,9 +71,10 @@ view: campaign {
   dimension: campaign_name {
     type: string
     sql: ${TABLE}.CampaignName ;;
+    html: <a> campaign <a/>  ;;
     link: {
       label: "Campaign Dashboard"
-      url: "/dashboards/adwords_demo::campaign_performance?Campaign%20Name={{ value | encode_uri }}"
+      url: "/dashboards/123?Campaign%20Name={{ value | encode_uri }}"
       icon_url: "http://www.looker.com/favicon.ico"
     }
   }

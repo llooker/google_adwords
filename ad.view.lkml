@@ -131,6 +131,7 @@ view: ad {
   dimension: headline {
     type: string
     sql: ${TABLE}.Headline ;;
+    html: <h> Headline <h/> ;;
   }
 
   dimension: headline_part1 {

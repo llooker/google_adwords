@@ -8,6 +8,7 @@ include: "*.dashboard"
 
 ## Entity tables are daily snapshots
 explore: customer {
+  persist_for: "24 hours"
   hidden: yes
   conditionally_filter: {
     filters: {
@@ -19,6 +20,7 @@ explore: customer {
 }
 
 explore: campaign {
+  persist_for: "24 hours"
   hidden: yes
   conditionally_filter: {
     filters: {
@@ -37,6 +39,7 @@ explore: campaign {
 
 explore: ad_group {
   hidden: yes
+  persist_for: "24 hours"
   conditionally_filter: {
     filters: {
       field: latest
@@ -54,6 +57,7 @@ explore: ad_group {
 
 explore: keyword {
   hidden: yes
+  persist_for: "24 hours"
   conditionally_filter: {
     filters: {
       field: latest
@@ -77,6 +81,7 @@ explore: keyword {
 
 explore: ad {
   hidden: yes
+  persist_for: "24 hours"
   conditionally_filter: {
     filters: {
       field: latest
@@ -106,6 +111,7 @@ explore: ad {
 
 ## Stats tables are used as left-most tables. See "README" for explanation of join logic.
 explore: ad_stats {
+  persist_for: "24 hours"
   label: "Ad Stats"
   view_label: "Ad Stats"
 
@@ -136,6 +142,7 @@ explore: ad_stats {
 }
 
 explore: ad_basic_stats {
+  persist_for: "24 hours"
   label: "Ad Stats"
   view_label: "Ad Stats"
 
@@ -166,6 +173,7 @@ explore: ad_basic_stats {
 }
 
 explore: hourly_ad_group_stats {
+  persist_for: "24 hours"
   label: "Hourly Ad Group Stats"
   view_label: "Hourly Ad Group Stats"
 
@@ -185,6 +193,7 @@ explore: hourly_ad_group_stats {
 }
 
 explore:ad_group_stats {
+  persist_for: "24 hours"
   label: "Ad Group Stats"
   view_label: "Ad Group Stats"
 
@@ -223,6 +232,7 @@ explore:ad_group_basic_stats {
 }
 
 explore: keyword_stats {
+  persist_for: "24 hours"
   label: "Keyword Stats"
   view_label: "Keyword Stats"
 
@@ -247,6 +257,7 @@ explore: keyword_stats {
 }
 
 explore: keyword_basic_stats {
+  persist_for: "24 hours"
   label: "Keyword Stats"
   view_label: "Keyword Stats"
 
@@ -271,6 +282,7 @@ explore: keyword_basic_stats {
 }
 
 explore: geo_stats {
+  persist_for: "24 hours"
   label: "Geo Stats"
   view_label: "Geo Stats"
 
@@ -361,6 +373,7 @@ explore: campaign_basic_stats {
 }
 
 explore: account_quarter_stats {
+  persist_for: "24 hours"
   label: "Account Quarter Stats"
   view_label: "Account Quarter Stats"
 
@@ -380,6 +393,7 @@ explore: account_quarter_stats {
 }
 
 explore: campaign_quarter_stats {
+  persist_for: "24 hours"
   label: "Campaign Quarter Stats"
   view_label: "Campaign Quarter Stats"
 
@@ -399,6 +413,7 @@ explore: campaign_quarter_stats {
 }
 
 explore: hourly_campaign_stats {
+  persist_for: "24 hours"
   label: "Hourly Campaign Stats"
   view_label: "Hourly Campaign Stats"
 
@@ -423,6 +438,7 @@ explore: campaign_budget_stats {
 }
 
 explore: account_basic_stats {
+  persist_for: "24 hours"
   label: "Account Stats"
   view_label: "Account Stats"
 
@@ -435,6 +451,7 @@ explore: account_basic_stats {
 }
 
 explore: account_stats {
+  persist_for: "24 hours"
   label: "Account Stats"
   view_label: "Account Stats"
 
@@ -447,6 +464,7 @@ explore: account_stats {
 }
 
 explore: hourly_account_stats {
+  persist_for: "24 hours"
   join:  customer {
     view_label: "Customer"
     sql_on: ${hourly_account_stats.external_customer_id} = ${customer.external_customer_id} AND

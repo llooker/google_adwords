@@ -151,7 +151,13 @@ view: campaign_stats{
 
   dimension: device {
     type: string
-    sql: ${TABLE}.Device ;;
+    sql: CASE
+          WHEN ${TABLE}.Device = "PlatformType_Desktop" THEN "Desktop"
+          WHEN ${TABLE}.Device = "PlatformType_HighEndMobile" THEN "Mobile"
+          WHEN ${TABLE}.Device = "PlatformType_Tablet" THEN "Tablet"
+          ElSE "Unknown"
+          END
+          ;;
   }
 
   dimension: external_customer_id {

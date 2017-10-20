@@ -15,9 +15,10 @@ view: stats {
   }
 
   measure: total_cost {
-    hidden: yes
+    hidden: no
     type: sum
     sql: ${cost} ;;
+    value_format_name: usd_0
   }
 
   measure: total_cost_usd {
