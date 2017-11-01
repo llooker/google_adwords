@@ -2,6 +2,7 @@ connection: "bigquery-connectors-adwords"
 
 # include all the views
 include: "*.view"
+include: "/exchange_rates/bq.explore.lkml"
 
 # include all the dashboards
 include: "*.dashboard"
@@ -470,5 +471,12 @@ explore: hourly_account_stats {
     sql_on: ${hourly_account_stats.external_customer_id} = ${customer.external_customer_id} AND
       ${hourly_account_stats._data_raw} = ${customer._data_raw} ;;
     relationship: many_to_one
+  }
+}
+explore: ad_stats_forex {
+  from: ad_stats
+  join: bq_forex_historical_real {
+    relationship: many_to_one
+    sql_on: ${bq_forex_historical_real.forex_exchange_date} = ${ad_stats_forex._data_date} ;;
   }
 }
