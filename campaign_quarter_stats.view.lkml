@@ -1,69 +1,33 @@
 include: "stats.view.lkml"
+include: "base_quarter_stats.view.lkml"
+include: "master.explore.lkml"
 
-# Derived table for rolling up stats into an aggregation by quarter
 view: campaign_quarter_stats {
-  extends: [stats]
+  extends: ["stats", "base_quarter_stats"]
 
   derived_table: {
-    sql:
-      SELECT
-        FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(stats._DATA_DATE)  AS TIMESTAMP), QUARTER)) AS quarter
-        , stats.CampaignId  AS campaign_id
-        , COALESCE(SUM((stats.Cost) ), 0) AS cost
-        , COALESCE(SUM(stats.Clicks ), 0) AS clicks
-        , COALESCE(SUM(stats.Conversions ), 0) AS conversions
-        , COALESCE(SUM(stats.Impressions ), 0) AS impressions
-        , COALESCE(SUM(stats.Interactions ), 0) AS interactions
-      FROM adwords_v201609.CampaignBasicStats_6747157124 AS stats
-      WHERE
-      -- quarter <= max_day_of_quarter of max quarter
-        (DATE_DIFF(
-          (CAST(TIMESTAMP(stats._DATA_DATE)  AS DATE)),
-          CAST(CONCAT((FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(stats._DATA_DATE)  AS TIMESTAMP), QUARTER))), '-01') as DATE),
-          day) + 1) <= (
-            SELECT
-              MAX((DATE_DIFF(
-                       (CAST(TIMESTAMP(campaign_stats._DATA_DATE)  AS DATE)),
-                      CAST(CONCAT((FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(campaign_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))), '-01') as DATE),
-                      day) + 1) ) max_day_of_quarter
-            FROM adwords_v201609.CampaignBasicStats_6747157124  AS campaign_stats
-            -- max quarter
-            WHERE FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(campaign_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))  = (
-              SELECT MAX(FORMAT_TIMESTAMP('%Y-%m', TIMESTAMP_TRUNC(CAST(TIMESTAMP(campaign_stats._DATA_DATE)  AS TIMESTAMP), QUARTER))) AS quarter
-              FROM adwords_v201609.CampaignBasicStats_6747157124  AS campaign_stats))
-
-      GROUP BY 1,2
-        ;;
-
-#       explore_source: stats {
-#         column: quarter { field: stats._data_date_quarter }
-#         column: campaign_id { field: stats.campaign_id }
-#         column: cost { field: stats.total_cost }
-#         column: clicks { field: stats.total_clicks }
-#         column: conversions { field: stats.total_conversions }
-#         column: impressions { field: stats.total_impressions }
-#         column: interactions { field: stats.interactions }
-#       }
+    persist_for: "24 hours"
+    explore_source: master_stats {
+      column: _data_quarter {}
+      column: campaign_id {}
+      column: external_customer_id {}
+      column: cost { field: master_stats.total_cost }
+      column: clicks { field: master_stats.total_clicks }
+      column: conversions { field: master_stats.total_conversions }
+      column: impressions { field: master_stats.total_impressions }
+      column: interactions { field: master_stats.total_interactions }
+      filters: {
+        field: master_stats.less_than_current_day_of_quarter
+        value: "Yes"
+      }
     }
-  dimension: _data_quarter {
-    type: date_quarter
-    convert_tz: no
-    sql: CONCAT(${TABLE}.quarter, '-01') ;;
   }
   dimension: campaign_id {
-    drill_fields: [ad_group.name]
+    type: number
   }
-  dimension: cost {}
-  dimension: clicks {}
-  dimension: conversions {}
-  dimension: impressions {}
-  dimension: interactions {}
-
-  dimension: _data_last_quarter {
-    type: date_quarter
-    sql: DATE_ADD(CAST(CONCAT(${_data_quarter}, '-01') AS DATE), INTERVAL -1 QUARTER) ;;
+  dimension: external_customer_id {
+    type: number
   }
-
   measure: total_impressions {
     drill_fields: [campaign.detail*, total_impressions]
   }

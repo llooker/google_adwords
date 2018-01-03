@@ -19,16 +19,16 @@
     col: 0
     width: 24
     height: 2
-  - name: Average cost per conversion over time (ad group)
-    title: Average cost per conversion over time (ad group)
-    model: adwords_demo
-    explore: ad_group_basic_stats
+  - title: Average cost per conversion over time (ad group)
+    name: Average cost per conversion over time (ad group)
+    model: google_adwords
+    explore: master_stats
     type: looker_line
     fields:
-    - ad_group_basic_stats.average_cost_per_conversion
-    - ad_group_basic_stats._data_week
+    - master_stats.average_cost_per_conversion
+    - master_stats._data_week
     sorts:
-    - ad_group_basic_stats._data_week desc
+    - master_stats._data_week desc
     limit: 500
     column_limit: 50
     label: Average Cost per Conversion
@@ -87,20 +87,20 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_group_basic_stats.total_impressions
+      - id: master_stats.total_impressions
         name: Ad Stats Total Impressions
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 88
-      - id: ad_group_basic_stats.total_interactions
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 90
+      - id: master_stats.total_interactions
         name: Ad Stats Total Interactions
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 92
-      - id: ad_group_basic_stats.total_conversions
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 94
+      - id: master_stats.total_conversions
         name: Ad Stats Total Conversions
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 96
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 76
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 98
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 78
     discontinuous_nulls: false
     focus_on_hover: false
     reference_lines: []
@@ -112,33 +112,33 @@
       series_index: 1
       show_label: false
       label_type: string
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 106
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 108
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: ad_group_basic_stats._data_date
+      Date: master_stats._data_date
       Campaign Name: campaign.campaign_name
     row: 2
     col: 0
     width: 24
     height: 7
-  - name: Top 10 keyword performance (keyword)
-    title: Top 10 keyword performance (keyword)
-    model: adwords_demo
-    explore: keyword_stats
+  - title: Top 10 keyword performance (keyword)
+    name: Top 10 keyword performance (keyword)
+    model: google_adwords
+    explore: master_stats
     type: looker_column
     fields:
     - keyword.criteria
-    - keyword_stats.average_cost_per_conversion
-    - keyword_stats.total_impressions
-    - keyword_stats.total_interactions
-    - keyword_stats.total_conversions
-    - keyword_stats.total_cost_usd
-    - keyword_stats.average_interaction_rate
-    - keyword_stats.average_conversion_rate
-    - keyword_stats.average_cost_per_click
+    - master_stats.average_cost_per_conversion
+    - master_stats.total_impressions
+    - master_stats.total_interactions
+    - master_stats.total_conversions
+    - master_stats.total_cost_usd
+    - master_stats.average_interaction_rate
+    - master_stats.average_conversion_rate
+    - master_stats.average_cost_per_click
     sorts:
-    - keyword_stats.total_cost_usd desc
+    - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     label: Top 10 Keyword Performance (keyword)
@@ -165,12 +165,12 @@
     show_silhouette: false
     totals_color: "#808080"
     hidden_fields:
-    - keyword_stats.total_impressions
-    - keyword_stats.total_interactions
-    - keyword_stats.total_conversions
-    - keyword_stats.average_interaction_rate
-    - keyword_stats.average_conversion_rate
-    - keyword_stats.average_cost_per_click
+    - master_stats.total_impressions
+    - master_stats.total_interactions
+    - master_stats.total_conversions
+    - master_stats.average_interaction_rate
+    - master_stats.average_conversion_rate
+    - master_stats.average_cost_per_click
     y_axes:
     - label: ''
       maxValue:
@@ -184,12 +184,12 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: keyword_stats.average_cost_per_conversion
+      - id: master_stats.average_cost_per_conversion
         name: Cost per Conversion
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 184
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 172
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 187
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 175
     - label:
       maxValue:
       minValue:
@@ -202,39 +202,39 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: keyword_stats.total_cost_usd
+      - id: master_stats.total_cost_usd
         name: Total Cost USD
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 202
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 190
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 205
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 193
     series_types:
-      keyword_stats.average_cost_per_conversion: line
+      master_stats.average_cost_per_conversion: line
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: keyword_stats._data_date
+      Date: master_stats._data_date
       Campaign Name: campaign.campaign_name
     row: 9
     col: 12
     width: 12
     height: 7
-  - name: Top 10 creative performance (ad)
-    title: Top 10 creative performance (ad)
-    model: adwords_demo
-    explore: ad_basic_stats
+  - title: Top 10 creative performance (ad)
+    name: Top 10 creative performance (ad)
+    model: google_adwords
+    explore: master_stats
     type: looker_column
     fields:
     - ad.creative
-    - ad_basic_stats.average_cost_per_conversion
-    - ad_basic_stats.total_impressions
-    - ad_basic_stats.total_interactions
-    - ad_basic_stats.total_conversions
-    - ad_basic_stats.total_cost_usd
-    - ad_basic_stats.average_interaction_rate
-    - ad_basic_stats.average_conversion_rate
-    - ad_basic_stats.average_cost_per_click
+    - master_stats.average_cost_per_conversion
+    - master_stats.total_impressions
+    - master_stats.total_interactions
+    - master_stats.total_conversions
+    - master_stats.total_cost_usd
+    - master_stats.average_interaction_rate
+    - master_stats.average_conversion_rate
+    - master_stats.average_cost_per_click
     sorts:
-    - ad_basic_stats.total_cost_usd desc
+    - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     label: Top 10 Creative Performance (ad group)
@@ -270,14 +270,14 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     series_types:
-      ad_basic_stats.average_cost_per_conversion: line
+      master_stats.average_cost_per_conversion: line
     hidden_fields:
-    - ad_basic_stats.total_conversions
-    - ad_basic_stats.total_interactions
-    - ad_basic_stats.total_impressions
-    - ad_basic_stats.average_interaction_rate
-    - ad_basic_stats.average_conversion_rate
-    - ad_basic_stats.average_cost_per_click
+    - master_stats.total_conversions
+    - master_stats.total_interactions
+    - master_stats.total_impressions
+    - master_stats.average_interaction_rate
+    - master_stats.average_conversion_rate
+    - master_stats.average_cost_per_click
     y_axes:
     - label:
       maxValue:
@@ -291,12 +291,12 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_basic_stats.average_cost_per_conversion
+      - id: master_stats.average_cost_per_conversion
         name: Cost per Conversion
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 290
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 278
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 294
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 282
     - label:
       maxValue:
       minValue:
@@ -309,33 +309,33 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: ad_basic_stats.total_cost_usd
+      - id: master_stats.total_cost_usd
         name: Total Cost USD
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 308
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 296
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 312
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 300
     x_axis_datetime_label: ''
     y_axis_reversed: false
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: ad_basic_stats._data_date
+      Date: master_stats._data_date
       Campaign Name: campaign.campaign_name
     row: 9
     col: 0
     width: 12
     height: 7
-  - name: Top 10 audience performance (audience)
-    title: Top 10 audience performance (audience)
-    model: adwords_demo
-    explore: audience_stats
+  - title: Top 10 audience performance (audience)
+    name: Top 10 audience performance (audience)
+    model: google_adwords
+    explore: master_stats
     type: looker_column
     fields:
     - audience.criteria
-    - audience_stats.average_cost_per_conversion
-    - audience_stats.total_cost_usd
+    - master_stats.average_cost_per_conversion
+    - master_stats.total_cost_usd
     sorts:
-    - audience_stats.total_cost_usd desc
+    - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     label: Top 10 audience performance (audience)
@@ -374,12 +374,12 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: audience_stats.average_cost_per_conversion
+      - id: master_stats.average_cost_per_conversion
         name: Audience Stats Cost per Conversion
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 372
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 360
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 377
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 365
     - label:
       maxValue:
       minValue:
@@ -392,156 +392,39 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: audience_stats.total_cost_usd
+      - id: master_stats.total_cost_usd
         name: Audience Stats Total Cost USD
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 386
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 374
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 395
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 383
     series_types:
-      audience_stats.average_cost_per_conversion: line
+      master_stats.average_cost_per_conversion: line
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: audience_stats._data_date
+      Date: master_stats._data_date
       Campaign Name: campaign.campaign_name
     row: 16
     col: 0
     width: 12
     height: 8
-  - name: Bid strategy and match cost per conversion
-    title: Bid strategy and match cost per conversion
-    model: adwords_demo
-    explore: keyword_stats
-    type: looker_column
-    fields:
-    - keyword.bidding_strategy_type
-    - keyword_stats.average_cost_per_conversion
-    - keyword_stats.total_cost_usd
-    - keyword.keyword_match_type
-    pivots:
-    - keyword.keyword_match_type
-    sorts:
-    - keyword.keyword_match_type desc 0
-    - keyword_stats.total_cost_usd desc 0
-    limit: 500
-    column_limit: 50
-    label: Top 10 Keyword Performance (keyword)
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    show_null_points: true
-    point_style: none
-    interpolation: linear
-    value_labels: legend
-    label_type: labPer
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    font_size: '12'
-    hidden_fields:
-    - keyword_stats.total_cost_usd
-    y_axes:
-    - label: ''
-      maxValue:
-      minValue:
-      orientation: left
-      showLabels: true
-      showValues: true
-      tickDensity: default
-      tickDensityCustom:
-      type: linear
-      unpinAxis: false
-      valueFormat:
-      series:
-      - id: PHRASE - Keyword Stats Cost per Conversion
-        name: PHRASE - Keyword Stats Cost per Conversion
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 465
-      - id: EXACT - Keyword Stats Cost per Conversion
-        name: EXACT - Keyword Stats Cost per Conversion
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 469
-      - id: BROAD - Keyword Stats Cost per Conversion
-        name: BROAD - Keyword Stats Cost per Conversion
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 471
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 453
-    - label:
-      maxValue:
-      minValue:
-      orientation: right
-      showLabels: true
-      showValues: true
-      tickDensity: default
-      tickDensityCustom:
-      type: linear
-      unpinAxis: false
-      valueFormat:
-      series:
-      - id: PHRASE - Keyword Stats Total Cost USD
-        name: PHRASE - Keyword Stats Total Cost USD
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 487
-      - id: EXACT - Keyword Stats Total Cost USD
-        name: EXACT - Keyword Stats Total Cost USD
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 491
-      - id: BROAD - Keyword Stats Total Cost USD
-        name: BROAD - Keyword Stats Total Cost USD
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 493
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 475
-    series_types: {}
-    listen:
-      Ad Group Name: ad_group.ad_group_name
-      Date: keyword_stats._data_date
-      Campaign Name: campaign.campaign_name
-    row: 16
-    col: 12
-    width: 12
-    height: 8
-  - name: Ad details
-    title: Ad details
-    model: adwords_demo
-    explore: ad_basic_stats
+  - title: Ad details
+    name: Ad details
+    model: google_adwords
+    explore: master_stats
     type: table
     fields:
     - ad_group.ad_group_name
-    - ad_basic_stats.average_cost_per_conversion
-    - ad_basic_stats.average_interaction_rate
-    - ad_basic_stats.average_cost_per_click
-    - ad_basic_stats.average_conversion_rate
-    - ad_basic_stats.total_impressions
-    - ad_basic_stats.total_interactions
-    - ad_basic_stats.total_conversions
-    - ad_basic_stats.total_cost_usd
+    - master_stats.average_cost_per_conversion
+    - master_stats.average_interaction_rate
+    - master_stats.average_cost_per_click
+    - master_stats.average_conversion_rate
+    - master_stats.total_impressions
+    - master_stats.total_interactions
+    - master_stats.total_conversions
+    - master_stats.total_cost_usd
     sorts:
-    - ad_basic_stats.total_cost_usd desc
+    - master_stats.total_cost_usd desc
     limit: 20
     column_limit: 50
     label: Ad Details
@@ -580,31 +463,31 @@
     conditional_formatting_include_nulls: false
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: ad_basic_stats._data_date
+      Date: master_stats._data_date
       Campaign Name: campaign.campaign_name
     row: 26
     col: 0
     width: 24
-    height: 8
-  - name: Keyword details (keyword)
-    title: Keyword details (keyword)
-    model: adwords_demo
-    explore: keyword_stats
+    height: 4
+  - title: Keyword details (keyword)
+    name: Keyword details (keyword)
+    model: google_adwords
+    explore: master_stats
     type: table
     fields:
     - keyword.criteria
     - ad_group.ad_group_name
     - campaign.campaign_name
-    - keyword_stats.average_cost_per_conversion
-    - keyword_stats.average_interaction_rate
-    - keyword_stats.average_conversion_rate
-    - keyword_stats.average_cost_per_click
-    - keyword_stats.total_impressions
-    - keyword_stats.total_interactions
-    - keyword_stats.total_conversions
-    - keyword_stats.total_cost_usd
+    - master_stats.average_cost_per_conversion
+    - master_stats.average_interaction_rate
+    - master_stats.average_conversion_rate
+    - master_stats.average_cost_per_click
+    - master_stats.total_impressions
+    - master_stats.total_interactions
+    - master_stats.total_conversions
+    - master_stats.total_cost_usd
     sorts:
-    - keyword_stats.total_cost_usd desc
+    - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     label: Top 10 Keyword Performance (keyword)
@@ -653,12 +536,12 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: keyword_stats.average_cost_per_conversion
+      - id: master_stats.average_cost_per_conversion
         name: Keyword Stats Average Cost per Conversion
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 630
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 618
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 656
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 644
     - label:
       maxValue:
       minValue:
@@ -671,47 +554,169 @@
       unpinAxis: false
       valueFormat:
       series:
-      - id: keyword_stats.total_cost
+      - id: master_stats.total_cost
         name: Keyword Stats Total Cost
-        __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-        __LINE_NUM: 648
-      __FILE: adwords_demo/ad_group_performance.dashboard.lookml
-      __LINE_NUM: 636
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 674
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 662
     series_types: {}
     listen:
       Ad Group Name: ad_group.ad_group_name
-      Date: keyword_stats._data_date
+      Date: master_stats._data_date
       Campaign Name: campaign.campaign_name
-    row: 34
+    row: 30
     col: 0
     width: 24
     height: 6
+  - title: Bid strategy and match cost per conversion
+    name: Bid strategy and match cost per conversion
+    model: google_adwords
+    explore: master_stats
+    type: looker_column
+    fields:
+    - keyword.bidding_strategy_type
+    - master_stats.average_cost_per_conversion
+    - master_stats.total_cost_usd
+    - keyword.keyword_match_type
+    pivots:
+    - keyword.keyword_match_type
+    filters:
+      master_stats.average_cost_per_conversion: NOT NULL
+    sorts:
+    - keyword.keyword_match_type desc 0
+    - master_stats.total_cost_usd desc 0
+    limit: 500
+    column_limit: 50
+    label: Top 10 Keyword Performance (keyword)
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_null_points: true
+    point_style: none
+    interpolation: linear
+    value_labels: legend
+    label_type: labPer
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    font_size: '12'
+    hidden_fields:
+    - master_stats.total_cost_usd
+    y_axes:
+    - label: ''
+      maxValue:
+      minValue:
+      orientation: left
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom:
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: PHRASE - Keyword Stats Cost per Conversion
+        name: PHRASE - Keyword Stats Cost per Conversion
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 479
+      - id: EXACT - Keyword Stats Cost per Conversion
+        name: EXACT - Keyword Stats Cost per Conversion
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 483
+      - id: BROAD - Keyword Stats Cost per Conversion
+        name: BROAD - Keyword Stats Cost per Conversion
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 487
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 467
+    - label:
+      maxValue:
+      minValue:
+      orientation: right
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom:
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: PHRASE - Keyword Stats Total Cost USD
+        name: PHRASE - Keyword Stats Total Cost USD
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 505
+      - id: EXACT - Keyword Stats Total Cost USD
+        name: EXACT - Keyword Stats Total Cost USD
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 509
+      - id: BROAD - Keyword Stats Total Cost USD
+        name: BROAD - Keyword Stats Total Cost USD
+        __FILE: google_adwords/ad_group_performance.dashboard.lookml
+        __LINE_NUM: 513
+      __FILE: google_adwords/ad_group_performance.dashboard.lookml
+      __LINE_NUM: 493
+    series_types: {}
+    listen:
+      Ad Group Name: ad_group.ad_group_name
+      Date: master_stats._data_date
+      Campaign Name: campaign.campaign_name
+    row: 16
+    col: 12
+    width: 12
+    height: 8
   filters:
   - name: Campaign Name
     title: Campaign Name
     type: field_filter
     default_value: ''
-    model: adwords_demo
+    model: google_adwords
     explore: campaign
     field: campaign.campaign_name
     listens_to_filters:
     - Ad Group Name
     allow_multiple_values: true
+    required: false
   - name: Ad Group Name
     title: Ad Group Name
     type: field_filter
     default_value: ''
-    model: adwords_demo
+    model: google_adwords
     explore: ad_group
     field: ad_group.ad_group_name
     listens_to_filters: []
     allow_multiple_values: true
+    required: false
   - name: Date
     title: Date
     type: field_filter
-    default_value: 6 months
-    model: adwords_demo
-    explore: ad_group_basic_stats
-    field: ad_group_basic_stats._data_date
+    default_value: 2 quarters
+    model: google_adwords
+    explore: master_stats
+    field: master_stats._data_date
     listens_to_filters: []
     allow_multiple_values: true
+    required: false

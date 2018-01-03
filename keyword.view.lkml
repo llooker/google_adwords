@@ -35,7 +35,9 @@ view: keyword {
 
   dimension: bidding_strategy_name {
     type: string
-    sql: ${TABLE}.BiddingStrategyName ;;
+    sql: CASE
+      WHEN ${TABLE}.BiddingStrategyName IS NOT NULL THEN "Advanced"
+      ELSE NULL END ;;
   }
 
   dimension: bidding_strategy_source {
@@ -78,6 +80,11 @@ view: keyword {
   dimension: criteria {
     type: string
     sql: ${TABLE}.Criteria ;;
+    link: {
+      icon_url: "https://www.google.com/images/branding/product/ico/googleg_lodp.ico"
+      label: "Google Search"
+      url: "https://www.google.com/search?q={{ value | encode_uri}}"
+    }
   }
 
   dimension: criteria_destination_url {
@@ -201,7 +208,8 @@ view: keyword {
   }
 
   measure: count {
-    type: number
+    type: count_distinct
+    sql: ${criterion_id} ;;
     drill_fields: [detail*, ad_group.detail*]
   }
 

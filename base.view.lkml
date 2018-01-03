@@ -5,6 +5,7 @@ view: base {
   extension: required
 
   dimension: _data_day_of_quarter {
+    hidden: yes
     group_label: "Data Date"
     label: "Day of Quarter"
     type: number
@@ -15,12 +16,25 @@ view: base {
        ;;
   }
 
+  dimension: current_day_of_quarter {
+    hidden: yes
+    type:  number
+    sql: DATE_DIFF(CURRENT_DATE(), DATE_TRUNC(CURRENT_DATE(), QUARTER), DAY) ;;
+  }
+
+  dimension: less_than_current_day_of_quarter {
+    type: yesno
+    sql: ${_data_day_of_quarter} < ${current_day_of_quarter} ;;
+  }
+
   dimension: _data_next_quarter {
+    hidden: yes
     type: date
     sql: DATE_ADD(CAST(CONCAT(${_data_quarter}, '-01') as DATE), INTERVAL 1 QUARTER) ;;
   }
 
   dimension:  _data_days_in_quarter {
+    hidden: yes
     type: number
     sql: DATE_DIFF(
            ${_data_next_quarter},
@@ -29,21 +43,25 @@ view: base {
   }
 
   measure: _data_max_day_of_week_index {
+    hidden: yes
     type: max
     sql: ${_data_day_of_week_index} ;;
   }
 
   measure: _data_max_day_of_month {
+    hidden: yes
     type: max
     sql: ${_data_day_of_month} ;;
   }
 
   measure: _data_max_day_of_quarter {
+    hidden: yes
     type: max
     sql: ${_data_day_of_quarter} ;;
   }
 
   measure: _data_max_day_of_year {
+    hidden: yes
     type: max
     sql: ${_data_day_of_year} ;;
   }

@@ -1,36 +1,22 @@
+include: "master.explore.lkml"
+
 view: campaign_budget_stats {
-
-#   derived_table: {
-#     explore_source: campaign_basic_stats {
-#       column: _data_date {}
-#       column: budget_id { field: campaign.budget_id }
-#       column: campaign_id { field: campaign.campaign_id }
-#       column: amount_usd { field: campaign.total_amount_usd }
-#       column: cost_usd {}
-#     }
-#   }
-#   dimension: _data_date {}
-#   dimension: budget_id {}
-#   dimension: campaign_id {}
-#   dimension: amount_usd {}
-#   dimension: cost_usd {}
   derived_table: {
-    sql: SELECT
-  campaign.CampaignId  AS campaign_id,
-  campaign.BudgetId  AS budget_id,
-  campaign_stats._DATA_DATE AS _DATA_DATE,
-  COALESCE(SUM((campaign.Amount) ), 0) AS amount,
-  COALESCE(SUM((campaign_stats.Cost) ), 0) AS cost
-FROM adwords_v201609.CampaignStats_6747157124  AS campaign_stats
-LEFT JOIN adwords_v201609.Campaign_6747157124  AS campaign ON campaign_stats.CampaignId = campaign.CampaignId AND
-      campaign_stats._DATA_DATE = campaign._DATA_DATE
-
-GROUP BY 1,2,3
-      ;;
+    explore_source: master_stats {
+      column: campaign_id {}
+      column: budget_id { field: campaign.budget_id }
+      column: _data { field: master_stats._data_raw}
+      column: external_customer_id {}
+      column: amount { field: campaign.total_amount }
+      column: cost { field: master_stats.total_cost }
+    }
   }
-
-  dimension: campaign_id {}
-  dimension: budget_id {}
+  dimension: campaign_id {
+    type: number
+  }
+  dimension: external_customer_id {
+    type: number
+  }
   dimension_group: _data {
     type: time
     timeframes: [
@@ -45,9 +31,8 @@ GROUP BY 1,2,3
       day_of_month,
       day_of_year
     ]
-    convert_tz: no
-    sql: TIMESTAMP(${TABLE}._DATA_DATE) ;;
   }
+  dimension: budget_id {}
   dimension: amount {}
   dimension: cost {}
   dimension: amount_usd {

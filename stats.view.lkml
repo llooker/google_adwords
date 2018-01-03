@@ -9,11 +9,6 @@ view: stats {
     sql: (${cost} / 1000000) ;;
   }
 
-  dimension: cost_usd_per_click {
-    type: number
-    sql: ${cost_usd}/(NULLIF(${clicks},0)) ;;
-  }
-
   measure: total_cost {
     hidden: yes
     type: sum
@@ -21,30 +16,37 @@ view: stats {
   }
 
   measure: total_cost_usd {
+    label: "Cost"
     type: sum
     sql: ${cost_usd} ;;
     value_format_name: usd_0
   }
 
   measure: total_conversions {
+    label: "Conversions"
     type: sum
     sql: ${conversions} ;;
     value_format_name: decimal_0
   }
 
   measure: total_impressions {
+    label: "Impressions"
     type:  sum
     sql:  ${impressions} ;;
     drill_fields: [external_customer_id, total_impressions]
+    value_format_name: decimal_0
   }
 
   measure: total_interactions {
+    label: "Interactions"
     type:  sum
     sql:  ${interactions} ;;
     drill_fields: [external_customer_id, total_impressions]
+    value_format_name: decimal_0
   }
 
   measure: total_clicks {
+    label: "Clicks"
     type: sum
     sql: ${clicks} ;;
     value_format_name: decimal_0

@@ -213,6 +213,11 @@ view: ad {
       , COALESCE(CONCAT(${description1}, "\n"),"")
       , COALESCE(CONCAT(${description2}, "\n"),"")
       ) ;;
+    link: {
+      url: "https://adwords.google.com"
+      icon_url: "https://www.gstatic.com/awn/awsm/brt/awn_awsm_20171108_RC00/aw_blend/favicon.ico"
+      label: "Change Bid"
+    }
   }
 
   dimension: display_headline {
@@ -223,8 +228,8 @@ view: ad {
   }
 
   measure: count {
-    type: number
-    sql: count(${ad_group_id}) ;;
+    type: count_distinct
+    sql: ${ad_group_id} ;;
     drill_fields: [detail*]
   }
 

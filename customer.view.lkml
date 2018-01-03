@@ -37,7 +37,7 @@ view: customer {
     sql: ${TABLE}.CustomerDescriptiveName ;;
     link: {
       label: "Account Dashboard"
-      url: "/dashboards/adwords_demo::account_performance?Customer%20Name={{ value | encode_uri }}"
+      url: "/dashboards/google_adwords::account_performance?Customer%20Name={{ value | encode_uri }}"
       icon_url: "http://www.looker.com/favicon.ico"
     }
   }
@@ -63,7 +63,8 @@ view: customer {
   }
 
   measure: count {
-    type: count
+    type: count_distinct
+    sql: ${external_customer_id} ;;
     drill_fields: [detail*]
   }
 

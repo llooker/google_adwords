@@ -136,7 +136,8 @@ view: audience {
   }
 
   measure: count {
-    type: count
+    type: count_distinct
+    sql:  ${criterion_id} ;;
     drill_fields: [detail*]
   }
 
