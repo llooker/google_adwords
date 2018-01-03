@@ -1,4 +1,3 @@
-include: "master.explore.lkml"
 
 view: campaign_budget_stats {
   derived_table: {

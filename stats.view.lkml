@@ -1,5 +1,5 @@
-include: "base.view.lkml"
-include: "base_stats.view.lkml"
+include: "entity_base.view.lkml"
+
 
 view: stats {
   extension: required
@@ -102,5 +102,32 @@ view: stats {
     type: number
     sql: ${total_conversions}*1.0 / NULLIF(${total_clicks},0) ;;
     value_format_name: percent_2
+  }
+}
+
+view: base_stats {
+  extends: [base]
+  extension: required
+
+  dimension_group: date {
+    hidden: yes
+  }
+  dimension: day_of_week {
+    hidden: yes
+  }
+  dimension: month {
+    hidden: yes
+  }
+  dimension: month_of_year {
+    hidden: yes
+  }
+  dimension: quarter {
+    hidden: yes
+  }
+  dimension: week {
+    hidden: yes
+  }
+  dimension: year {
+    hidden: yes
   }
 }

@@ -1,5 +1,5 @@
 include: "stats.view.lkml"
-include: "ad_criterion_base.view.lkml"
+include: "entity_base.view.lkml"
 
 view: master_stats {
   extends: [ad_criterion_base, base, stats]

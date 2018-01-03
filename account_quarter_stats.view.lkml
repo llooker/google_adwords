@@ -1,6 +1,5 @@
 include: "stats.view.lkml"
 include: "base_quarter_stats.view.lkml"
-include: "master.explore.lkml"
 
 view: account_quarter_stats {
   extends: ["stats", "base_quarter_stats"]
