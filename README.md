@@ -1,23 +1,46 @@
+### What does this Block do for me?
+
+**(1) Replication + More** - Replication of existing AdWords reports and dashboards, plus additional value-add analysis, accelerates time to value with a full plug-and-play model
+
+**(2) Expertise** - Leverage analytics expertise of Looker + AdWords product teams
+
+**(3) Central Data Platform** - Take advantage of Looker's data platform functionality, including data actions, scheduling, permissions, alerting, parameterization (each user can only see their own data), and more
+
+
 ### Block Info
 
-_This Block is modeled on the schema brough in by Google's BigQuery Transfer Service. It will cover many of the core entities involved with the AdWords offering. This Block should serve as a great jump start. Happy modeling!_
+This Block is modeled on the schema brough in by Google's [BigQuery Transfer Service](https://cloud.google.com/bigquery/transfer/). It will cover many of the core entities involved with the DoubleClick for Publishers offering. Depending on how you use the DFP service, you may have additional entities brought in through thge BQ Transfer Service, especially any custom built reports. This Block should serve as a great jump start. Happy modeling!
 
-_The schema documentation for AdWords can be found in [Google's docs](https://developers.google.com/adwords/api/docs/guides/reporting#xml_schema_definition). Please note that your naming might vary slightly._
+The schema documentation for AdWords can be found in [Google's docs](https://developers.google.com/adwords/api/docs/appendix/reports). Please note that your naming might vary slightly.
+
+
+### Google AdWords Raw Data Structure
+
+* **Entity Tables and Stats Tables** - There are several primary entities included in the AdWords data set, such as ad, ad group, campaign, customer, keyword, etc.. Each of these tables has a corresponding "Stats" table, which includes all the various metrics for that entity. For example, the "campaign" entity table contains attributes for each campaign, such as the campaign name and campaign status. The corresponding stats table - "Campaign Basic Stats" contains metrics such as impressions, clicks, and conversions.
+
+* **Snapshots** - AdWords tables keep records over time by snapshotting all data at the end of each day. The following day, a new snapshot is taken, and appended to the table. There are two columns on each table: `_DATA_DATE` and `_LATEST_DATE`. `_DATA_DATE` tells you the day the data was recorded, while `_LATEST_DATE` is an immutable field that tells you the most recent date a snapshot was taken. Querying the table using `_DATA_DATE` = `_LATEST_DATE` in the `WHERE` clause would give you only the data for the latest day.
+
+
+### Block Structure
+
+* **Entity Base** - This file contains all the common entity tables found across all AdWords deployments. If you have additional entities you'd like to include, simply bring them into the Looker and model them the same way. Full documentation on each entity table and each metric can be found in [Google's documentation](https://developers.google.com/adwords/api/docs/appendix/reports).
+
+* **Master Basic Stats** - This file contains all the metrics (measures / aggregations) for each corresponding entity. Because AdWords data exports were built with the intention of one-off reporting, rather than data modeling, we utilize Lookers `in_query` function (Looker's approach to Aggregate Awareness) to tell Looker which table to query based on the dimensions and measures selected when exploring or viewing a dashboard. This allow us to optimize performance and leverage BigQuery's speed while still maintaining a robust, central data model. More detail on the `in_query` function can be found in [Looker's documentation](https://discourse.looker.com/t/aggregate-awareness-using--in-query/6439).
+
+* **Base Quarter Stats** - Many customers prefer to view AdWords data at the quarterly level to gauge performance and, more importantly, understand budget implicications. This file contains several quarterly overviews to help users analyze performance and budget spend at the quarter interval.
+
+* **Model File and Joins** - Since all tables are snapshotted and appended each day, you'll notice that in our model file, all of our join logic is based on two conditions: on the common key, and on the date. This ensures that we never double count or misaggregate any calculations. Modifying these joins will break the aggregations. Any additional table that's joined should follow the same logic.
+
+
+### Implementation Instructions / Required Customizations
+
+* **sql_table_name** - in each of the views, the `sql_table_name` parameter must be changed to match your table names. This is easily accomplished using a global Find & Replace (available in the top right of your screen)
+
+* **Dashboards** - rename the model in each LookML Dashboard element from "google_adwords" to the model name you've selected. We also recommend using a global Find & Replace for this.
+
+
 
 ### Reporting Schema Layout
 
 
 ![image](https://cloud.githubusercontent.com/assets/9888083/26472690/18f621d0-415c-11e7-85fc-e77334847757.png)
-
-### Implementation Instructions
-
-* **Sql_table_name** - in each of the views, the `sql_table_name` parameter must be changed to match your table names, particularly the tables with a wildcard operator when using `_table_suffix`. This must be changed in each view.
-* **Dashboards** - rename the model in each LookML Dashboard element from "google_adwords" to the model name you've selected.
-
-
-### Notes
-
-* **Master Basic Stats** - This is the primary explore that will generate adwords reporting. This enables a view of all "stats" tables. By selecting the level of granularity (account, campaign, ad group, keyword, creative), the right level table will be engaged and summary stats will be generated.
-    * **Hourly Views** - some entities are tracked at the hourly level, enabling us to see hour-over-hour changes, while others aren't. As a result, only certain entities will have hourly metrics available for analysis.
-* **Entity Tables vs Stat Tables** - tables with the "stats" suffix contain snapshot data by day, compiled into a large table. The values in these tables can be aggregated over time. These serve as our left-most tables, or "base tables", which we join our other tables onto with `many_to_one_joins`. The non-base (entity) tables are also running tables, but contain snapshots of the state of the various entities (customers, campaigns, ad groups, keywords, audience, ads ...) and shouldn't be aggregated over time. We restrict these tables using the `_latest_date = _data_date` parameter in a conditional filter or limiting to a single day. When joining to stats tables we join according to primary keys and the _data_date to have the historic view of the entity at the relevant time. Avoid the use of `one_to_many` joins from base table to stat table, since stat tables have no primary key, and therefore cannot be aggregated over correctly during fanouts.
-* **Included Entities** As mentioned above, this Block covers many to of core entities for AdWords (namely, `Ads`, `Keywords`, and `Campaigns`). Additional fields should be brought in as needed. The modeling logic applied to the core entities should also be applied any additional tables brought in via Transfer Services.
