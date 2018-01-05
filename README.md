@@ -2,11 +2,11 @@
 
 **(1) Combine Multiple Data Sources** - Combine your AdWords data with data from GA, DoubleClick, Facebook Ads, Salesforce, and more to get a holistic view of all your customer data in one central view (see bottom of this page for instructions).
 
-**(2) Replicate Existing AdWords Reports + More** - Replice all your existing AdWords reports and dashboards in a matter of minutes or hours to make the switch to Looker seamless. Plus, enjoy all the additional value-add analysis that comes turney with this plug-and-play model and dashboards. Time-to-value for a new data tool has never been quicker.
+**(2) Replicate Existing AdWords Reports + More** - Replicate all your existing AdWords reports and dashboards in a matter of minutes or hours to make the switch to Looker seamless. Plus, enjoy all the additional value-add analysis that comes turney with this plug-and-play model and dashboards. Time-to-value for a new data tool has never been quicker.
 
 **(3) Enterprise Data Platform** - Take advantage of Looker's data platform functionality, including [data actions](https://discourse.looker.com/t/data-actions/3573), scheduling, permissions, alerting, parameterization (each user can only see their own data), and more. Get immediate alerts when budgets are exceeded, ads are underperforming, or any other business criteria.
 
-**(4) Usable / Shareable Dashboards** - create centralized dashboards for the entire team, and departmental or individual dashboards for each user, and rest easy knowing everyone is looking at the same information at all times. Then schedule the dashboard for emails or alerts, period-end reporting, anamoly detection, or whatever else serves your use-case.
+**(4) Usable / Shareable Dashboards** - create centralized dashboards for the entire team, and departmental or individual dashboards for each user, and rest easy knowing everyone is looking at the same information at all times. Then schedule the dashboard for emails or alerts, period-end reporting, anomaly detection, or whatever else serves your use-case.
 
 **(5) Expertise** - Leverage analytics expertise of Looker + AdWords product teams, who assembled this Block based on years of AdWords experience with industry-leading companies.
 
