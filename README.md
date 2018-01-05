@@ -42,7 +42,9 @@ The schema documentation for AdWords can be found in [Google's docs](https://dev
 
 * **Dashboards** - rename the model in each LookML Dashboard element from "google_adwords" to the model name you've selected. We also recommend using a global Find & Replace for this.
 
+### What if I find an error? Suggestions for improvements?
 
+Great! Blocks were designed for continuous improvement through the help of the entire Looker community, and we'd love your input. To log an error or improvement recommentation, simply create a "New Issue" in the corresponding [Github repo for this Block](https://github.com/llooker/google_adwords/issues). Please be as detailed as possible in your explanation, and we'll address it as quick as we can.
 
 ### Reporting Schema Layout
 
