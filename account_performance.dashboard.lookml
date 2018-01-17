@@ -799,9 +799,9 @@
       - id: master_stats.total_conversions
         name: Total Conversions
         __FILE: google_adwords/account_performance.dashboard.lookml
-        __LINE_NUM: 858
+        __LINE_NUM: 799
       __FILE: google_adwords/account_performance.dashboard.lookml
-      __LINE_NUM: 846
+      __LINE_NUM: 787
     - label:
       maxValue:
       minValue:
@@ -817,9 +817,9 @@
       - id: master_stats.average_cost_per_conversion
         name: Cost per Conversion
         __FILE: google_adwords/account_performance.dashboard.lookml
-        __LINE_NUM: 876
+        __LINE_NUM: 817
       __FILE: google_adwords/account_performance.dashboard.lookml
-      __LINE_NUM: 864
+      __LINE_NUM: 805
     hidden_series:
     - master_stats.total_cost_usd
     listen:
@@ -885,9 +885,9 @@
       - id: master_stats.total_conversions
         name: Campaign Stats Total Conversions
         __FILE: google_adwords/account_performance.dashboard.lookml
-        __LINE_NUM: 944
+        __LINE_NUM: 885
       __FILE: google_adwords/account_performance.dashboard.lookml
-      __LINE_NUM: 932
+      __LINE_NUM: 873
     - label:
       maxValue:
       minValue:
@@ -903,9 +903,9 @@
       - id: master_stats.total_cost_usd
         name: Campaign Stats Total Cost USD
         __FILE: google_adwords/account_performance.dashboard.lookml
-        __LINE_NUM: 962
+        __LINE_NUM: 903
       __FILE: google_adwords/account_performance.dashboard.lookml
-      __LINE_NUM: 950
+      __LINE_NUM: 891
     - label:
       maxValue:
       minValue:
@@ -921,9 +921,9 @@
       - id: master_stats.average_cost_per_conversion
         name: Campaign Stats Cost per Conversion
         __FILE: google_adwords/account_performance.dashboard.lookml
-        __LINE_NUM: 980
+        __LINE_NUM: 921
       __FILE: google_adwords/account_performance.dashboard.lookml
-      __LINE_NUM: 968
+      __LINE_NUM: 909
     series_types:
       master_stats.average_cost_per_conversion: line
     hidden_series:
@@ -1013,7 +1013,7 @@
     - master_stats.average_cost_per_click
     - master_stats.average_cost_per_conversion
     sorts:
-    - master_stats.total_impressions desc
+    - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
     label: Campaign Details

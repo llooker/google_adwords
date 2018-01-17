@@ -19,8 +19,8 @@
     col: 0
     width: 24
     height: 2
-  - title: Average cost per conversion over time (ad group)
-    name: Average cost per conversion over time (ad group)
+  - title: Average cost per conversion over time
+    name: Average cost per conversion over time
     model: google_adwords
     explore: master_stats
     type: looker_line
@@ -122,8 +122,8 @@
     col: 0
     width: 24
     height: 7
-  - title: Top 10 keyword performance (keyword)
-    name: Top 10 keyword performance (keyword)
+  - title: Top 10 keyword performance
+    name: Top 10 keyword performance
     model: google_adwords
     explore: master_stats
     type: looker_column
@@ -141,7 +141,7 @@
     - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
-    label: Top 10 Keyword Performance (keyword)
+    label: Top 10 Keyword Performance
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -218,8 +218,8 @@
     col: 12
     width: 12
     height: 7
-  - title: Top 10 creative performance (ad)
-    name: Top 10 creative performance (ad)
+  - title: Top 10 creative performance
+    name: Top 10 creative performance
     model: google_adwords
     explore: master_stats
     type: looker_column
@@ -237,7 +237,7 @@
     - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
-    label: Top 10 Creative Performance (ad group)
+    label: Top 10 Creative Performance
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -325,8 +325,8 @@
     col: 0
     width: 12
     height: 7
-  - title: Top 10 audience performance (audience)
-    name: Top 10 audience performance (audience)
+  - title: Top 10 audience performance
+    name: Top 10 audience performance
     model: google_adwords
     explore: master_stats
     type: looker_column
@@ -338,7 +338,7 @@
     - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
-    label: Top 10 audience performance (audience)
+    label: Top 10 audience performance
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -469,8 +469,8 @@
     col: 0
     width: 24
     height: 4
-  - title: Keyword details (keyword)
-    name: Keyword details (keyword)
+  - title: Keyword details
+    name: Keyword details
     model: google_adwords
     explore: master_stats
     type: table
@@ -490,7 +490,7 @@
     - master_stats.total_cost_usd desc
     limit: 10
     column_limit: 50
-    label: Top 10 Keyword Performance (keyword)
+    label: Top 10 Keyword Performance
     show_view_names: false
     show_row_numbers: false
     truncate_column_names: false
@@ -588,7 +588,7 @@
     - master_stats.total_cost_usd desc 0
     limit: 500
     column_limit: 50
-    label: Top 10 Keyword Performance (keyword)
+    label: Top 10 Keyword Performance
     stacking: ''
     show_value_labels: false
     label_density: 25
