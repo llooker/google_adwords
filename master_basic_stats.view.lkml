@@ -286,6 +286,11 @@ view: master_stats {
       sql: ${TABLE}.Date ;;
     }
 
+  dimension: week_of_year {
+    type: string
+    sql: CAST(FORMAT_TIMESTAMP('%V', TIMESTAMP(${TABLE}.Date) ) AS INT64);;
+  }
+
     dimension: device {
       type: string
       sql: ${TABLE}.Device ;;
