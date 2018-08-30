@@ -13,7 +13,7 @@
 
 ### Block Info
 
-This Block is modeled on the schema brough in by Google's [BigQuery Transfer Service](https://cloud.google.com/bigquery/transfer/). It will cover many of the core entities involved with the DoubleClick for Publishers offering. Depending on how you use the DFP service, you may have additional entities brought in through thge BQ Transfer Service, especially any custom built reports. This Block should serve as a great jump start. Happy modeling!
+This Block is modeled on the schema brough in by Google's [BigQuery Transfer Service](https://cloud.google.com/bigquery/transfer/). It will cover many of the core entities involved with the Adwoards offering. Depending on how you use the Adwords service, you may have additional entities brought in through thge BQ Transfer Service, especially any custom built reports. This Block should serve as a great jump start. Happy modeling!
 
 The schema documentation for AdWords can be found in [Google's docs](https://developers.google.com/adwords/api/docs/appendix/reports). Please note that your naming might vary slightly.
 
