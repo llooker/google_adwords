@@ -565,7 +565,7 @@ view: ad_group {
 
 
 view: audience {
-  extends: [entity_base]
+  extends: [ad_criterion_base, entity_base]
   sql_table_name: adwords_v201609.Audience_6747157124 ;;
 
   dimension: _data {
@@ -574,13 +574,6 @@ view: audience {
 
   dimension: _latest {
     sql: TIMESTAMP(${TABLE}._LATEST_DATE) ;;
-  }
-
-  dimension: unique_key {
-    type: string
-    primary_key: yes
-    hidden: yes
-    sql: CONCAT(CAST(${ad_group_id} AS STRING),CAST(${criterion_id} AS STRING)) ;;
   }
 
   dimension: ad_group_id {
