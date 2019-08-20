@@ -35,6 +35,8 @@ The schema documentation for AdWords can be found in [Google's docs](https://dev
 
 * **Model File and Joins** - Since all tables are snapshotted and appended each day, you'll notice that in our model file, all of our join logic is based on two conditions: on the common key, and on the date. This ensures that we never double count or misaggregate any calculations. Modifying these joins will break the aggregations. Any additional table that's joined should follow the same logic.
 
+This image shows the three view files. The round-cornered boxes inside them are views. The arrows indicate dependencies.
+![block_structure](https://i.imgur.com/SBzvI9B.png)
 
 ### Implementation Instructions / Required Customizations
 
@@ -50,7 +52,3 @@ Great! Blocks were designed for continuous improvement through the help of the e
 
 
 ![image](https://cloud.githubusercontent.com/assets/9888083/26472690/18f621d0-415c-11e7-85fc-e77334847757.png)
-
-### Block structure
-The 3 boxes are view files. The round-cornered boxes are views inside them. The arrows indicate dependencies.
-![block_structure](https://i.imgur.com/SBzvI9B.png)
