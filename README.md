@@ -50,3 +50,5 @@ Great! Blocks were designed for continuous improvement through the help of the e
 
 
 ![image](https://cloud.githubusercontent.com/assets/9888083/26472690/18f621d0-415c-11e7-85fc-e77334847757.png)
+
+![block_structure](https://i.imgur.com/SBzvI9B.png)
