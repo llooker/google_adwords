@@ -56,7 +56,7 @@ view: stats {
 ## rather than creating a new dimension to be aggregated over
 
   measure: average_interaction_rate {
-    label: "Interation Rate"
+    label: "Interaction Rate"
     type: number
     sql: ${total_interactions}*1.0/nullif(${total_impressions},0) ;;
     value_format_name: percent_2
